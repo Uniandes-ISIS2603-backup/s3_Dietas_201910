@@ -15,7 +15,7 @@ import javax.persistence.Entity;
 @Entity
 public class DietaEntity extends BaseEntity implements Serializable {
 
-    private Long id;
+ 
     private String tipo;
     private String objetivo;
     private int diasSuspendida;
@@ -24,19 +24,7 @@ public class DietaEntity extends BaseEntity implements Serializable {
         
     }
     
-    /**
-     * @return the id
-     */
-    public Long getId() {
-        return id;
-    }
-
-    /**
-     * @param id the id to set
-     */
-    public void setId(long id) {
-        this.id = id;
-    }
+   
 
     /**
      * @return the tipo
