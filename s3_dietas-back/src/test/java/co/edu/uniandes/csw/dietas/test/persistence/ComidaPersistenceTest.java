@@ -14,9 +14,13 @@ import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
 import org.junit.Assert;
 import org.junit.Test;
+import java.util.ArrayList;
+import java.util.List;
 import org.junit.runner.RunWith;
 import uk.co.jemos.podam.api.PodamFactory;
 import uk.co.jemos.podam.api.PodamFactoryImpl;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
 /**
  *
@@ -31,6 +35,13 @@ public class ComidaPersistenceTest {
      */
       @Inject
       private ComidaPersistence comidaPersistence;
+      
+      @PersistenceContext
+      private EntityManager em;
+      
+      private List<ComidaEntity> data = new ArrayList<>();
+      
+      
       
   @Deployment
   public static JavaArchive createDeployment() {
@@ -54,6 +65,66 @@ System.out.print(newEntity.getId());
         Assert.assertNotNull(result);
   }
   
-  
-   
+   /**
+     * Prueba para consultar la lista de Comidas.
+     */
+    @Test
+    public void getAuthorsTest() {
+        List<ComidaEntity> list = comidaPersistence.findAll();
+        Assert.assertEquals(data.size(), list.size());
+        for (ComidaEntity ent : list) {
+            boolean found = false;
+            for (ComidaEntity entity : data) {
+                if (ent.getId().equals(entity.getId())) {
+                    found = true;
+                }
+            }
+            Assert.assertTrue(found);
+        }
+    }
+
+    /**
+     * Prueba para consultar un Comida.
+     
+    @Test
+    public void getComdaTest() {
+        ComidaEntity entity = data.get(0);
+        ComidaEntity newEntity = comidaPersistence.find(entity.getId());
+        Assert.assertNotNull(newEntity);
+        Assert.assertEquals(entity.getId(), newEntity.getId());
+        Assert.assertEquals(entity.getAlimentosYCantidad(), newEntity.getAlimentosYCantidad());
+    }
+    */
+    
+    
+    /**
+     * Prueba para actualizar un Comida.
+     
+    @Test
+    public void updateComidaTest() {
+        ComidaEntity entity = data.get(0);
+        PodamFactory factory = new PodamFactoryImpl();
+        ComidaEntity newEntity = factory.manufacturePojo(ComidaEntity.class);
+
+        newEntity.setId(entity.getId());
+
+        comidaPersistence.update(newEntity);
+
+        ComidaEntity resp = em.find(ComidaEntity.class, entity.getId());
+
+        Assert.assertEquals(newEntity.getId(), resp.getId());
+    }
+    */
+    
+    /**
+     * Prueba para eliminar un Comida.
+    
+    @Test
+    public void deleteComidaTest() {
+        ComidaEntity entity = data.get(0);
+        comidaPersistence.delete(entity.getId());
+        ComidaEntity deleted = em.find(ComidaEntity.class, entity.getId());
+        Assert.assertNull(deleted);
+    }
+    */
 }
