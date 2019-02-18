@@ -16,6 +16,11 @@ import javax.persistence.Entity;
 public class CocinaEntity extends BaseEntity implements Serializable  
 {
     private String direccion;
+    
+    //@PodamExclude
+    //@OneToMany
+    //private ComidaEntity comida;
+    
 
     /**
      * @return the direccion

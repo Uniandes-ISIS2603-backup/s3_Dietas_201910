@@ -18,6 +18,10 @@ public class SuspensionEntity extends BaseEntity implements Serializable
     private boolean vigente;
     private int numDias;
     private String comentarios;
+    
+    //@PodamExclude
+    //@ManyToOne
+    //private DietaEntity dieta;
 
     /**
      * @return the vigente
