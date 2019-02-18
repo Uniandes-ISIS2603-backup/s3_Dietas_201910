@@ -24,6 +24,10 @@ public class HallOfFameEntity extends BaseEntity implements Serializable{
     @OneToMany(mappedBy = "halls")
     private List<PersonaEntity> personas = new ArrayList<>();
     
+    public HallOfFameEntity(){
+        
+    }
+    
     /**
      * Mensaje en Hall Of Fame 
      */

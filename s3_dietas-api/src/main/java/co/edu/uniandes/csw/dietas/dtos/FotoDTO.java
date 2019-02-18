@@ -3,28 +3,19 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package co.edu.uniandes.csw.dietas.entities;
-
-import java.io.Serializable;
-import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
-import uk.co.jemos.podam.common.PodamExclude;
+package co.edu.uniandes.csw.dietas.dtos;
 
 /**
  *
  * @author Louis Gualtero
  */
-@Entity
-public class FotoEntity extends BaseEntity implements Serializable{
+public class FotoDTO {
     
-    @PodamExclude
-    @ManyToOne
-    private PersonaEntity persona;
     
     private String nombre;
     private String url;
     
-    public FotoEntity(){
+    public FotoDTO (){
         
     }
 
@@ -36,17 +27,17 @@ public class FotoEntity extends BaseEntity implements Serializable{
     }
 
     /**
-     * @return the url
-     */
-    public String getUrl() {
-        return url;
-    }
-
-    /**
      * @param nombre the nombre to set
      */
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    /**
+     * @return the url
+     */
+    public String getUrl() {
+        return url;
     }
 
     /**
@@ -55,7 +46,4 @@ public class FotoEntity extends BaseEntity implements Serializable{
     public void setUrl(String url) {
         this.url = url;
     }
-    
-    
-    
 }
