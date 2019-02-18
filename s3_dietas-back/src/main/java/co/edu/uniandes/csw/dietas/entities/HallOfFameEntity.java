@@ -7,6 +7,10 @@ package co.edu.uniandes.csw.dietas.entities;
 
 import java.io.Serializable;
 import javax.persistence.Entity;
+import uk.co.jemos.podam.common.PodamExclude;
+import java.util.List;
+import java.util.ArrayList;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -14,6 +18,11 @@ import javax.persistence.Entity;
  */
 @Entity
 public class HallOfFameEntity extends BaseEntity implements Serializable{
+    
+    
+    @PodamExclude
+    @OneToMany(mappedBy = "halls")
+    private List<PersonaEntity> books = new ArrayList<>();
     
     /**
      * Mensaje en Hall Of Fame 
