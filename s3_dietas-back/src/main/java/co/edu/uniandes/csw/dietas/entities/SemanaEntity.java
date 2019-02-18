@@ -6,8 +6,12 @@
 package co.edu.uniandes.csw.dietas.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  *
@@ -19,6 +23,11 @@ public class SemanaEntity extends BaseEntity implements Serializable
     private Date horaEntrega;
     private String lugarEntrega;
     private int costo;
+    
+    @PodamExclude
+    @OneToMany(mappedBy = "semana")
+    private List<DiaEntity> dias = new ArrayList<DiaEntity>();
+
     /**
      * Método que me permite crear una SemanaEntity (Constructor de la clase).
      */
