@@ -24,7 +24,7 @@ public class DiaEntity extends BaseEntity implements Serializable {
     @OneToMany(mappedBy = "dia")
     private List<ComidaEntity> comidas = new ArrayList<ComidaEntity>();
     
-      @PodamExclude
+     @PodamExclude
     @ManyToOne
     private SemanaEntity semana;
     

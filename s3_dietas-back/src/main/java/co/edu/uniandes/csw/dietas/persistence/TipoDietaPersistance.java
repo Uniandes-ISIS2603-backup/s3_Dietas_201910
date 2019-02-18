@@ -24,10 +24,5 @@ public class TipoDietaPersistance {
         em.persist(tipoDietaEntity);
         return tipoDietaEntity;
     }
-    {
-        
-    }
-    
-    
-    
+     
 }

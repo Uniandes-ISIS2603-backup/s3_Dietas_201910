@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import uk.co.jemos.podam.common.PodamExclude;
 
@@ -27,6 +28,11 @@ public class SemanaEntity extends BaseEntity implements Serializable
     @PodamExclude
     @OneToMany(mappedBy = "semana")
     private List<DiaEntity> dias = new ArrayList<DiaEntity>();
+    
+//    @PodamExclude
+//    @ManyToOne
+//    private DietaEntity dietas;
+
 
     /**
      * Método que me permite crear una SemanaEntity (Constructor de la clase).
@@ -35,6 +41,7 @@ public class SemanaEntity extends BaseEntity implements Serializable
     {
         
     }
+    
     /**
      * @return the horaEntrega
      */
