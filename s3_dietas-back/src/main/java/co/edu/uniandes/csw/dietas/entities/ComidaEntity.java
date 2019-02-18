@@ -20,9 +20,9 @@ public class ComidaEntity extends BaseEntity implements Serializable {
     
  
             
-    //@PodamExclude
-    //@ManyToOne
-    //private CocinaEntity cocina;
+    @PodamExclude
+    @ManyToOne
+    private CocinaEntity cocina;
     
     //@PodamExclude
     //@ManyToOne
