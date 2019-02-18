@@ -6,8 +6,14 @@
 package co.edu.uniandes.csw.dietas.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  *
@@ -23,10 +29,30 @@ public class PersonaEntity extends BaseEntity implements Serializable {
     private int tiempoEsperadoMejora;
     private boolean solicitudEspecial;
     private boolean tarjetaFidelidad;
-    private String[] fotos;
-    private Integer[] calificaciones;
-    private String[] comentarios;
-    private String[] quejasYReclamos;
+  
+    @PodamExclude
+    @ManyToOne()
+    private PersonaEntity halls;
+
+    @PodamExclude
+    @OneToMany(mappedBy = "quejas")
+    private List<QuejaYReclamoEntity> quejas = new ArrayList<>();
+    
+    @PodamExclude
+    @OneToMany(mappedBy = "pagos")
+    private List<PagoEntity> pagos = new ArrayList<>();
+    
+    @PodamExclude
+    @OneToMany(mappedBy = "calificacionesYComentarios")
+    private List<CalificacionYComentarioEntity> calificacionesYComentarios = new ArrayList<>();
+    
+    @PodamExclude
+    @OneToMany(mappedBy = "fotos")
+    private List<FotoEntity> fotos = new ArrayList<>();
+    
+     @PodamExclude
+    @OneToOne(mappedBy = "dietas")
+    private DietaEntity dietas;
 
     /**
      * @return the tipo
@@ -127,59 +153,60 @@ public class PersonaEntity extends BaseEntity implements Serializable {
     }
 
     /**
-     * @return the fotos
+     * @return the halls
      */
-    public String[] getFotos() {
-        return fotos;
+    public PersonaEntity getHalls() {
+        return halls;
     }
 
     /**
-     * @param fotos the fotos to set
+     * @param halls the halls to set
      */
-    public void setFotos(String[] fotos) {
-        this.fotos = fotos;
+    public void setHalls(PersonaEntity halls) {
+        this.halls = halls;
     }
 
     /**
-     * @return the calificaciones
+     * @return the quejas
      */
-    public Integer[] getCalificaciones() {
-        return calificaciones;
+    public List<QuejaYReclamoEntity> getQuejas() {
+        return quejas;
     }
 
     /**
-     * @param calificaciones the calificaciones to set
+     * @param quejas the quejas to set
      */
-    public void setCalificaciones(Integer[] calificaciones) {
-        this.calificaciones = calificaciones;
+    public void setQuejas(List<QuejaYReclamoEntity> quejas) {
+        this.quejas = quejas;
     }
 
     /**
-     * @return the comentarios
+     * @return the pagos
      */
-    public String[] getComentarios() {
-        return comentarios;
+    public List<PagoEntity> getPagos() {
+        return pagos;
     }
 
     /**
-     * @param comentarios the comentarios to set
+     * @param pagos the pagos to set
      */
-    public void setComentarios(String[] comentarios) {
-        this.comentarios = comentarios;
+    public void setPagos(List<PagoEntity> pagos) {
+        this.pagos = pagos;
     }
 
     /**
-     * @return the quejasYReclamos
+     * @return the dietas
      */
-    public String[] getQuejasYReclamos() {
-        return quejasYReclamos;
+    public DietaEntity getDietas() {
+        return dietas;
     }
 
     /**
-     * @param quejasYReclamos the quejasYReclamos to set
+     * @param dietas the dietas to set
      */
-    public void setQuejasYReclamos(String[] quejasYReclamos) {
-        this.quejasYReclamos = quejasYReclamos;
+    public void setDietas(DietaEntity dietas) {
+        this.dietas = dietas;
     }
-             
+     
+        
 }

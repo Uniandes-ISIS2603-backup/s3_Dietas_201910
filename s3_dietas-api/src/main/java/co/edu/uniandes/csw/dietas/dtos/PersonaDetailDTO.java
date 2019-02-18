@@ -11,7 +11,7 @@ import java.util.Date;
  *
  * @author estudiante
  */
-public class PersonaDTO {
+public class PersonaDetailDTO {
     
     private Long id;
     private String tipo;

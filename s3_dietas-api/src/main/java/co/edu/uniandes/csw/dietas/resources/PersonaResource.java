@@ -5,7 +5,7 @@
  */
 package co.edu.uniandes.csw.dietas.resources;
 
-import co.edu.uniandes.csw.dietas.dtos.PersonaDTO;
+import co.edu.uniandes.csw.dietas.dtos.PersonaDetailDTO;
 import co.edu.uniandes.csw.dietas.dtos.PersonaDetail;
 import java.util.List;
 import java.util.logging.Logger;
@@ -31,7 +31,7 @@ public class PersonaResource {
     private static final Logger LOGGER = Logger.getLogger(PersonaResource.class.getName());
     
     @POST
-    public PersonaDTO createPersona(PersonaDTO personaParam){
+    public PersonaDetailDTO createPersona(PersonaDetailDTO personaParam){
        return personaParam; 
     }
     
