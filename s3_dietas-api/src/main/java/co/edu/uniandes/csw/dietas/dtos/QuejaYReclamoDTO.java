@@ -9,7 +9,7 @@ package co.edu.uniandes.csw.dietas.dtos;
  *
  * @author estudiante
  */
-public class quejaYReclamoDTO {
+public class QuejaYReclamoDTO {
     
     private Long id;
     private String especificacion;
