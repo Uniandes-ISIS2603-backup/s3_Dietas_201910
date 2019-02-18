@@ -7,6 +7,8 @@ package co.edu.uniandes.csw.dietas.entities;
 
 import java.io.Serializable;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  *
@@ -15,6 +17,17 @@ import javax.persistence.Entity;
 @Entity
 public class ComidaEntity extends BaseEntity implements Serializable {
   
+    
+ 
+            
+    //@PodamExclude
+    //@ManyToOne
+    //private CocinaEntity cocina;
+    
+    //@PodamExclude
+    //@ManyToOne
+   // private DiaEntity dia;
+    
     private String tipo;
     private String alimentosYCantidad;
 

@@ -63,16 +63,16 @@ public class HallOfFamePersistence {
      * 
      * @param hallId: id correspondiente a el hall buscado
      * @return un hall of fame
-     */
+     
     public HallOfFameEntity find (Long hallId){
         LOGGER.log(Level.INFO, "Consultando el hall con id={0}", hallId);
-        /* Note que se hace uso del metodo "find" propio del EntityManager, el cual recibe como argumento 
+         Note que se hace uso del metodo "find" propio del EntityManager, el cual recibe como argumento 
         el tipo de la clase y el objeto que nos hara el filtro en la base de datos en este caso el "id"
         Suponga que es algo similar a "select * from HallOfFameEntity where id=id;" - "SELECT * FROM table_name WHERE condition;" en SQL.
-         */
+         
         return em.find(HallOfFameEntity.class, hallId);
     }
-    
+    */
     /**
      * Actualiza un hall of fame
      * 
@@ -80,31 +80,31 @@ public class HallOfFamePersistence {
      * ejemplo el nombre que pudo cmabiar. En ese caso, se haria uso del metodo
      * update.
      * @return un hall con los cambios aplicados.
-     */
+     
     public HallOfFameEntity update(HallOfFameEntity hallEntity){
          
-        /* Note que hacemos uso de un método propio del EntityManager llamado merge() que recibe como argumento
+         Note que hacemos uso de un método propio del EntityManager llamado merge() que recibe como argumento
         el hall con los cambios, esto es similar a 
         "UPDATE table_name SET column1 = value1, column2 = value2, ... WHERE condition;" en SQL.
-         */
+         
         return em.merge(hallEntity);
     }
-    
+    */
     /**
      * Borra una hall de la base de datos recibiendo como argumento el id del
      *  hall
      *
      * @param hallsId: id correspondiente al hall  a borrar.
-     */
+    
     public void delete(Long hallsId) {
 
         LOGGER.log(Level.INFO, "Borrando el hall con id={0}", hallsId);
         // Se hace uso de mismo método que esta explicado en public HallOfFameEntity find(Long id) para obtener la hall a borrar.
         HallOfFameEntity hallEntity = em.find(HallOfFameEntity.class, hallsId);
-        /* Note que una vez obtenido el objeto desde la base de datos llamado "entity", volvemos hacer uso de un método propio del
+         Note que una vez obtenido el objeto desde la base de datos llamado "entity", volvemos hacer uso de un método propio del
         EntityManager para eliminar de la base de datos el objeto que encontramos y queremos borrar.
-        Es similar a "delete from HallOfFameEntity where id=id;" - "DELETE FROM table_name WHERE condition;" en SQL.*/
+        Es similar a "delete from HallOfFameEntity where id=id;" - "DELETE FROM table_name WHERE condition;" en SQL.
         em.remove(hallEntity);
     }
-            
+    */       
 }

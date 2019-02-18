@@ -22,7 +22,7 @@ public class HallOfFameEntity extends BaseEntity implements Serializable{
     
     @PodamExclude
     @OneToMany(mappedBy = "halls")
-    private List<PersonaEntity> books = new ArrayList<>();
+    private List<PersonaEntity> personas = new ArrayList<>();
     
     /**
      * Mensaje en Hall Of Fame 
