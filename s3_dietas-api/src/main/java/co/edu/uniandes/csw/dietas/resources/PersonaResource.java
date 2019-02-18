@@ -23,7 +23,7 @@ import javax.ws.rs.Produces;
  * @author Daniel Espitia
  */
 
-@Path("persona")
+@Path("personas")
 @Produces("application/json")
 @Consumes("application/json")
 @RequestScoped
@@ -81,22 +81,50 @@ public class PersonaResource {
     public PersonaDetail getTarjetaFidelidad(@PathParam("personaId") Long personaId){
         return null;
     }
-    
-    @GET
-    @Path("{name: [a-zA-Z][a-zA-Z]*}")
-    public PersonaDetail getObjetivos(@PathParam("personaId") String personaObejtivos){
+        
+    @PUT
+    @Path("{personaId: \\d+}")
+    public PersonaDetail updateObjetivos(@PathParam("personaId") Long personaId, String objetivos){
         return null;
     }
-    
-//    @PUT
-//    @Path("{dietasId: \\d+}")
-//    public DietaDetailDTO updateDieta(@PathParam("dietasId") Long dietasId, DietaDTO dieta){
-//        return null;
-//    }
-    
+       @PUT
+    @Path("{personaId: \\d+}")
+    public PersonaDetail updateTiempoEsperadoMejora(@PathParam("personaId") Long personaId, int tiempo){
+        return null;
+    }
+        @PUT
+    @Path("{personaId: \\d+}")
+    public PersonaDetail updateSolicitudEspecial(@PathParam("personaId") Long personaId, boolean variable ){
+        return null;
+    }
+        @PUT
+    @Path("{personaId: \\d+}")
+    public PersonaDetail updateTarjetaFidelidad(@PathParam("personaId") Long personaId, boolean variable){
+        return null;
+    }
+        @PUT
+    @Path("{personaId: \\d+}")
+    public PersonaDetail updateFotos(@PathParam("personaId") Long personaId, String fotos){
+        return null;
+    }
+        @PUT
+    @Path("{personaId: \\d+}")
+    public PersonaDetail updateCalificaciones(@PathParam("personaId") Long personaId, Integer[] calificacion){
+        return null;
+    }
+            @PUT
+    @Path("{personaId: \\d+}")
+    public PersonaDetail updateComentarios(@PathParam("personaId") Long personaId, String comentario){
+        return null;
+    }
+            @PUT
+    @Path("{personaId: \\d+}")
+    public PersonaDetail updateQuejasYReclamos(@PathParam("personaId") Long personaId, String QuejaYReclamo){
+        return null;
+    }
     @DELETE
-    @Path("{dietasId: \\d+}")
-    public void deletepersona(@PathParam("personaId") Long dietasId){
+    @Path("{personId: \\d+}")
+    public void deletepersona(@PathParam("personaId") Long personaId){
         
     }
     
