@@ -73,6 +73,22 @@ public class HallOfFamePersistence {
         return em.find(HallOfFameEntity.class, hallId);
     }
     
+    
+     public HallOfFameEntity findById(Long id){
+        TypedQuery query = em.createQuery("select u from HallOfFameEntity u where e.id = :id", HallOfFameEntity.class);
+        query=query.setParameter("id", id);
+        List<HallOfFameEntity> sameId = query.getResultList();
+        HallOfFameEntity result;
+        if(sameId == null){
+            result=null;
+        }else if(sameId.isEmpty()){
+            result=null;
+        }else{
+            result = sameId.get(0);
+        }
+        return result;
+    }
+    
     /**
      * Actualiza un hall of fame
      * 

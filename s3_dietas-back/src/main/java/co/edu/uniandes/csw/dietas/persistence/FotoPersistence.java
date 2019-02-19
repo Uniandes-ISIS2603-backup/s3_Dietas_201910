@@ -73,6 +73,22 @@ public class FotoPersistence {
         return em.find(FotoEntity.class, fotoId);
     }
     
+    
+    public FotoEntity findByName(String name){
+        TypedQuery query = em.createQuery("select u from FotoEntity u where e.name = :name", FotoEntity.class);
+        query=query.setParameter("name", name);
+        List<FotoEntity> sameName = query.getResultList();
+        FotoEntity result;
+        if(sameName == null){
+            result=null;
+        }else if(sameName.isEmpty()){
+            result=null;
+        }else{
+            result = sameName.get(0);
+        }
+        return result;
+    }
+    
     /**
      * Actualiza un foto
      * 

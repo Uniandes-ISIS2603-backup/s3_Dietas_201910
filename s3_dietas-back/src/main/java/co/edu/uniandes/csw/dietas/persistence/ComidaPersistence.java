@@ -69,6 +69,21 @@ public class ComidaPersistence {
         return em.find(ComidaEntity.class, comidaId);
     }
     
+    public ComidaEntity findById(Long id){
+        TypedQuery query = em.createQuery("select u from ComidaEntity u where e.id = :id", ComidaEntity.class);
+        query=query.setParameter("id", id);
+        List<ComidaEntity> sameId = query.getResultList();
+        ComidaEntity result;
+        if(sameId == null){
+            result=null;
+        }else if(sameId.isEmpty()){
+            result=null;
+        }else{
+            result = sameId.get(0);
+        }
+        return result;
+    }
+    
      /**
      * Actualiza una comida.
      *
