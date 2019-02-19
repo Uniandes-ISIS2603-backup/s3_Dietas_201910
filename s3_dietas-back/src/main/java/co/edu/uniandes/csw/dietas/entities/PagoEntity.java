@@ -6,6 +6,8 @@
 package co.edu.uniandes.csw.dietas.entities;
 import java.io.Serializable;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import uk.co.jemos.podam.common.PodamExclude;
 /**
  *
  * @author Alejandra Bravo
@@ -13,6 +15,11 @@ import javax.persistence.Entity;
 @Entity
 public class PagoEntity extends BaseEntity implements Serializable{
 
+    @PodamExclude
+    @ManyToOne
+    private PersonaEntity persona;
+    
+    private String modoPago;    
     /**
      * @return the modoPago
      */
@@ -26,6 +33,20 @@ public class PagoEntity extends BaseEntity implements Serializable{
     public void setModoPago(String modoPago) {
         this.modoPago = modoPago;
     }
-    private String modoPago;
+
+    /**
+     * @return the persona
+     */
+    public PersonaEntity getPersona() {
+        return persona;
+    }
+
+    /**
+     * @param persona the persona to set
+     */
+    public void setPersona(PersonaEntity persona) {
+        this.persona = persona;
+    }
+
     
 }

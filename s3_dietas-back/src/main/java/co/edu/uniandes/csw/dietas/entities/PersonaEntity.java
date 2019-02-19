@@ -39,7 +39,7 @@ public class PersonaEntity extends BaseEntity implements Serializable {
     private List<QuejaYReclamoEntity> quejas = new ArrayList<>();
     
     @PodamExclude
-    @OneToMany(mappedBy = "pagos")
+    @OneToMany(mappedBy = "persona")
     private List<PagoEntity> pagos = new ArrayList<>();
     
     @PodamExclude
@@ -51,7 +51,7 @@ public class PersonaEntity extends BaseEntity implements Serializable {
     private List<FotoEntity> fotos = new ArrayList<>();
     
      @PodamExclude
-    @OneToOne(mappedBy = "dietas")
+    @OneToMany(mappedBy = "personaDieta")
     private DietaEntity dietas;
 
     /**
