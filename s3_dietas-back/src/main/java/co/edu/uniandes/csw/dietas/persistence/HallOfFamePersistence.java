@@ -63,16 +63,16 @@ public class HallOfFamePersistence {
      * 
      * @param hallId: id correspondiente a el hall buscado
      * @return un hall of fame
-     
+     */
     public HallOfFameEntity find (Long hallId){
         LOGGER.log(Level.INFO, "Consultando el hall con id={0}", hallId);
-         Note que se hace uso del metodo "find" propio del EntityManager, el cual recibe como argumento 
+         /*Note que se hace uso del metodo "find" propio del EntityManager, el cual recibe como argumento 
         el tipo de la clase y el objeto que nos hara el filtro en la base de datos en este caso el "id"
         Suponga que es algo similar a "select * from HallOfFameEntity where id=id;" - "SELECT * FROM table_name WHERE condition;" en SQL.
-         
+        */ 
         return em.find(HallOfFameEntity.class, hallId);
     }
-    */
+    
     /**
      * Actualiza un hall of fame
      * 

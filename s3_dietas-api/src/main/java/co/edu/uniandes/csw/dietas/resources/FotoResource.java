@@ -24,7 +24,7 @@ import javax.ws.rs.Produces;
 @RequestScoped
 
 public class FotoResource {
-     private static final Logger LOGGER = Logger.getLogger(HallOfFameResource.class.getName());
+     private static final Logger LOGGER = Logger.getLogger(FotoResource.class.getName());
      
      @POST
      public FotoDTO crearHall(FotoDTO foto){
