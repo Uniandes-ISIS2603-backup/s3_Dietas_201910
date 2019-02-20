@@ -63,5 +63,33 @@ public class ComidaEntity extends BaseEntity implements Serializable {
         this.alimentosYCantidad = alimentosYCantidad;
     }
 
+    /**
+     * @return the cocina
+     */
+    public CocinaEntity getCocina() {
+        return cocina;
+    }
+
+    /**
+     * @param cocina the cocina to set
+     */
+    public void setCocina(CocinaEntity cocina) {
+        this.cocina = cocina;
+    }
+
+    /**
+     * @return the dia
+     */
+    public DiaEntity getDia() {
+        return dia;
+    }
+
+    /**
+     * @param dia the dia to set
+     */
+    public void setDia(DiaEntity dia) {
+        this.dia = dia;
+    }
+
   
 }

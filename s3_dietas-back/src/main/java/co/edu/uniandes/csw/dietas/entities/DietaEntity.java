@@ -31,11 +31,11 @@ public class DietaEntity extends BaseEntity implements Serializable {
     private List<TipoDietaEntity> tDieta = new ArrayList<TipoDietaEntity>( );
     
     @PodamExclude
-    @OneToMany
-    private List<SuspensionEntity> suspension = new ArrayList<SuspensionEntity>( );
+    @OneToMany (mappedBy = "dieta")
+    private List<SuspensionEntity> suspensiones = new ArrayList<SuspensionEntity>( );
     
     @PodamExclude
-    @OneToMany
+    @OneToMany (mappedBy = "dietas")
     private List<SemanaEntity> semanas = new ArrayList<SemanaEntity>( );
  
     private String tipo;
@@ -124,14 +124,14 @@ public class DietaEntity extends BaseEntity implements Serializable {
      * @return the suspension
      */
     public List<SuspensionEntity> getSuspension() {
-        return suspension;
+        return suspensiones;
     }
 
     /**
      * @param suspension the suspension to set
      */
     public void setSuspension(List<SuspensionEntity> suspension) {
-        this.suspension = suspension;
+        this.suspensiones = suspension;
     }
 
     /**

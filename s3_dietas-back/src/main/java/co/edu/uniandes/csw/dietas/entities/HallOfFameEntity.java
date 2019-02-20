@@ -21,7 +21,7 @@ public class HallOfFameEntity extends BaseEntity implements Serializable{
     
     
     @PodamExclude
-    @OneToMany(mappedBy = "halls")
+    @OneToMany(mappedBy = "hall")
     private List<PersonaEntity> personas = new ArrayList<>();
     
     public HallOfFameEntity(){
@@ -45,6 +45,20 @@ public class HallOfFameEntity extends BaseEntity implements Serializable{
      */
     public void setMensaje(String mensaje) {
         this.mensaje = mensaje;
+    }
+
+    /**
+     * @return the personas
+     */
+    public List<PersonaEntity> getPersonas() {
+        return personas;
+    }
+
+    /**
+     * @param personas the personas to set
+     */
+    public void setPersonas(List<PersonaEntity> personas) {
+        this.personas = personas;
     }
     
     
