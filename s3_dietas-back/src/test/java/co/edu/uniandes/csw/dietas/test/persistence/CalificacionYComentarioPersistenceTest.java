@@ -6,8 +6,8 @@
 package co.edu.uniandes.csw.dietas.test.persistence;
 
 
-import co.edu.uniandes.csw.dietas.entities.SuspensionEntity;
-import co.edu.uniandes.csw.dietas.persistence.SuspensionPersistence;
+import co.edu.uniandes.csw.dietas.entities.CalificacionYComentarioEntity;
+import co.edu.uniandes.csw.dietas.persistence.CalificacionYComentarioPersistence;
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
@@ -29,23 +29,24 @@ import uk.co.jemos.podam.api.PodamFactoryImpl;
  * @author Andrea Montoya Serje
  */
 @RunWith(Arquillian.class)
-public class SuspensionPersistenceTest {
+public class CalificacionYComentarioPersistenceTest 
+{
      @Inject
-   private SuspensionPersistence suspension;
+   private CalificacionYComentarioPersistence  calificacionYcometario;
    @Deployment
    public static JavaArchive createDeployment()
    {
        return ShrinkWrap.create(JavaArchive.class)
-               .addPackage(SuspensionEntity.class.getPackage())
-               .addPackage(SuspensionPersistence.class.getPackage())
+               .addPackage(CalificacionYComentarioEntity.class.getPackage())
+               .addPackage(CalificacionYComentarioPersistence.class.getPackage())
                .addAsManifestResource("META-INf/persistence.xml","persistence.xml")
                .addAsManifestResource("META-INF/beans.xml","beans.xml");
    }
    @Test
-   public void createSuspensionTest(){
+   public void createCalificacionYComentarioTest(){
        PodamFactory factory= new PodamFactoryImpl();
-       SuspensionEntity newEntity= factory.manufacturePojo(SuspensionEntity.class);
-       SuspensionEntity result= suspension.create(newEntity);
+       CalificacionYComentarioEntity newEntity= factory.manufacturePojo(CalificacionYComentarioEntity.class);
+       CalificacionYComentarioEntity result= calificacionYcometario.create(newEntity);
        Assert.assertNotNull(result);
        
        

@@ -7,6 +7,8 @@ package co.edu.uniandes.csw.dietas.entities;
 
 import java.io.Serializable;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  *
@@ -17,9 +19,9 @@ public class CocinaEntity extends BaseEntity implements Serializable
 {
     private String direccion;
     
-    //@PodamExclude
-    //@OneToMany
-    //private ComidaEntity comida;
+    @PodamExclude
+    @OneToMany
+    private ComidaEntity comida;
     
 
     /**
