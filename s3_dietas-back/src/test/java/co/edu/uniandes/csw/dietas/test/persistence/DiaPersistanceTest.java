@@ -48,7 +48,7 @@ public class DiaPersistanceTest {
      }
      
      @Test
-     public void createPagoTest(){
+     public void createDiaTest(){
          PodamFactory factory = new PodamFactoryImpl();
          DiaEntity newEntity = factory.manufacturePojo(DiaEntity.class);
          System.out.print(newEntity);

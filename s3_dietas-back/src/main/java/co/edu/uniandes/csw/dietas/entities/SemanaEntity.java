@@ -21,17 +21,19 @@ import uk.co.jemos.podam.common.PodamExclude;
 @Entity
 public class SemanaEntity extends BaseEntity implements Serializable
 {
+
+    
     private Date horaEntrega;
     private String lugarEntrega;
     private int costo;
-    
+    private Long id;
     @PodamExclude
     @OneToMany(mappedBy = "semana")
     private List<DiaEntity> dias = new ArrayList<DiaEntity>();
     
-//    @PodamExclude
-//    @ManyToOne
-//    private DietaEntity dietas;
+    @PodamExclude
+    @ManyToOne
+    private DietaEntity dietas;
 
 
     /**
@@ -41,6 +43,7 @@ public class SemanaEntity extends BaseEntity implements Serializable
     {
         
     }
+    
     
     /**
      * @return the horaEntrega
@@ -83,7 +86,19 @@ public class SemanaEntity extends BaseEntity implements Serializable
     public void setCosto(int costo) {
         this.costo = costo;
     }
-   
+   /**
+     * @return the id
+     */
+    public Long getId() {
+        return id;
+    }
+
+    /**
+     * @param id the id to set
+     */
+    public void setId(Long id) {
+        this.id = id;
+    }
    
     
     
