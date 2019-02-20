@@ -32,10 +32,10 @@ public class PersonaEntity extends BaseEntity implements Serializable {
   
     @PodamExclude
     @ManyToOne()
-    private PersonaEntity halls;
+    private PersonaEntity hall;
 
     @PodamExclude
-    @OneToMany(mappedBy = "quejas")
+    @OneToMany(mappedBy = "persona")
     private List<QuejaYReclamoEntity> quejas = new ArrayList<>();
     
     @PodamExclude
@@ -43,16 +43,12 @@ public class PersonaEntity extends BaseEntity implements Serializable {
     private List<PagoEntity> pagos = new ArrayList<>();
     
     @PodamExclude
-    @OneToMany(mappedBy = "calificacionesYComentarios")
+    @OneToMany(mappedBy = "persona")
     private List<CalificacionYComentarioEntity> calificacionesYComentarios = new ArrayList<>();
     
     @PodamExclude
-    @OneToMany(mappedBy = "fotos")
+    @OneToMany(mappedBy = "persona")
     private List<FotoEntity> fotos = new ArrayList<>();
-    
-     @PodamExclude
-    @OneToMany(mappedBy = "personaDieta")
-    private DietaEntity dietas;
 
     /**
      * @return the tipo
@@ -156,14 +152,14 @@ public class PersonaEntity extends BaseEntity implements Serializable {
      * @return the halls
      */
     public PersonaEntity getHalls() {
-        return halls;
+        return hall;
     }
 
     /**
      * @param halls the halls to set
      */
     public void setHalls(PersonaEntity halls) {
-        this.halls = halls;
+        this.halls = hall;
     }
 
     /**
@@ -195,18 +191,31 @@ public class PersonaEntity extends BaseEntity implements Serializable {
     }
 
     /**
-     * @return the dietas
+     * @return the calificacionesYComentarios
      */
-    public DietaEntity getDietas() {
-        return dietas;
+    public List<CalificacionYComentarioEntity> getCalificacionesYComentarios() {
+        return calificacionesYComentarios;
     }
 
     /**
-     * @param dietas the dietas to set
+     * @param calificacionesYComentarios the calificacionesYComentarios to set
      */
-    public void setDietas(DietaEntity dietas) {
-        this.dietas = dietas;
+    public void setCalificacionesYComentarios(List<CalificacionYComentarioEntity> calificacionesYComentarios) {
+        this.calificacionesYComentarios = calificacionesYComentarios;
     }
-     
-        
+
+    /**
+     * @return the fotos
+     */
+    public List<FotoEntity> getFotos() {
+        return fotos;
+    }
+
+    /**
+     * @param fotos the fotos to set
+     */
+    public void setFotos(List<FotoEntity> fotos) {
+        this.fotos = fotos;
+    }
+          
 }

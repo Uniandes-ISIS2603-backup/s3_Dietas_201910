@@ -23,7 +23,7 @@ public class QuejaYReclamoEntity extends BaseEntity implements Serializable{
     
     @PodamExclude
     @ManyToOne()
-    private QuejaYReclamoEntity quejas;
+    private PersonaEntity persona;
 
     /**
      * @return the especificacion
