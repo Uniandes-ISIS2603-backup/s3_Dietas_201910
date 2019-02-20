@@ -26,7 +26,7 @@ public class SemanaEntity extends BaseEntity implements Serializable
     private Date horaEntrega;
     private String lugarEntrega;
     private int costo;
-    private Long id;
+   
     @PodamExclude
     @OneToMany(mappedBy = "semana")
     private List<DiaEntity> dias = new ArrayList<DiaEntity>();
@@ -86,20 +86,6 @@ public class SemanaEntity extends BaseEntity implements Serializable
     public void setCosto(int costo) {
         this.costo = costo;
     }
-   /**
-     * @return the id
-     */
-    public Long getId() {
-        return id;
-    }
-
-    /**
-     * @param id the id to set
-     */
-    public void setId(Long id) {
-        this.id = id;
-    }
-   
     
     
 }

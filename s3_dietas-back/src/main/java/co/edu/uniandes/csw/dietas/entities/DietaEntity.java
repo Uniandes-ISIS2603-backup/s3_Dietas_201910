@@ -27,8 +27,8 @@ public class DietaEntity extends BaseEntity implements Serializable {
     private PersonaEntity personaDieta;
     
     @PodamExclude
-    @ManyToMany(mappedBy = "tDieta")
-    private List<TipoDietaEntity> tDieta = new ArrayList<TipoDietaEntity>( );
+    @ManyToMany(mappedBy = "dietas")
+    private List<TipoDietaEntity> tDietas = new ArrayList<TipoDietaEntity>( );
     
     @PodamExclude
     @OneToMany (mappedBy = "dieta")
@@ -109,15 +109,15 @@ public class DietaEntity extends BaseEntity implements Serializable {
     /**
      * @return the tDieta
      */
-    public List<TipoDietaEntity> gettDieta() {
-        return tDieta;
+    public List<TipoDietaEntity> gettDietas() {
+        return tDietas;
     }
 
     /**
      * @param tDieta the tDieta to set
      */
-    public void settDieta(List<TipoDietaEntity> tDieta) {
-        this.tDieta = tDieta;
+    public void settDietas(List<TipoDietaEntity> tDieta) {
+        this.tDietas = tDieta;
     }
 
     /**

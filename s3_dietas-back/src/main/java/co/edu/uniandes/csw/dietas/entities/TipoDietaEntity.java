@@ -24,11 +24,11 @@ public class TipoDietaEntity extends BaseEntity implements Serializable{
     private String nombre;
     private String tipo;
     private String descripcion;
-    private Long id;
+    
     
      @PodamExclude
-    @ManyToMany(mappedBy = "dieta")
-    private List<DietaEntity> dieta = new ArrayList<DietaEntity>( );
+    @ManyToMany
+    private List<DietaEntity> dietas = new ArrayList<DietaEntity>( );
     /**
      * Método que crea una TipoDietaEntity
      */
@@ -76,19 +76,6 @@ public class TipoDietaEntity extends BaseEntity implements Serializable{
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
-    
-     /**
-     * @return the id
-     */
-    public Long getId() {
-        return id;
-    }
-
-    /**
-     * @param id the id to set
-     */
-    public void setId(Long id) {
-        this.id = id;
-    }
+   
     
 }
