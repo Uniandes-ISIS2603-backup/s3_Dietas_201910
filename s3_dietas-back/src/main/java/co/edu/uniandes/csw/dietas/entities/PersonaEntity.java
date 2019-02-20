@@ -159,7 +159,7 @@ public class PersonaEntity extends BaseEntity implements Serializable {
      * @param halls the halls to set
      */
     public void setHalls(PersonaEntity halls) {
-        this.halls = hall;
+        this.hall = hall;
     }
 
     /**
