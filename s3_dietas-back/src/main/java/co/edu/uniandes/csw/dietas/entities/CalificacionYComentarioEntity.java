@@ -17,9 +17,10 @@ import uk.co.jemos.podam.common.PodamExclude;
 @Entity
 public class CalificacionYComentarioEntity extends BaseEntity implements Serializable {
     
-    //@PodamExclude
-    //@ManyToOne
-    //private PersonaEntity persona;
+    @PodamExclude
+    @ManyToOne
+    private PersonaEntity persona;
+ 
     
     private int calificacion;
     private String comentario;
@@ -50,6 +51,20 @@ public class CalificacionYComentarioEntity extends BaseEntity implements Seriali
      */
     public void setComentario(String comentario) {
         this.comentario = comentario;
+    }
+
+    /**
+     * @return the persona
+     */
+    public PersonaEntity getPersona() {
+        return persona;
+    }
+
+    /**
+     * @param persona the persona to set
+     */
+    public void setPersona(PersonaEntity persona) {
+        this.persona = persona;
     }
     
     

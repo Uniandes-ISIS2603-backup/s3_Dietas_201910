@@ -17,13 +17,14 @@ import uk.co.jemos.podam.common.PodamExclude;
 @Entity
 public class SuspensionEntity extends BaseEntity implements Serializable 
 {
+
     private boolean vigente;
     private int numDias;
     private String comentarios;
     
-    //@PodamExclude
-    //@ManyToOne
-    //private DietaEntity dieta;
+    @PodamExclude
+    @ManyToOne
+    private DietaEntity dieta;
 
     /**
      * @return the vigente
@@ -67,5 +68,19 @@ public class SuspensionEntity extends BaseEntity implements Serializable
         this.comentarios = comentarios;
     }
     
+    
+    /**
+     * @return the dieta
+     */
+    public DietaEntity getDieta() {
+        return dieta;
+    }
+
+    /**
+     * @param dieta the dieta to set
+     */
+    public void setDieta(DietaEntity dieta) {
+        this.dieta = dieta;
+    }
     
 }

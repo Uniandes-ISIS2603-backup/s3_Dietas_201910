@@ -6,6 +6,8 @@
 package co.edu.uniandes.csw.dietas.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import uk.co.jemos.podam.common.PodamExclude;
@@ -20,8 +22,8 @@ public class CocinaEntity extends BaseEntity implements Serializable
     private String direccion;
     
     @PodamExclude
-    @OneToMany
-    private ComidaEntity comida;
+    @OneToMany (mappedBy = "cocina")
+    private List<ComidaEntity> comidas = new ArrayList<ComidaEntity>( );
     
 
     /**
@@ -37,5 +39,19 @@ public class CocinaEntity extends BaseEntity implements Serializable
     public void setDireccion(String direccion) {
         this.direccion = direccion;
     }
-    
+
+    /**
+     * @return the comida
+     */
+    public List<ComidaEntity> getComida() {
+        return comidas;
+    }
+
+    /**
+     * @param comida the comida to set
+     */
+    public void setComida(List<ComidaEntity> comida) {
+        this.comidas = comida;
+    }
+
 }
