@@ -10,11 +10,11 @@ import java.util.List;
 
 /**
  *
- * @author estudiante
+ * @author Alejandra  
  */
 public class DietaDetailDTO extends DietaDTO implements Serializable{
-    //private List<SemanaDTO> semanas;
-    //private List<SuspensionDTO> suspensiones;
+    private List<SemanaDTO> semanas;
+    private List<SuspensionDTO> suspensiones;
     
     public DietaDetailDTO (){
         
