@@ -15,7 +15,7 @@ import javax.ws.rs.Produces;
 
 /**
  *
- * @author estudiante
+ * @author Juan Antonio Restrepo
  */
 @Path("semana")
 @Produces("application/json")

@@ -12,7 +12,7 @@ import java.io.Serializable;
  * @author estudiante
  */
 public class SemanaDTO implements Serializable{
-    private int id;
+    private Integer id;
     
     /**
      * Método constructor de la clase
@@ -25,14 +25,14 @@ public class SemanaDTO implements Serializable{
     /**
      * @return the id
      */
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
     /**
      * @param id the id to set
      */
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
     

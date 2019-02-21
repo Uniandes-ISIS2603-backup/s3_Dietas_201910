@@ -15,9 +15,8 @@ import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  *
- * @author estudiante
- */
-@Entity
+ * @author Juan Antonio Restrepo
+ */@Entity
 public class DiaEntity extends BaseEntity implements Serializable {
 
     @PodamExclude
@@ -29,7 +28,6 @@ public class DiaEntity extends BaseEntity implements Serializable {
     private SemanaEntity semana;
     
     private boolean especial;
-    @javax.persistence.Id
      
     /**
      * @return the id
