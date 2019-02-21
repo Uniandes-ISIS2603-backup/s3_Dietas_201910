@@ -7,9 +7,11 @@ package co.edu.uniandes.csw.dietas.persistence;
 
 
 import co.edu.uniandes.csw.dietas.entities.CalificacionYComentarioEntity;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 
 /**
  *
@@ -24,5 +26,21 @@ public class CalificacionYComentarioPersistence
     {
         em.persist(calificacionYcomentariParam);
         return calificacionYcomentariParam;
+    }
+    
+    
+     public CalificacionYComentarioEntity findById(Long id){
+        TypedQuery query = em.createQuery("select u from CalificacionYComentarioEntity u where e.id = :id", CalificacionYComentarioEntity.class);
+        query=query.setParameter("id", id);
+        List<CalificacionYComentarioEntity> sameId = query.getResultList();
+        CalificacionYComentarioEntity result;
+        if(sameId == null){
+            result=null;
+        }else if(sameId.isEmpty()){
+            result=null;
+        }else{
+            result = sameId.get(0);
+        }
+        return result;
     }
 }

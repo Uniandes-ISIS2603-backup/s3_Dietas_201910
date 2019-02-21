@@ -5,8 +5,10 @@
  */
 package co.edu.uniandes.csw.dietas.ejb;
 
+import co.edu.uniandes.csw.dietas.entities.CalificacionYComentarioEntity;
 import co.edu.uniandes.csw.dietas.entities.SuspensionEntity;
 import co.edu.uniandes.csw.dietas.exceptions.BusinessLogicException;
+import co.edu.uniandes.csw.dietas.persistence.CalificacionYComentarioPersistence;
 import co.edu.uniandes.csw.dietas.persistence.SuspensionPersistence;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -19,20 +21,20 @@ import javax.transaction.UserTransaction;
  * @author Andrea Montoya Serje
  */
 @Stateless
-public class SuspensionLogic 
+public class CalificacionYComentarioLogic 
 {
     @Inject
-    private SuspensionPersistence suspensionP;
+    private CalificacionYComentarioPersistence calificacionYcomentarioP;
     
 
     
-    public SuspensionEntity createSuspension (SuspensionEntity suspension) throws BusinessLogicException
+    public CalificacionYComentarioEntity createCalificacionYComentario (CalificacionYComentarioEntity calificacionYcomentario) throws BusinessLogicException
     {
-        if(suspensionP.findById( suspension.getId())!= null)
+        if(calificacionYcomentarioP.findById( calificacionYcomentario.getId())!= null)
         {
-            throw new BusinessLogicException("Ya existe una suspension con ese id");
+            throw new BusinessLogicException("Ya existe una calificación y comentario con ese id");
         }
-        suspensionP.create(suspension);
-        return suspension;
+        calificacionYcomentarioP.create(calificacionYcomentario);
+        return calificacionYcomentario;
     }
 }
