@@ -128,7 +128,7 @@ public class HallOfFameLogicTest {
         Assert.assertNotNull(result);
         HallOfFameEntity entity = em.find(HallOfFameEntity.class, result.getId());
         Assert.assertEquals(newEntity.getId(), entity.getId());
-        Assert.assertEquals(newEntity.getId(), entity.getId());
+        Assert.assertEquals(newEntity.getMensaje(), entity.getMensaje());
     }
     
      /**

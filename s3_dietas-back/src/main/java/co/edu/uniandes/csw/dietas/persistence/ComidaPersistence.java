@@ -70,7 +70,7 @@ public class ComidaPersistence {
     }
     
     public ComidaEntity findById(Long id){
-        TypedQuery query = em.createQuery("select u from ComidaEntity u where e.id = :id", ComidaEntity.class);
+        TypedQuery query = em.createQuery("select u from ComidaEntity u where u.id = :id", ComidaEntity.class);
         query=query.setParameter("id", id);
         List<ComidaEntity> sameId = query.getResultList();
         ComidaEntity result;

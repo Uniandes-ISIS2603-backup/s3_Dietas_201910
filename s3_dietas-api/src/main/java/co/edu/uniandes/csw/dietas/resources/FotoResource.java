@@ -27,7 +27,7 @@ public class FotoResource {
      private static final Logger LOGGER = Logger.getLogger(FotoResource.class.getName());
      
      @POST
-     public FotoDTO crearHall(FotoDTO foto){
+     public FotoDTO crearFoto(FotoDTO foto){
          return foto;
      }
 }

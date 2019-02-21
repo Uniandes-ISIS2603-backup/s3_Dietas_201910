@@ -75,7 +75,7 @@ public class HallOfFamePersistence {
     
     
      public HallOfFameEntity findById(Long id){
-        TypedQuery query = em.createQuery("select u from HallOfFameEntity u where e.id = :id", HallOfFameEntity.class);
+        TypedQuery query = em.createQuery("select u from HallOfFameEntity u where u.id = :id", HallOfFameEntity.class);
         query=query.setParameter("id", id);
         List<HallOfFameEntity> sameId = query.getResultList();
         HallOfFameEntity result;
