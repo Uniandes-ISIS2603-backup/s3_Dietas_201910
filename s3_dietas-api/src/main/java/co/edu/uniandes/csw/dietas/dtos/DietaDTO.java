@@ -9,13 +9,13 @@ import java.io.Serializable;
 
 /**
  *
- * @author Alejandra Bravo
+ * @author Alejandra  :)
  */
 public class DietaDTO implements Serializable{
     private Long id;
     private String tipo;
     private String objetivo;
-    private int diasSuspendida;
+    private Integer diasSuspendida;
 
     /**
      * @return the id
@@ -62,14 +62,14 @@ public class DietaDTO implements Serializable{
     /**
      * @return the diasSuspendida
      */
-    public int getDiasSuspendida() {
+    public Integer getDiasSuspendida() {
         return diasSuspendida;
     }
 
     /**
      * @param diasSuspendida the diasSuspendida to set
      */
-    public void setDiasSuspendida(int diasSuspendida) {
+    public void setDiasSuspendida(Integer diasSuspendida) {
         this.diasSuspendida = diasSuspendida;
     }
 }
