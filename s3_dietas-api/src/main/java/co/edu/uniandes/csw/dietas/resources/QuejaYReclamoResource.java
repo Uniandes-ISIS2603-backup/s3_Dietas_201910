@@ -5,7 +5,7 @@
  */
 package co.edu.uniandes.csw.dietas.resources;
 
-import co.edu.uniandes.csw.dietas.dtos.PersonaDetailDTO;
+import co.edu.uniandes.csw.dietas.dtos.PersonaDTO;
 import co.edu.uniandes.csw.dietas.dtos.QuejaYReclamoDTO;
 import java.util.logging.Logger;
 import javax.enterprise.context.RequestScoped;

@@ -5,8 +5,7 @@
  */
 package co.edu.uniandes.csw.dietas.resources;
 
-import co.edu.uniandes.csw.dietas.dtos.PersonaDetailDTO;
-import co.edu.uniandes.csw.dietas.dtos.PersonaDetail;
+import co.edu.uniandes.csw.dietas.dtos.PersonaDTO;
 import java.util.List;
 import java.util.logging.Logger;
 import javax.enterprise.context.RequestScoped;
@@ -31,95 +30,95 @@ public class PersonaResource {
     private static final Logger LOGGER = Logger.getLogger(PersonaResource.class.getName());
     
     @POST
-    public PersonaDetailDTO createPersona(PersonaDetailDTO personaParam){
+    public PersonaDTO createPersona(PersonaDTO personaParam){
        return personaParam; 
     }
     
     @GET
-    public List<PersonaDetail> getDietas(){
+    public List<PersonaDTO> getDietas(){
         return null;
     }
     
     @GET
     @Path("{personaId: \\d+}")
-    public PersonaDetail getPersona(@PathParam("personaId") Long personaId){
+    public PersonaDTO getPersona(@PathParam("personaId") Long personaId){
         return null;
     }
     @GET
     @Path("{personaId: \\d+}")
-    public PersonaDetail getTipo(@PathParam("personaId") Long personaId){
+    public PersonaDTO getTipo(@PathParam("personaId") Long personaId){
         return null;
     }
     @GET
     @Path("{name: [a-zA-Z][a-zA-Z]*}")
-    public PersonaDetail getNombre(@PathParam("personaId") Long personaId){
+    public PersonaDTO getNombre(@PathParam("personaId") Long personaId){
         return null;
     }
    
     @GET
     @Path("{personaId: \\d+}")
-    public PersonaDetail getFechaIngreso(@PathParam("personaId") Long personaId){
+    public PersonaDTO getFechaIngreso(@PathParam("personaId") Long personaId){
         return null;
     }
     @GET
     @Path("{personaId: \\d+}")
-    public PersonaDetail getObjetivos(@PathParam("personaId") Long personaId){
+    public PersonaDTO getObjetivos(@PathParam("personaId") Long personaId){
         return null;
     }
     @GET
     @Path("{personaId: \\d+}")
-    public PersonaDetail getTiempoEsperadoMejora(@PathParam("personaId") Long personaId){
+    public PersonaDTO getTiempoEsperadoMejora(@PathParam("personaId") Long personaId){
         return null;
     }
     @GET
     @Path("{personaId: \\d+}")
-    public PersonaDetail getSolicitudEspecial(@PathParam("personaId") Long personaId){
+    public PersonaDTO getSolicitudEspecial(@PathParam("personaId") Long personaId){
         return null;
     }
     @GET
     @Path("{personaId: \\d+}")
-    public PersonaDetail getTarjetaFidelidad(@PathParam("personaId") Long personaId){
+    public PersonaDTO getTarjetaFidelidad(@PathParam("personaId") Long personaId){
         return null;
     }
         
     @PUT
     @Path("{personaId: \\d+}")
-    public PersonaDetail updateObjetivos(@PathParam("personaId") Long personaId, String objetivos){
+    public PersonaDTO updateObjetivos(@PathParam("personaId") Long personaId, String objetivos){
         return null;
     }
        @PUT
     @Path("{personaId: \\d+}")
-    public PersonaDetail updateTiempoEsperadoMejora(@PathParam("personaId") Long personaId, int tiempo){
+    public PersonaDTO updateTiempoEsperadoMejora(@PathParam("personaId") Long personaId, int tiempo){
         return null;
     }
         @PUT
     @Path("{personaId: \\d+}")
-    public PersonaDetail updateSolicitudEspecial(@PathParam("personaId") Long personaId, boolean variable ){
+    public PersonaDTO updateSolicitudEspecial(@PathParam("personaId") Long personaId, boolean variable ){
         return null;
     }
         @PUT
     @Path("{personaId: \\d+}")
-    public PersonaDetail updateTarjetaFidelidad(@PathParam("personaId") Long personaId, boolean variable){
+    public PersonaDTO updateTarjetaFidelidad(@PathParam("personaId") Long personaId, boolean variable){
         return null;
     }
         @PUT
     @Path("{personaId: \\d+}")
-    public PersonaDetail updateFotos(@PathParam("personaId") Long personaId, String fotos){
+    public PersonaDTO updateFotos(@PathParam("personaId") Long personaId, String fotos){
         return null;
     }
         @PUT
     @Path("{personaId: \\d+}")
-    public PersonaDetail updateCalificaciones(@PathParam("personaId") Long personaId, Integer[] calificacion){
+    public PersonaDTO updateCalificaciones(@PathParam("personaId") Long personaId, Integer[] calificacion){
         return null;
     }
             @PUT
     @Path("{personaId: \\d+}")
-    public PersonaDetail updateComentarios(@PathParam("personaId") Long personaId, String comentario){
+    public PersonaDTO updateComentarios(@PathParam("personaId") Long personaId, String comentario){
         return null;
     }
             @PUT
     @Path("{personaId: \\d+}")
-    public PersonaDetail updateQuejasYReclamos(@PathParam("personaId") Long personaId, String QuejaYReclamo){
+    public PersonaDTO updateQuejasYReclamos(@PathParam("personaId") Long personaId, String QuejaYReclamo){
         return null;
     }
     @DELETE
