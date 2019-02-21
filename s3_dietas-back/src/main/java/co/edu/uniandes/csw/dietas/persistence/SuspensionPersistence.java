@@ -7,7 +7,7 @@ package co.edu.uniandes.csw.dietas.persistence;
 
 
 import co.edu.uniandes.csw.dietas.entities.SuspensionEntity;
-import static co.edu.uniandes.csw.dietas.persistence.SemanaPersistance.LOGGER;
+import static co.edu.uniandes.csw.dietas.persistence.SemanaPersistence.LOGGER;
 import java.util.List;
 import java.util.logging.Level;
 import javax.ejb.Stateless;

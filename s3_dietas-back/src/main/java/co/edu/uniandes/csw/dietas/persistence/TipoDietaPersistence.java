@@ -13,6 +13,7 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 
 /**
  *
@@ -53,6 +54,25 @@ public class TipoDietaPersistence {
         LOGGER.log(Level.INFO, "Borrando el tipoDieta con id={0}", tipoDietaId);
        TipoDietaEntity tipoDietaEntity = em.find(TipoDietaEntity.class, tipoDietaId);
         em.remove(tipoDietaEntity);
+    }
+     public TipoDietaEntity findId(Long pId)
+    {
+        TypedQuery<TipoDietaEntity> query = em.createQuery("Select e From TipoDietaEntity e where e.id = :id", TipoDietaEntity.class);
+        query = query.setParameter("id", pId);
+        List<TipoDietaEntity> sameId = query.getResultList();
+        TipoDietaEntity tipoDietaBuscado;
+        if(sameId == null)
+        {
+            tipoDietaBuscado =null;
+        }
+        if(sameId.isEmpty())
+        {
+            tipoDietaBuscado = null;
+        }
+        else{
+            tipoDietaBuscado = sameId.get(0);
+        }
+        return tipoDietaBuscado;
     }
      
 }

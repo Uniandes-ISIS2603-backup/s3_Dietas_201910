@@ -13,6 +13,7 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 
 /**
  *
@@ -55,5 +56,24 @@ public class SemanaPersistence {
         em.remove(semanaEntity);
     }
     
+     public SemanaEntity findId(Long pId)
+    {
+        TypedQuery<SemanaEntity> query = em.createQuery("Select e From SemanaEntity e where e.id = :id", SemanaEntity.class);
+        query = query.setParameter("id", pId);
+        List<SemanaEntity> sameId = query.getResultList();
+        SemanaEntity semanaBuscada;
+        if(sameId == null)
+        {
+            semanaBuscada =null;
+        }
+        if(sameId.isEmpty())
+        {
+            semanaBuscada = null;
+        }
+        else{
+            semanaBuscada = sameId.get(0);
+        }
+        return semanaBuscada;
+    }
     
 }
