@@ -20,9 +20,9 @@ import javax.persistence.TypedQuery;
  * @author estudiante
  */
 @Stateless
-public class DiaPersistance {
+public class DiaPersistence {
     
-    public static final Logger LOGGER = Logger.getLogger(DiaPersistance.class.getName());
+    public static final Logger LOGGER = Logger.getLogger(DiaPersistence.class.getName());
      @PersistenceContext(unitName = "dietasPU")
     protected EntityManager em;
      
@@ -39,6 +39,26 @@ public class DiaPersistance {
          LOGGER.log(Level.INFO, "Consultando todos los dias");
         Query q = em.createQuery("select u from DiaEntity u");
         return q.getResultList();
+    }
+    
+    public DiaEntity findId(Long pId)
+    {
+        TypedQuery<DiaEntity> query = em.createQuery("Select e From DiaEntity e where e.id = :id", DiaEntity.class);
+        query = query.setParameter("id", pId);
+        List<DiaEntity> sameId = query.getResultList();
+        DiaEntity diaBuscado;
+        if(sameId == null)
+        {
+            diaBuscado =null;
+        }
+        if(sameId.isEmpty())
+        {
+            diaBuscado = null;
+        }
+        else{
+            diaBuscado = sameId.get(0);
+        }
+        return diaBuscado;
     }
     
     public DiaEntity find(Long diaId)

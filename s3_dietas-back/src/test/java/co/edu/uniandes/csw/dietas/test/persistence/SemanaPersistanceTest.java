@@ -6,7 +6,7 @@
 package co.edu.uniandes.csw.dietas.test.persistence;
 
 import co.edu.uniandes.csw.dietas.entities.SemanaEntity;
-import co.edu.uniandes.csw.dietas.persistence.SemanaPersistance;
+import co.edu.uniandes.csw.dietas.persistence.SemanaPersistence;
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
@@ -33,7 +33,7 @@ import uk.co.jemos.podam.api.PodamFactoryImpl;
 public class SemanaPersistanceTest {
     
    @Inject 
-    private SemanaPersistance semanaPersistence;
+    private SemanaPersistence semanaPersistence;
     
     @PersistenceContext
      private EntityManager em;
@@ -45,7 +45,7 @@ public class SemanaPersistanceTest {
      public static JavaArchive createDeployment(){
          return ShrinkWrap.create(JavaArchive.class)
                  .addPackage(SemanaEntity.class.getPackage())
-                 .addPackage(SemanaPersistance.class.getPackage())
+                 .addPackage(SemanaPersistence.class.getPackage())
                  .addAsManifestResource("META-INF/persistence.xml","persistence.xml")
                  .addAsManifestResource("META-INF/beans.xml","beans.xml");
      }

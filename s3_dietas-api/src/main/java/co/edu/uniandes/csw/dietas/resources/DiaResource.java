@@ -5,12 +5,8 @@
  */
 package co.edu.uniandes.csw.dietas.resources;
 
-/**
- *
- * @author estudiante
- */
-import co.edu.uniandes.csw.dietas.dtos.TipoDietaDTO;
-    import java.util.logging.Logger;
+import co.edu.uniandes.csw.dietas.dtos.DiaDTO;
+import java.util.logging.Logger;
 import javax.enterprise.context.RequestScoped;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
@@ -21,17 +17,16 @@ import javax.ws.rs.Produces;
  *
  * @author Juan Antonio Restrepo
  */
-@Path("tipoDieta")
+@Path("dia")
 @Produces("application/json")
 @Consumes("application/json")
 @RequestScoped
-
-public class TipoDietaResource {
-    private static final Logger LOGGER =Logger.getLogger(TipoDietaResource.class.getName());
+public class DiaResource {
+    private static final Logger LOGGER =Logger.getLogger(SemanaResource.class.getName());
     
     @POST
-    public TipoDietaDTO crearSemana(TipoDietaDTO tipoDietaDTO){
-        
-        return tipoDietaDTO;
+    public DiaDTO crearDia(DiaDTO dia ){
+        return dia;
     }
+    
 }

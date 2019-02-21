@@ -6,7 +6,7 @@
 package co.edu.uniandes.csw.dietas.test.persistence;
 
 import co.edu.uniandes.csw.dietas.entities.TipoDietaEntity;
-import co.edu.uniandes.csw.dietas.persistence.TipoDietaPersistance;
+import co.edu.uniandes.csw.dietas.persistence.TipoDietaPersistence;
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
@@ -31,7 +31,7 @@ import uk.co.jemos.podam.api.PodamFactoryImpl;
 @RunWith(Arquillian.class)
 public class TipoDietaPersistanceTest {
     @Inject 
-    private TipoDietaPersistance tipoDietaPersistence;
+    private TipoDietaPersistence tipoDietaPersistence;
     
     @PersistenceContext
      private EntityManager em;
@@ -43,7 +43,7 @@ public class TipoDietaPersistanceTest {
      public static JavaArchive createDeployment(){
          return ShrinkWrap.create(JavaArchive.class)
                  .addPackage(TipoDietaEntity.class.getPackage())
-                 .addPackage(TipoDietaPersistance.class.getPackage())
+                 .addPackage(TipoDietaPersistence.class.getPackage())
                  .addAsManifestResource("META-INF/persistence.xml","persistence.xml")
                  .addAsManifestResource("META-INF/beans.xml","beans.xml");
      }

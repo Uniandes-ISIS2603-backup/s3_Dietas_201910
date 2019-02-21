@@ -5,15 +5,17 @@
  */
 package co.edu.uniandes.csw.dietas.dtos;
 
+import java.io.Serializable;
+
 /**
  *
  * @author estudiante
  */
-public class Dia 
+public class DiaDTO implements Serializable
 {
     private boolean diaEspecial;
     private int id;
-    public Dia ()
+    public DiaDTO ()
     {
         
     }

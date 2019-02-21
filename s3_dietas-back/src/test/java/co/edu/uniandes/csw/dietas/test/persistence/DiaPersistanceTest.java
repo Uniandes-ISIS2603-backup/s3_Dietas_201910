@@ -6,7 +6,7 @@
 package co.edu.uniandes.csw.dietas.test.persistence;
 
 import co.edu.uniandes.csw.dietas.entities.DiaEntity;
-import co.edu.uniandes.csw.dietas.persistence.DiaPersistance;
+import co.edu.uniandes.csw.dietas.persistence.DiaPersistence;
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
@@ -29,8 +29,10 @@ import uk.co.jemos.podam.api.PodamFactoryImpl;
  */
 @RunWith(Arquillian.class)
 public class DiaPersistanceTest {
+    
+    
     @Inject 
-    private DiaPersistance diaPersistence;
+    private DiaPersistence diaPersistence;
     
     @PersistenceContext
      private EntityManager em;
@@ -42,7 +44,7 @@ public class DiaPersistanceTest {
      public static JavaArchive createDeployment(){
          return ShrinkWrap.create(JavaArchive.class)
                  .addPackage(DiaEntity.class.getPackage())
-                 .addPackage(DiaPersistance.class.getPackage())
+                 .addPackage(DiaPersistence.class.getPackage())
                  .addAsManifestResource("META-INF/persistence.xml","persistence.xml")
                  .addAsManifestResource("META-INF/beans.xml","beans.xml");
      }

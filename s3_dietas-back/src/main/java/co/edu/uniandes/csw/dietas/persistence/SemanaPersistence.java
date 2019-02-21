@@ -19,8 +19,8 @@ import javax.persistence.Query;
  * @author Juan Antonio Restrepo
  */
 @Stateless
-public class SemanaPersistance {
-   public static final Logger LOGGER = Logger.getLogger(SemanaPersistance.class.getName());
+public class SemanaPersistence {
+   public static final Logger LOGGER = Logger.getLogger(SemanaPersistence.class.getName());
     @PersistenceContext(unitName = "dietasPU")
     protected EntityManager em;
     
