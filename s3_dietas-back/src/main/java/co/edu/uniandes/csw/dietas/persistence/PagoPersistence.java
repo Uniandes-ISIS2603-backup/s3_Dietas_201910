@@ -29,7 +29,7 @@ public class PagoPersistence {
     }
     
     public PagoEntity findByModo(String modoP){
-        TypedQuery<PagoEntity> query = em.createQuery("Select e From DietaEntity e where e.modoPago = :modo", PagoEntity.class);
+        TypedQuery<PagoEntity> query = em.createQuery("Select e From PagoEntity e where e.modoPago = :modo", PagoEntity.class);
         query = query.setParameter("modo", modoP);
         List<PagoEntity> sameModo = query.getResultList();
         PagoEntity result;
