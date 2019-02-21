@@ -55,7 +55,7 @@ public class SuspensionPersistence {
      * SuspensionEntity;" - "SELECT * FROM table_name" en SQL.
      */
     public SuspensionEntity findById(Long id){
-        TypedQuery query = em.createQuery("select u from ComidaEntity u where e.id = :id", SuspensionEntity.class);
+        TypedQuery query = em.createQuery("select u from ComidaEntity u where u.id = :id", SuspensionEntity.class);
         query=query.setParameter("id", id);
         List<SuspensionEntity> sameId = query.getResultList();
         SuspensionEntity result;

@@ -32,7 +32,7 @@ public class SuspensionLogic
         {
             throw new BusinessLogicException("Ya existe una suspension con ese id");
         }
-        suspensionP.create(suspension);
+        suspension = suspensionP.create(suspension);
         return suspension;
     }
 }

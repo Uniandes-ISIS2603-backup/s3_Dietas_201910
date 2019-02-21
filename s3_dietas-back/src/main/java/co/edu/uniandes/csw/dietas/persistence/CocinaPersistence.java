@@ -34,7 +34,7 @@ public class CocinaPersistence {
     
       
     public CocinaEntity findById(Long id){
-        TypedQuery query = em.createQuery("select u from ComidaEntity u where e.id = :id", CocinaEntity.class);
+        TypedQuery query = em.createQuery("select u from ComidaEntity u where u.id = :id", CocinaEntity.class);
         query=query.setParameter("id", id);
         List<CocinaEntity> sameId = query.getResultList();
         CocinaEntity result;

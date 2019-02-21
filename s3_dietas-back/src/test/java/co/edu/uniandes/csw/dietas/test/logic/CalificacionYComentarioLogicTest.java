@@ -8,7 +8,7 @@ package co.edu.uniandes.csw.dietas.test.logic;
 import co.edu.uniandes.csw.dietas.ejb.CalificacionYComentarioLogic;
 import co.edu.uniandes.csw.dietas.ejb.SuspensionLogic;
 import co.edu.uniandes.csw.dietas.entities.CalificacionYComentarioEntity;
-import co.edu.uniandes.csw.dietas.entities.CocinaEntity;
+import co.edu.uniandes.csw.dietas.entities.CalificacionYComentarioEntity;
 import co.edu.uniandes.csw.dietas.entities.SuspensionEntity;
 import co.edu.uniandes.csw.dietas.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.dietas.persistence.CalificacionYComentarioPersistence;
@@ -108,7 +108,7 @@ public class CalificacionYComentarioLogicTest
        CalificacionYComentarioEntity newEntity= factory.manufacturePojo(CalificacionYComentarioEntity.class);
        CalificacionYComentarioEntity result= calificacionYcomentarioLogic.createCalificacionYComentario(newEntity);
        Assert.assertNotNull(result);
-      CocinaEntity entity = em.find(CocinaEntity.class, result.getId());
+      CalificacionYComentarioEntity entity = em.find(CalificacionYComentarioEntity.class, result.getId());
       Assert.assertEquals(newEntity.getId(), entity.getId());
       
    }

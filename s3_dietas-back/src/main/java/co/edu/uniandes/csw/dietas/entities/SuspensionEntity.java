@@ -83,4 +83,7 @@ public class SuspensionEntity extends BaseEntity implements Serializable
         this.dieta = dieta;
     }
     
+    
+    
+    
 }

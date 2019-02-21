@@ -34,11 +34,13 @@ import uk.co.jemos.podam.api.PodamFactoryImpl;
 @RunWith(Arquillian.class)
 public class SuspensionLogicTest 
 {
+    
+    private PodamFactory factory = new PodamFactoryImpl();
+   
     @Inject
     private SuspensionLogic suspensionLogic;
     
-      private PodamFactory factory = new PodamFactoryImpl();
-
+    
     @PersistenceContext
     private EntityManager em;
     @Inject
@@ -99,17 +101,17 @@ public class SuspensionLogicTest
    
      @Test
      public void createSuspensionTest() throws BusinessLogicException{
-         
-       SuspensionEntity newEntity= factory.manufacturePojo(SuspensionEntity.class);
-       SuspensionEntity result= suspensionLogic.createSuspension(newEntity);
-       Assert.assertNotNull(result);
-      SuspensionEntity entity = em.find(SuspensionEntity.class, result.getId());
-      Assert.assertEquals(newEntity.getId(), entity.getId());
       
+        SuspensionEntity newEntity = factory.manufacturePojo(SuspensionEntity.class);
+        SuspensionEntity result = suspensionLogic.createSuspension(newEntity);
+        Assert.assertNotNull(result);
+        SuspensionEntity entity = em.find(SuspensionEntity.class, result.getId());
+        Assert.assertEquals(newEntity.getId(), entity.getId());
+        Assert.assertEquals(newEntity.getNumDias(), entity.getNumDias());
    }
      
      
-     @Test
+     @Test //(expected = BusinessLogicException.class)
      public void createSuspensionConMismoIdTest() throws BusinessLogicException
      {   
          SuspensionEntity newEntity = factory.manufacturePojo(SuspensionEntity.class);
