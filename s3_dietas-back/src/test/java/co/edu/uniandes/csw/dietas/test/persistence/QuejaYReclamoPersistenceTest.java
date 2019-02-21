@@ -8,7 +8,7 @@ package co.edu.uniandes.csw.dietas.test.persistence;
 
 import co.edu.uniandes.csw.dietas.entities.QuejaYReclamoEntity;
 
-import co.edu.uniandes.csw.dietas.persistence.QuejasYReclamosPersistence;
+import co.edu.uniandes.csw.dietas.persistence.QuejaYReclamoPersistence;
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
@@ -34,13 +34,13 @@ import uk.co.jemos.podam.api.PodamFactoryImpl;
 public class QuejaYReclamoPersistenceTest {
     
     @Inject
-   private QuejasYReclamosPersistence quejita;
+   private QuejaYReclamoPersistence quejita;
    @Deployment
    public static JavaArchive createDeployment()
    {
        return ShrinkWrap.create(JavaArchive.class)
                .addPackage(QuejaYReclamoEntity.class.getPackage())
-               .addPackage(QuejasYReclamosPersistence.class.getPackage())
+               .addPackage(QuejaYReclamoPersistence.class.getPackage())
                .addAsManifestResource("META-INf/persistence.xml","persistence.xml")
                .addAsManifestResource("META-INF/beans.xml","beans.xml");
    }

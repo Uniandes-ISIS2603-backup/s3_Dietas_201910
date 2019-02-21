@@ -32,6 +32,7 @@ import uk.co.jemos.podam.api.PodamFactoryImpl;
 public class PersonaPersistenceTest {
    @Inject
    private PersonaPersistence personita;
+   
    @Deployment
    public static JavaArchive createDeployment()
    {
