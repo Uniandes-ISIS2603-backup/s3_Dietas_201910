@@ -34,23 +34,23 @@ public class CocinaResource
        return cocina; 
     }
     
-    @GET
-    @Path("{cocinaId: \\d+}")
-    public CocinaDTO getCocina(@PathParam("cocinanId") Long cocinaId){
-        return null;
-    }
-    
-    @GET
-    @Path("{name: [a-zA-Z][a-zA-Z]*}}")
-    public CocinaDTO getCocina(@PathParam("cocinanDireccion") String cocinaDireccion){
-        return null;
-    }
-    
-    
-    @DELETE
-    @Path("{cocinaId: \\d+}")
-    public void deleteCocina(@PathParam("cocinaId") Long cocinaId){
-        
-    }
+//    @GET
+//    @Path("{cocinaId: \\d+}")
+//    public CocinaDTO getCocina(@PathParam("cocinanId") Long cocinaId){
+//        return null;
+//    }
+//    
+//    @GET
+//    @Path("{name: [a-zA-Z][a-zA-Z]*}}")
+//    public CocinaDTO getCocina(@PathParam("cocinanDireccion") String cocinaDireccion){
+//        return null;
+//    }
+//    
+//    
+//    @DELETE
+//    @Path("{cocinaId: \\d+}")
+//    public void deleteCocina(@PathParam("cocinaId") Long cocinaId){
+//        
+//    }
     
 }

@@ -34,22 +34,22 @@ public class SuspensionResource
        return suspension; 
     }
     
-    @GET
-    public List<SuspensionDTO> getSuspensiones(){
-        return null;
-    }
-    
-    @GET
-    @Path("{suspensionId: \\d+}")
-    public SuspensionDTO getSuspension(@PathParam("suspensionId") Long suspensionId){
-        return null;
-    }
-    
-    @PUT
-    @Path("{suspensionId: \\d+}")
-    public SuspensionDTO updateSuspension(@PathParam("suspensionId") Long suspensionId, SuspensionDTO suspension){
-        return null;
-    }
+//    @GET
+//    public List<SuspensionDTO> getSuspensiones(){
+//        return null;
+//    }
+//    
+//    @GET
+//    @Path("{suspensionId: \\d+}")
+//    public SuspensionDTO getSuspension(@PathParam("suspensionId") Long suspensionId){
+//        return null;
+//    }
+//    
+//    @PUT
+//    @Path("{suspensionId: \\d+}")
+//    public SuspensionDTO updateSuspension(@PathParam("suspensionId") Long suspensionId, SuspensionDTO suspension){
+//        return null;
+//    }
     
     
 }

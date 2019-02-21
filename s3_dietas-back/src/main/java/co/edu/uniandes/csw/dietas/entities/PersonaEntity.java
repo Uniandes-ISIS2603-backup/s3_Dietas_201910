@@ -32,7 +32,7 @@ public class PersonaEntity extends BaseEntity implements Serializable {
   
     @PodamExclude
     @ManyToOne()
-    private PersonaEntity hall;
+    private HallOfFameEntity hall;
 
     @PodamExclude
     @OneToMany(mappedBy = "persona")
@@ -151,14 +151,14 @@ public class PersonaEntity extends BaseEntity implements Serializable {
     /**
      * @return the halls
      */
-    public PersonaEntity getHalls() {
+    public HallOfFameEntity getHalls() {
         return hall;
     }
 
     /**
      * @param halls the halls to set
      */
-    public void setHalls(PersonaEntity halls) {
+    public void setHalls(HallOfFameEntity halls) {
         this.hall = hall;
     }
 

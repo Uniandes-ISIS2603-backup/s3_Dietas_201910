@@ -114,7 +114,7 @@ public class CalificacionYComentarioLogicTest
    }
      
      
-     @Test
+     @Test(expected = BusinessLogicException.class)
      public void createCalificacionYComentarioConMismoIdTest() throws BusinessLogicException
      {   
          CalificacionYComentarioEntity newEntity = factory.manufacturePojo(CalificacionYComentarioEntity.class);

@@ -35,17 +35,17 @@ public class CalificacionYComentarioResource
        return calificacionycomentario; 
     }
     
-    @GET
-    public List<CalificacionYComentarioDTO> getCalificacionesYComentarios(){
-        return null;
-    }
-    
-    @GET
-    @Path("{calificacionycomentarioId: \\d+}")
-    public CalificacionYComentarioDTO getCalificacionYComentario(@PathParam("calificacionycomentarioId") Long calificacionycomentarioIdId){
-        return null;
-    }
-    
+//    @GET
+//    public List<CalificacionYComentarioDTO> getCalificacionesYComentarios(){
+//        return null;
+//    }
+//    
+//    @GET
+//    @Path("{calificacionycomentarioId: \\d+}")
+//    public CalificacionYComentarioDTO getCalificacionYComentario(@PathParam("calificacionycomentarioId") Long calificacionycomentarioIdId){
+//        return null;
+//    }
+//    
    
     
 }

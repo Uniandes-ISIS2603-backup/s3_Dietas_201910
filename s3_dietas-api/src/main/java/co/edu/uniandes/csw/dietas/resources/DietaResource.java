@@ -34,27 +34,27 @@ public class DietaResource {
     public DietaDTO createPago(DietaDTO dieta){
        return dieta; 
     }
-    
-    @GET
-    public List<DietaDetailDTO> getDietas(){
-        return null;
-    }
-    
-    @GET
-    @Path("{dietasId: \\d+}")
-    public DietaDetailDTO getDieta(@PathParam("dietasId") Long dietasId){
-        return null;
-    }
-    
-    @PUT
-    @Path("{dietasId: \\d+}")
-    public DietaDetailDTO updateDieta(@PathParam("dietasId") Long dietasId, DietaDTO dieta){
-        return null;
-    }
-    
-    @DELETE
-    @Path("{dietasId: \\d+}")
-    public void deleteDieta(@PathParam("dietasId") Long dietasId){
-        
-    }
+//    
+//    @GET
+//    public List<DietaDetailDTO> getDietas(){
+//        return null;
+//    }
+//    
+//    @GET
+//    @Path("{dietasId: \\d+}")
+//    public DietaDetailDTO getDieta(@PathParam("dietasId") Long dietasId){
+//        return null;
+//    }
+//    
+//    @PUT
+//    @Path("{dietasId: \\d+}")
+//    public DietaDetailDTO updateDieta(@PathParam("dietasId") Long dietasId, DietaDTO dieta){
+//        return null;
+//    }
+//    
+//    @DELETE
+//    @Path("{dietasId: \\d+}")
+//    public void deleteDieta(@PathParam("dietasId") Long dietasId){
+//        
+//    }
 }

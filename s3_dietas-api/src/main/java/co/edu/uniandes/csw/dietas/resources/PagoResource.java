@@ -34,26 +34,26 @@ public class PagoResource {
        return pago; 
     }
     //Preguntar por el detail de pago en GETs, PUT
-    @GET
-    @Path("{pagosId: \\d+}")
-    public PagoDTO getPago(@PathParam("id") Long pagosId){
-        return null;
-    }
-    
-    @GET
-    public List<PagoDTO> getPagos(){
-        return null;
-    }
-    
-    @PUT
-    @Path("{pagosId: \\d+}")
-    public PagoDTO updatePago(@PathParam("pagosId") Long pagosId, PagoDTO pago){
-        return null;
-    }
-    
-    @DELETE
-    @Path("{pagosId: \\d+}")
-    public void deletePago(@PathParam("pagosId") Long pagosId){
-        
-    }
+//    @GET
+//    @Path("{pagosId: \\d+}")
+//    public PagoDTO getPago(@PathParam("id") Long pagosId){
+//        return null;
+//    }
+//    
+//    @GET
+//    public List<PagoDTO> getPagos(){
+//        return null;
+//    }
+//    
+//    @PUT
+//    @Path("{pagosId: \\d+}")
+//    public PagoDTO updatePago(@PathParam("pagosId") Long pagosId, PagoDTO pago){
+//        return null;
+//    }
+//    
+//    @DELETE
+//    @Path("{pagosId: \\d+}")
+//    public void deletePago(@PathParam("pagosId") Long pagosId){
+//        
+//    }
 }

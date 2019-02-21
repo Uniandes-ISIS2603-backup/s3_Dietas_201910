@@ -31,9 +31,9 @@ public class QuejaYReclamoResource {
     public QuejaYReclamoDTO createPersona(QuejaYReclamoDTO quejaParam){
        return quejaParam; 
     }
-    @DELETE
-    @Path("{quejaYReclamoId: \\d+}")
-    public void deletepersona(@PathParam("quejaYReclamoId") Long quejaYReclamoId){
-        
-    }
+//    @DELETE
+//    @Path("{quejaYReclamoId: \\d+}")
+//    public void deletepersona(@PathParam("quejaYReclamoId") Long quejaYReclamoId){
+//        
+//    }
 }

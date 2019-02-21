@@ -30,7 +30,7 @@ public class CalificacionYComentarioPersistence
     
     
      public CalificacionYComentarioEntity findById(Long id){
-        TypedQuery query = em.createQuery("select u from CalificacionYComentarioEntity u where e.id = :id", CalificacionYComentarioEntity.class);
+        TypedQuery query = em.createQuery("select u from CalificacionYComentarioEntity u where u.id = :id", CalificacionYComentarioEntity.class);
         query=query.setParameter("id", id);
         List<CalificacionYComentarioEntity> sameId = query.getResultList();
         CalificacionYComentarioEntity result;
