@@ -6,9 +6,11 @@
 package co.edu.uniandes.csw.dietas.persistence;
 
 import co.edu.uniandes.csw.dietas.entities.DietaEntity;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 
 /**
  *
@@ -25,5 +27,17 @@ public class DietaPersistence {
         em.persist(dietaEntity);
         
         return dietaEntity;
+    }
+    
+    public DietaEntity findById(Long idD){
+        TypedQuery<DietaEntity> query = em.createQuery("Select e From DietaEntity e where e.id = :id", DietaEntity.class);
+        query = query.setParameter("id", idD);
+        List<DietaEntity> sameID = query.getResultList();
+        DietaEntity result;
+        if(sameID == null || sameID.isEmpty())
+            result = null;
+        else
+            result = sameID.get(0);
+        return result;
     }
 }

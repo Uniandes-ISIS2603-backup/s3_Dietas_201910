@@ -6,9 +6,11 @@
 package co.edu.uniandes.csw.dietas.persistence;
 
 import co.edu.uniandes.csw.dietas.entities.PagoEntity;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 
 /**
  *
@@ -24,5 +26,17 @@ public class PagoPersistence {
         em.persist(pagoEntity);
         
         return pagoEntity;
+    }
+    
+    public PagoEntity findByModo(String modoP){
+        TypedQuery<PagoEntity> query = em.createQuery("Select e From DietaEntity e where e.modoPago = :modo", PagoEntity.class);
+        query = query.setParameter("modo", modoP);
+        List<PagoEntity> sameModo = query.getResultList();
+        PagoEntity result;
+        if(sameModo == null || sameModo.isEmpty())
+            result = null;
+        else
+            result = sameModo.get(0);
+        return result;
     }
 }
