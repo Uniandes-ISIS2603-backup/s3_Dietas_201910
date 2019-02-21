@@ -26,7 +26,7 @@ public class TipoDietaEntity extends BaseEntity implements Serializable{
     private String descripcion;
     
     
-     @PodamExclude
+    @PodamExclude
     @ManyToMany
     private List<DietaEntity> dietas = new ArrayList<DietaEntity>( );
     /**
