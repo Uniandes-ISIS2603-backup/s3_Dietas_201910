@@ -9,7 +9,7 @@ import java.io.Serializable;
 
 /**
  *
- * @author estudiante
+ * @author Juan Antonio Restrepo
  */
 public class SemanaDTO implements Serializable{
     private Integer id;
