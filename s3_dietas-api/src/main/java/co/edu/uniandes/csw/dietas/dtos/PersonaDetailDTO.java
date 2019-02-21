@@ -7,8 +7,10 @@ package co.edu.uniandes.csw.dietas.dtos;
 
 /**
  *
- * @author estudiante
+ * @author Daniel Espitia
  */
 public class PersonaDetailDTO {
+    
+//    private List<
     
 }

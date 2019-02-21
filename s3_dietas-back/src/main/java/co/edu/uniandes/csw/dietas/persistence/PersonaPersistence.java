@@ -61,7 +61,7 @@ public class PersonaPersistence {
     }
     
     public PersonaEntity findById(Long id){
-        TypedQuery query = em.createQuery("select u from PersonaEntity u where e.id = :id", PersonaEntity.class);
+        TypedQuery query = em.createQuery("select u from PersonaEntity u where u.id = :id", PersonaEntity.class);
         query=query.setParameter("id", id);
         List<PersonaEntity> sameId = query.getResultList();
         PersonaEntity result;
