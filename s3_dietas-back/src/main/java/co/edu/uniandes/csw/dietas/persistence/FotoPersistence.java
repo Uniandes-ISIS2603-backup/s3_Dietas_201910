@@ -59,23 +59,23 @@ public class FotoPersistence {
     }
     
     /**
-     * Busca si hay algun foto con el id que se envia de argumento
+     * Busca si hay algun foto con el nombre que se envia de argumento
      * 
-     * @param fotoId: id correspondiente a el foto buscado
+     * @param fotoName: name correspondiente a el foto buscado
      * @return un foto 
      */
-    public FotoEntity find (Long fotoId){
-        LOGGER.log(Level.INFO, "Consultando el foto con id={0}", fotoId);
+    public FotoEntity find (String fotoName){
+        LOGGER.log(Level.INFO, "Consultando el foto con nombre=", fotoName);
          /* Note que se hace uso del metodo "find" propio del EntityManager, el cual recibe como argumento 
         el tipo de la clase y el objeto que nos hara el filtro en la base de datos en este caso el "id"
         Suponga que es algo similar a "select * from FotoEntity where id=id;" - "SELECT * FROM table_name WHERE condition;" en SQL.
          */
-        return em.find(FotoEntity.class, fotoId);
+        return em.find(FotoEntity.class, fotoName);
     }
     
     
     public FotoEntity findByName(String name){
-        TypedQuery query = em.createQuery("select u from FotoEntity u where e.name = :name", FotoEntity.class);
+        TypedQuery query = em.createQuery("select u from FotoEntity u where u.name = :name", FotoEntity.class);
         query=query.setParameter("name", name);
         List<FotoEntity> sameName = query.getResultList();
         FotoEntity result;
@@ -107,16 +107,16 @@ public class FotoPersistence {
     }
     
     /**
-     * Borra una foto de la base de datos recibiendo como argumento el id de la
+     * Borra una foto de la base de datos recibiendo como argumento el nombre de la
      *  foto
      *
-     * @param fotoId: id correspondiente al foto  a borrar.
+     * @param fotoNombre:nombre correspondiente al foto  a borrar.
      */  
-    public void delete(Long fotoId) {
+    public void delete(Long fotoNombre) {
 
-        LOGGER.log(Level.INFO, "Borrando el foto con id={0}", fotoId);
+        LOGGER.log(Level.INFO, "Borrando el foto con nombre = ", fotoNombre);
         // Se hace uso de mismo método que esta explicado en public FotoEntity find(Long id) para obtener la foto a borrar.
-        FotoEntity fotoEntity = em.find(FotoEntity.class, fotoId);
+        FotoEntity fotoEntity = em.find(FotoEntity.class, fotoNombre);
         /* Note que una vez obtenido el objeto desde la base de datos llamado "entity", volvemos hacer uso de un método propio del
         EntityManager para eliminar de la base de datos el objeto que encontramos y queremos borrar.
         Es similar a "delete from FotoEntity where id=id;" - "DELETE FROM table_name WHERE condition;" en SQL.
