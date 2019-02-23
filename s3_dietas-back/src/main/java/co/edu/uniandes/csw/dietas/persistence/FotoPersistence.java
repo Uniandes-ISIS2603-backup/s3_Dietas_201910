@@ -75,7 +75,7 @@ public class FotoPersistence {
     
     
     public FotoEntity findByName(String name){
-        TypedQuery query = em.createQuery("select u from FotoEntity u where u.name = :name", FotoEntity.class);
+        TypedQuery query = em.createQuery("select u from FotoEntity u where u.nombre = :name", FotoEntity.class);
         query=query.setParameter("name", name);
         List<FotoEntity> sameName = query.getResultList();
         FotoEntity result;
