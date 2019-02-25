@@ -17,7 +17,7 @@ import javax.persistence.TypedQuery;
 
 /**
  *
- * @author estudiante
+ * @author Juan Antonio Restrepo
  */
 @Stateless
 public class DiaPersistence {
