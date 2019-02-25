@@ -106,17 +106,14 @@ public class DiaLogicTest {
       
    }
      
-     /**
-      * TODO no está funcionando, revisar.
-      */
-//     
-//     @Test
-//     public void createDiaConMismoIdTest() throws BusinessLogicException
-//     {   
-//         DiaEntity newEntity = factory.manufacturePojo(DiaEntity.class);
-//         newEntity.setId(data.get(0).getId());
-//         diaLogic.createDia(newEntity);
-//     }      
+     
+     @Test (expected = BusinessLogicException.class)
+     public void createDiaConMismoIdTest() throws BusinessLogicException
+     {   
+         DiaEntity newEntity = factory.manufacturePojo(DiaEntity.class);
+         newEntity.setId(data.get(0).getId());
+         diaLogic.createDia(newEntity);
+     }      
     
     
 }

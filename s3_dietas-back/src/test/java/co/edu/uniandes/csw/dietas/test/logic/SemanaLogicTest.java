@@ -16,11 +16,13 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.UserTransaction;
 import org.jboss.arquillian.container.test.api.Deployment;
+import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import uk.co.jemos.podam.api.PodamFactory;
 import uk.co.jemos.podam.api.PodamFactoryImpl;
 
@@ -28,6 +30,7 @@ import uk.co.jemos.podam.api.PodamFactoryImpl;
  *
  * @author estudiante
  */
+@RunWith(Arquillian.class)
 public class SemanaLogicTest {
      @Inject
     private SemanaLogic semanaLogic;
@@ -78,20 +81,20 @@ public class SemanaLogicTest {
          }
      }
      
-//     @Test
-//     public void createDietaTest() throws BusinessLogicException{
-//         SemanaEntity newEntity = factory.manufacturePojo(SemanaEntity.class);
-//         SemanaEntity result = semanaLogic.createSemana(newEntity);
-//         Assert.assertNotNull(result);
-//         SemanaEntity entity = em.find(SemanaEntity.class, result.getId());
-//         Assert.assertEquals(newEntity.getId(), entity.getId());
-//     } 
-//     
-//     @Test(expected = BusinessLogicException.class)
-//     public void createSemanaConMismoModo()throws BusinessLogicException{
-//         SemanaEntity newEntity = factory.manufacturePojo(SemanaEntity.class);
-//         newEntity.setId(data.get(0).getId());
-//         semanaLogic.createSemana(newEntity);
-//     }
+     @Test
+     public void createDietaTest() throws BusinessLogicException{
+         SemanaEntity newEntity = factory.manufacturePojo(SemanaEntity.class);
+         SemanaEntity result = semanaLogic.createSemana(newEntity);
+         Assert.assertNotNull(result);
+         SemanaEntity entity = em.find(SemanaEntity.class, result.getId());
+         Assert.assertEquals(newEntity.getId(), entity.getId());
+     } 
+     
+     @Test(expected = BusinessLogicException.class)
+     public void createSemanaConMismoModo()throws BusinessLogicException{
+         SemanaEntity newEntity = factory.manufacturePojo(SemanaEntity.class);
+         newEntity.setId(data.get(0).getId());
+         semanaLogic.createSemana(newEntity);
+     }
     
 }

@@ -13,10 +13,11 @@ import javax.inject.Inject;
 
 /**
  *
- * @author estutipoDietante
+ * @author Juan Antonio Restrepo
  */
 @Stateless
 public class TipoDietaLogic {
+    
     @Inject
     private TipoDietaPersistence persistence;
     

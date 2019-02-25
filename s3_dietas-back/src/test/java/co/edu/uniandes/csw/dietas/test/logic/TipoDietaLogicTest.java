@@ -16,11 +16,13 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.UserTransaction;
 import org.jboss.arquillian.container.test.api.Deployment;
+import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import uk.co.jemos.podam.api.PodamFactory;
 import uk.co.jemos.podam.api.PodamFactoryImpl;
 
@@ -28,6 +30,7 @@ import uk.co.jemos.podam.api.PodamFactoryImpl;
  *
  * @author estudiante
  */
+@RunWith(Arquillian.class)
 public class TipoDietaLogicTest {
      private PodamFactory factory = new PodamFactoryImpl();
    
@@ -93,22 +96,22 @@ public class TipoDietaLogicTest {
    
    
    
-//     @Test
-//     public void createTipoDietaTest() throws BusinessLogicException{
-//      
-//        TipoDietaEntity newEntity = factory.manufacturePojo(TipoDietaEntity.class);
-//        TipoDietaEntity result = tipoDietaLogic.createTipoDieta(newEntity);
-//        Assert.assertNotNull(result);
-//        TipoDietaEntity entity = em.find(TipoDietaEntity.class, result.getId());
-//        Assert.assertEquals(newEntity.getId(), entity.getId());
-//   }
-//     
-//     
-//     @Test //(expected = BusinessLogicException.class)
-//     public void createTipoDietaConMismoIdTest() throws BusinessLogicException
-//     {   
-//         TipoDietaEntity newEntity = factory.manufacturePojo(TipoDietaEntity.class);
-//         newEntity.setId(data.get(0).getId());
-//         tipoDietaLogic.createTipoDieta(newEntity);
-//     }
+     @Test
+     public void createTipoDietaTest() throws BusinessLogicException{
+      
+        TipoDietaEntity newEntity = factory.manufacturePojo(TipoDietaEntity.class);
+        TipoDietaEntity result = tipoDietaLogic.createTipoDieta(newEntity);
+        Assert.assertNotNull(result);
+        TipoDietaEntity entity = em.find(TipoDietaEntity.class, result.getId());
+        Assert.assertEquals(newEntity.getId(), entity.getId());
+   }
+     
+     
+     @Test (expected = BusinessLogicException.class)
+     public void createTipoDietaConMismoIdTest() throws BusinessLogicException
+     {   
+         TipoDietaEntity newEntity = factory.manufacturePojo(TipoDietaEntity.class);
+         newEntity.setId(data.get(0).getId());
+         tipoDietaLogic.createTipoDieta(newEntity);
+     }
 }

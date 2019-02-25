@@ -5,6 +5,7 @@
  */
 package co.edu.uniandes.csw.dietas.dtos;
 
+import co.edu.uniandes.csw.dietas.entities.DiaEntity;
 import java.io.Serializable;
 
 /**
@@ -14,7 +15,7 @@ import java.io.Serializable;
 public class DiaDTO implements Serializable
 {
     private boolean diaEspecial;
-    private int id;
+    private Long id;
     public DiaDTO ()
     {
         
@@ -37,15 +38,28 @@ public class DiaDTO implements Serializable
     /**
      * @return the id
      */
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
     /**
      * @param id the id to set
      */
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
+    }
+    
+    public DiaEntity toEntity()
+    {
+        DiaEntity entity = new DiaEntity();
+        entity.setEspecial(this.diaEspecial);
+        entity.setId(this.getId());
+        return entity;
+    }
+    public DiaDTO(DiaEntity diaEntity)
+    {
+        this.id = diaEntity.getId();
+        this.diaEspecial = diaEntity.isEspecial();
     }
     
     
