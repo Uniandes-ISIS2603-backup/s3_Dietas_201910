@@ -5,6 +5,7 @@
  */
 package co.edu.uniandes.csw.dietas.dtos;
 
+import co.edu.uniandes.csw.dietas.entities.DietaEntity;
 import java.io.Serializable;
 
 /**
@@ -12,11 +13,48 @@ import java.io.Serializable;
  * @author Alejandra  :)
  */
 public class DietaDTO implements Serializable{
+
+    /**
+     * @return the nombre
+     */
+    public String getNombre() {
+        return nombre;
+    }
+
+    /**
+     * @param nombre the nombre to set
+     */
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
     private Long id;
     private String tipo;
     private String objetivo;
     private Integer diasSuspendida;
+    private String nombre;
 
+    public DietaDTO(){
+        
+    }
+    
+    public DietaDTO(DietaEntity entity){
+        setId(entity.getId());
+        setTipo(entity.getTipo());
+        setObjetivo(entity.getObjetivo());
+        setDiasSuspendida(entity.getDiasSuspendida());
+        setNombre(entity.getNombre());
+    }
+    
+    public DietaEntity toEntity(){
+        DietaEntity entity = new DietaEntity();
+        entity.setDiasSuspendida(this.getDiasSuspendida());
+        entity.setId(this.getId());
+        entity.setObjetivo(this.getObjetivo());
+        entity.setTipo(this.getTipo());
+        entity.setNombre(this.getNombre());
+        return entity;
+    }
+    
     /**
      * @return the id
      */

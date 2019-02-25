@@ -131,7 +131,7 @@ public class FotoLogicTest {
         FotoEntity result = fotoLogic.createFoto(newEntity);
         Assert.assertNotNull(result);
         FotoEntity entity = em.find(FotoEntity.class, result.getId());
-        Assert.assertEquals(newEntity.getNombre(), entity.getNombre());
+        Assert.assertEquals(newEntity.getId(), entity.getId());
         Assert.assertEquals(newEntity.getNombre(), entity.getNombre());
     }
     

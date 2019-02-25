@@ -70,7 +70,7 @@ public class PagoLogicTest {
     }
     
     private void clearData() {
-        em.createQuery("delete from DietaEntity").executeUpdate();
+        em.createQuery("delete from PagoEntity").executeUpdate();
     }
      
      private void insertData(){
@@ -82,7 +82,7 @@ public class PagoLogicTest {
      }
      
      @Test
-     public void createDietaTest() throws BusinessLogicException{
+     public void createPagoTest() throws BusinessLogicException{
          PagoEntity newEntity = factory.manufacturePojo(PagoEntity.class);
          PagoEntity result = pagoLogic.createPago(newEntity);
          Assert.assertNotNull(result);

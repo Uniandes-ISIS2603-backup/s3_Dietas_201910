@@ -10,6 +10,8 @@ import co.edu.uniandes.csw.dietas.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.dietas.persistence.DietaPersistence;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -22,10 +24,18 @@ public class DietaLogic {
     
     public DietaEntity createDieta(DietaEntity dieta)throws BusinessLogicException{
         
-        if(persistence.findById(dieta.getId()) != null){
-            throw new BusinessLogicException("Ya existe una dieta con ese ID \""+dieta.getId()+"\"");
+        if(((persistence.findByName(dieta.getNombre()) != null) || (persistence.findByID(dieta.getId()) != null))){
+            throw new BusinessLogicException("Ya existe una dieta con ese nombre o ID \""+dieta.getNombre());
         }
         dieta = persistence.create(dieta);
         return dieta;
+    }
+    
+    public DietaEntity getDieta(Long dietaId) {
+        DietaEntity dietaEntity = persistence.findByID(dietaId);
+        if (dietaEntity == null) {
+//            LOGGER.log(Level.SEVERE, "La editorial con el id = {0} no existe", dietaId);
+        }
+        return dietaEntity;
     }
 }

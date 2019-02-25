@@ -21,6 +21,20 @@ import uk.co.jemos.podam.common.PodamExclude;
 @Entity
 public class DietaEntity extends BaseEntity implements Serializable {
 
+    /**
+     * @return the nombre
+     */
+    public String getNombre() {
+        return nombre;
+    }
+
+    /**
+     * @param nombre the nombre to set
+     */
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
 
     @PodamExclude
     @ManyToOne
@@ -41,7 +55,7 @@ public class DietaEntity extends BaseEntity implements Serializable {
     private String tipo;
     private String objetivo;
     private int diasSuspendida;
-    
+    private String nombre;
 
 
     public DietaEntity(){

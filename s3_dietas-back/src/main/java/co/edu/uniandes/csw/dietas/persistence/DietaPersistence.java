@@ -29,7 +29,19 @@ public class DietaPersistence {
         return dietaEntity;
     }
     
-    public DietaEntity findById(Long idD){
+    public DietaEntity findByName(String nombre){
+        TypedQuery<DietaEntity> query = em.createQuery("Select e From DietaEntity e where e.nombre = :nombre", DietaEntity.class);
+        query = query.setParameter("nombre", nombre);
+        List<DietaEntity> sameName = query.getResultList();
+        DietaEntity result;
+        if(sameName == null || sameName.isEmpty())
+            result = null;
+        else
+            result = sameName.get(0);
+        return result;
+    }
+    
+    public DietaEntity findByID(Long idD){
         TypedQuery<DietaEntity> query = em.createQuery("Select e From DietaEntity e where e.id = :id", DietaEntity.class);
         query = query.setParameter("id", idD);
         List<DietaEntity> sameID = query.getResultList();

@@ -55,6 +55,20 @@ public class FotoEntity extends BaseEntity implements Serializable{
     public void setUrl(String url) {
         this.url = url;
     }
+
+    /**
+     * @return the persona
+     */
+    public PersonaEntity getPersona() {
+        return persona;
+    }
+
+    /**
+     * @param persona the persona to set
+     */
+    public void setPersona(PersonaEntity persona) {
+        this.persona = persona;
+    }
     
     
     

@@ -98,4 +98,11 @@ public class DietaLogicTest {
          newEntity.setId(data.get(0).getId());
          dietaLogic.createDieta(newEntity);
      }
+     
+     @Test(expected = BusinessLogicException.class)
+     public void createDietaConMismoNombre()throws BusinessLogicException{
+         DietaEntity newEntity = factory.manufacturePojo(DietaEntity.class);
+         newEntity.setNombre(data.get(0).getNombre());
+         dietaLogic.createDieta(newEntity);
+     }
 }
