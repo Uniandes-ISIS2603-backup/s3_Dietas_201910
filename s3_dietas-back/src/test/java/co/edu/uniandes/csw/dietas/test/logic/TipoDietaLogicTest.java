@@ -5,10 +5,10 @@
  */
 package co.edu.uniandes.csw.dietas.test.logic;
 
-import co.edu.uniandes.csw.dietas.ejb.DiaLogic;
-import co.edu.uniandes.csw.dietas.entities.DiaEntity;
+import co.edu.uniandes.csw.dietas.ejb.TipoDietaLogic;
+import co.edu.uniandes.csw.dietas.entities.TipoDietaEntity;
 import co.edu.uniandes.csw.dietas.exceptions.BusinessLogicException;
-import co.edu.uniandes.csw.dietas.persistence.DiaPersistence;
+import co.edu.uniandes.csw.dietas.persistence.TipoDietaPersistence;
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
@@ -16,40 +16,38 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.UserTransaction;
 import org.jboss.arquillian.container.test.api.Deployment;
-import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import uk.co.jemos.podam.api.PodamFactory;
 import uk.co.jemos.podam.api.PodamFactoryImpl;
 
 /**
  *
- * @author Juan Antonio Restrepo
+ * @author estudiante
  */
-@RunWith(Arquillian.class)
-public class DiaLogicTest {
-     @Inject
-    private DiaLogic diaLogic;
+public class TipoDietaLogicTest {
+     private PodamFactory factory = new PodamFactoryImpl();
+   
+    @Inject
+    private TipoDietaLogic tipoDietaLogic;
     
-      private PodamFactory factory = new PodamFactoryImpl();
-
+    
     @PersistenceContext
     private EntityManager em;
     @Inject
     private UserTransaction utx;
-    private List<DiaEntity> data = new ArrayList<DiaEntity>();
+    private List<TipoDietaEntity> data = new ArrayList<TipoDietaEntity>();
     
      @Deployment
    public static JavaArchive createDeployment()
    {
        return ShrinkWrap.create(JavaArchive.class)
-               .addPackage(DiaEntity.class.getPackage())
-               .addPackage(DiaPersistence.class.getPackage())
-               .addPackage(DiaLogic.class.getPackage())
+               .addPackage(TipoDietaEntity.class.getPackage())
+               .addPackage(TipoDietaPersistence.class.getPackage())
+               .addPackage(TipoDietaLogic.class.getPackage())
                .addAsManifestResource("META-INf/persistence.xml","persistence.xml")
                .addAsManifestResource("META-INF/beans.xml","beans.xml");
    }
@@ -76,7 +74,7 @@ public class DiaLogicTest {
      * Limpia las tablas que están implicadas en la prueba.
      */
     private void clearData() {
-        em.createQuery("delete from DiaEntity").executeUpdate();
+        em.createQuery("delete from TipoDietaEntity").executeUpdate();
     }
     
     /**
@@ -85,7 +83,7 @@ public class DiaLogicTest {
      */
     private void insertData() {
         for (int i = 0; i < 3; i++) {
-            DiaEntity entity = factory.manufacturePojo(DiaEntity.class);
+            TipoDietaEntity entity = factory.manufacturePojo(TipoDietaEntity.class);
 
             em.persist(entity);
             data.add(entity);
@@ -95,28 +93,22 @@ public class DiaLogicTest {
    
    
    
-     @Test
-     public void createDiaTest() throws BusinessLogicException{
-         
-       DiaEntity newEntity= factory.manufacturePojo(DiaEntity.class);
-       DiaEntity result= diaLogic.createDia(newEntity);
-       Assert.assertNotNull(result);
-      DiaEntity entity = em.find(DiaEntity.class, result.getId());
-      Assert.assertEquals(newEntity.getId(), entity.getId());
-      
-   }
-     
-     /**
-      * TODO no está funcionando, revisar.
-      */
-//     
 //     @Test
-//     public void createDiaConMismoIdTest() throws BusinessLogicException
+//     public void createTipoDietaTest() throws BusinessLogicException{
+//      
+//        TipoDietaEntity newEntity = factory.manufacturePojo(TipoDietaEntity.class);
+//        TipoDietaEntity result = tipoDietaLogic.createTipoDieta(newEntity);
+//        Assert.assertNotNull(result);
+//        TipoDietaEntity entity = em.find(TipoDietaEntity.class, result.getId());
+//        Assert.assertEquals(newEntity.getId(), entity.getId());
+//   }
+//     
+//     
+//     @Test //(expected = BusinessLogicException.class)
+//     public void createTipoDietaConMismoIdTest() throws BusinessLogicException
 //     {   
-//         DiaEntity newEntity = factory.manufacturePojo(DiaEntity.class);
+//         TipoDietaEntity newEntity = factory.manufacturePojo(TipoDietaEntity.class);
 //         newEntity.setId(data.get(0).getId());
-//         diaLogic.createDia(newEntity);
-//     }      
-    
-    
+//         tipoDietaLogic.createTipoDieta(newEntity);
+//     }
 }

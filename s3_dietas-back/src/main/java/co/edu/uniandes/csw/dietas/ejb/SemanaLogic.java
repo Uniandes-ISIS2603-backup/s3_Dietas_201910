@@ -22,7 +22,7 @@ public class SemanaLogic {
     @Inject
     private SemanaPersistence persistence;
     
-    public SemanaEntity crearSemana(SemanaEntity semana) throws BusinessLogicException
+    public SemanaEntity createSemana(SemanaEntity semana) throws BusinessLogicException
     {
         if(persistence.findId(semana.getId()) != null)
                 {

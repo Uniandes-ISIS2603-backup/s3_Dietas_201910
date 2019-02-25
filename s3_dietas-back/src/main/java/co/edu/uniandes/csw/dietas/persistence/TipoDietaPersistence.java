@@ -55,24 +55,20 @@ public class TipoDietaPersistence {
        TipoDietaEntity tipoDietaEntity = em.find(TipoDietaEntity.class, tipoDietaId);
         em.remove(tipoDietaEntity);
     }
-     public TipoDietaEntity findId(Long pId)
+     public TipoDietaEntity findId(Long id)
     {
-        TypedQuery<TipoDietaEntity> query = em.createQuery("Select e From TipoDietaEntity e where e.id = :id", TipoDietaEntity.class);
-        query = query.setParameter("id", pId);
+        TypedQuery query = em.createQuery("select u from TipoDietaEntity u where u.id = :id", TipoDietaEntity.class);
+        query=query.setParameter("id", id);
         List<TipoDietaEntity> sameId = query.getResultList();
-        TipoDietaEntity tipoDietaBuscado;
-        if(sameId == null)
-        {
-            tipoDietaBuscado =null;
+        TipoDietaEntity result;
+        if(sameId == null){
+            result=null;
+        }else if(sameId.isEmpty()){
+            result=null;
+        }else{
+            result = sameId.get(0);
         }
-        if(sameId.isEmpty())
-        {
-            tipoDietaBuscado = null;
-        }
-        else{
-            tipoDietaBuscado = sameId.get(0);
-        }
-        return tipoDietaBuscado;
+        return result;
     }
      
 }

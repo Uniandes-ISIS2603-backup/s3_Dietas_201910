@@ -58,7 +58,7 @@ public class SemanaPersistence {
     
      public SemanaEntity findId(Long pId)
     {
-        TypedQuery<SemanaEntity> query = em.createQuery("Select e From SemanaEntity e where e.id = :id", SemanaEntity.class);
+        TypedQuery<SemanaEntity> query = em.createQuery("select u from semanaEntity u where u.id = :id", SemanaEntity.class);
         query = query.setParameter("id", pId);
         List<SemanaEntity> sameId = query.getResultList();
         SemanaEntity semanaBuscada;

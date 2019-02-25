@@ -22,7 +22,7 @@ public class DiaLogic
     @Inject
     private DiaPersistence persistence;
     
-    public DiaEntity crearDia(DiaEntity dia) throws BusinessLogicException
+    public DiaEntity createDia(DiaEntity dia) throws BusinessLogicException
     {
         if(persistence.findId(dia.getId()) != null)
                 {

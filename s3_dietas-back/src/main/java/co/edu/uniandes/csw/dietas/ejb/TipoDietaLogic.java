@@ -20,7 +20,7 @@ public class TipoDietaLogic {
     @Inject
     private TipoDietaPersistence persistence;
     
-    public TipoDietaEntity crearTipoDieta(TipoDietaEntity tipoDieta) throws BusinessLogicException
+    public TipoDietaEntity createTipoDieta(TipoDietaEntity tipoDieta) throws BusinessLogicException
     {
         if(persistence.findId(tipoDieta.getId()) != null)
                 {

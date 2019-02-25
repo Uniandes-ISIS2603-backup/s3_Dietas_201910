@@ -43,22 +43,18 @@ public class DiaPersistence {
     
     public DiaEntity findId(Long pId)
     {
-        TypedQuery<DiaEntity> query = em.createQuery("Select e From DiaEntity e where e.id = :id", DiaEntity.class);
+        TypedQuery<DiaEntity> query = em.createQuery("select u from DiaEntity u where u.id = :id", DiaEntity.class);
         query = query.setParameter("id", pId);
         List<DiaEntity> sameId = query.getResultList();
-        DiaEntity diaBuscado;
-        if(sameId == null)
-        {
-            diaBuscado =null;
+        DiaEntity result;
+        if(sameId == null){
+            result=null;
+        }else if(sameId.isEmpty()){
+            result=null;
+        }else{
+            result = sameId.get(0);
         }
-        if(sameId.isEmpty())
-        {
-            diaBuscado = null;
-        }
-        else{
-            diaBuscado = sameId.get(0);
-        }
-        return diaBuscado;
+        return result;
     }
     
     public DiaEntity find(Long diaId)
