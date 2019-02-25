@@ -61,7 +61,7 @@ public class QuejaYReclamoPersistence {
     }
     
     public QuejaYReclamoEntity findById(Long id){
-        TypedQuery query = em.createQuery("select u from QuejaYReclamoEntity u where e.id = :id", QuejaYReclamoEntity.class);
+        TypedQuery query = em.createQuery("select u from QuejaYReclamoEntity u where u.id = :id", QuejaYReclamoEntity.class);
         query=query.setParameter("id", id);
         List<QuejaYReclamoEntity> sameId = query.getResultList();
         QuejaYReclamoEntity result;

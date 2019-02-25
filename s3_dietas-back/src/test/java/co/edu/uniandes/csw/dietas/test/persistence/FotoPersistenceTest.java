@@ -5,76 +5,73 @@
  */
 package co.edu.uniandes.csw.dietas.test.persistence;
 
-import co.edu.uniandes.csw.dietas.entities.ComidaEntity;
-import co.edu.uniandes.csw.dietas.persistence.ComidaPersistence;
+
+
+import co.edu.uniandes.csw.dietas.entities.FotoEntity;
+import co.edu.uniandes.csw.dietas.persistence.FotoPersistence;
 import javax.inject.Inject;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
 import org.junit.Assert;
-import org.junit.Test;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.ArrayList;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import uk.co.jemos.podam.api.PodamFactory;
 import uk.co.jemos.podam.api.PodamFactoryImpl;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-
 /**
  *
- * @author  Louis Gualtero.
+ * @author Louis Gualtero
  */
 @RunWith(Arquillian.class)
-public class ComidaPersistenceTest {
-      
-      /**
-     * Inyección de la dependencia a la clase ComidaPersistence cuyos métodos
+public class FotoPersistenceTest {
+        /**
+     * Inyección de la dependencia a la clase FotoPersistence cuyos métodos
      * se van a probar.
      */
       @Inject
-      private ComidaPersistence comidaPersistence;
+      private FotoPersistence fotoPersistence;
       
       @PersistenceContext
       private EntityManager em;
       
-      private List<ComidaEntity> data = new ArrayList<>();
-      
-      
-      
+      private List<FotoEntity> data = new ArrayList<>();
+          
   @Deployment
   public static JavaArchive createDeployment() {
         return ShrinkWrap.create(JavaArchive.class)
-                .addPackage(ComidaEntity.class.getPackage())
-                .addPackage(ComidaPersistence.class.getPackage())
+                .addPackage(FotoEntity.class.getPackage())
+                .addPackage(FotoPersistence.class.getPackage())
                 .addAsManifestResource("META-INF/persistence.xml", "persistence.xml")
                 .addAsManifestResource("META-INF/beans.xml", "beans.xml");
    }
-  
-  
+   
   @Test
   public void createPersistenceTest(){
       PodamFactory factory = new PodamFactoryImpl();
-        ComidaEntity newEntity = factory.manufacturePojo(ComidaEntity.class);
+        FotoEntity newEntity = factory.manufacturePojo(FotoEntity.class);
         
         System.out.print(newEntity.getId());
-        System.out.print(comidaPersistence.toString());
-        ComidaEntity result = comidaPersistence.create(newEntity);
+        System.out.print(fotoPersistence.toString());
+        FotoEntity result = fotoPersistence.create(newEntity);
 System.out.print(newEntity.getId());
         Assert.assertNotNull(result);
   }
   
    /**
-     * Prueba para consultar la lista de Comidas.
+     * Prueba para consultar la lista de Fotos.
      */
     @Test
-    public void getAuthorsTest() {
-        List<ComidaEntity> list = comidaPersistence.findAll();
+    public void getFotosTest() {
+        List<FotoEntity> list = fotoPersistence.findAll();
         Assert.assertEquals(data.size(), list.size());
-        for (ComidaEntity ent : list) {
+        for (FotoEntity ent : list) {
             boolean found = false;
-            for (ComidaEntity entity : data) {
+            for (FotoEntity entity : data) {
                 if (ent.getId().equals(entity.getId())) {
                     found = true;
                 }
@@ -82,14 +79,13 @@ System.out.print(newEntity.getId());
             Assert.assertTrue(found);
         }
     }
-
-    /**
-     * Prueba para consultar un Comida.
+       /**
+     * Prueba para consultar un Foto.
      
     @Test
-    public void getComidaTest() {
-        ComidaEntity entity = data.get(0);
-        ComidaEntity newEntity = comidaPersistence.find(entity.getId());
+    public void getComdaTest() {
+        FotoEntity entity = data.get(0);
+        FotoEntity newEntity = fotoPersistence.find(entity.getId());
         Assert.assertNotNull(newEntity);
         Assert.assertEquals(entity.getId(), newEntity.getId());
         Assert.assertEquals(entity.getAlimentosYCantidad(), newEntity.getAlimentosYCantidad());
@@ -98,32 +94,32 @@ System.out.print(newEntity.getId());
     
     
     /**
-     * Prueba para actualizar un Comida.
+     * Prueba para actualizar un Foto.
      
     @Test
-    public void updateComidaTest() {
-        ComidaEntity entity = data.get(0);
+    public void updateFotoTest() {
+        FotoEntity entity = data.get(0);
         PodamFactory factory = new PodamFactoryImpl();
-        ComidaEntity newEntity = factory.manufacturePojo(ComidaEntity.class);
+        FotoEntity newEntity = factory.manufacturePojo(FotoEntity.class);
 
         newEntity.setId(entity.getId());
 
-        comidaPersistence.update(newEntity);
+        fotoPersistence.update(newEntity);
 
-        ComidaEntity resp = em.find(ComidaEntity.class, entity.getId());
+        FotoEntity resp = em.find(FotoEntity.class, entity.getId());
 
         Assert.assertEquals(newEntity.getId(), resp.getId());
     }
     */
     
     /**
-     * Prueba para eliminar un Comida.
+     * Prueba para eliminar un Foto.
     
     @Test
-    public void deleteComidaTest() {
-        ComidaEntity entity = data.get(0);
-        comidaPersistence.delete(entity.getId());
-        ComidaEntity deleted = em.find(ComidaEntity.class, entity.getId());
+    public void deleteFotoTest() {
+        FotoEntity entity = data.get(0);
+        fotoPersistence.delete(entity.getId());
+        FotoEntity deleted = em.find(FotoEntity.class, entity.getId());
         Assert.assertNull(deleted);
     }
     */

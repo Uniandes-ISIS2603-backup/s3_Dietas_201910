@@ -19,16 +19,16 @@ import javax.inject.Inject;
 @Stateless
 public class PersonaLogic {
     
+    
     @Inject
     private PersonaPersistence persistence;
     
-    public PersonaEntity createPersona(PersonaEntity persona)throws BusinessLogicException
-    {
-        if(persistence.findById(persona.getId())!=null)
-        {
-            throw new BusinessLogicException("Ya existe una Persona con el id\""+persona.getId()+"\"");
+    public PersonaEntity createPersona(PersonaEntity persona)throws BusinessLogicException{
+        
+        if(persistence.findById(persona.getId()) != null){
+            throw new BusinessLogicException("Ya existe una persona con ese ID \""+persona.getId()+"\"");
         }
-        persona= persistence.create(persona);
+        persona = persistence.create(persona);
         return persona;
     }
 }
