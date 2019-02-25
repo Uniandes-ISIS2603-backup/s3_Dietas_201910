@@ -92,6 +92,7 @@ public class PersonaPersistence {
         return em.merge(personaEntity);
     }
     
+    
      /**
      * Borra una persona de la base de datos recibiendo como argumento el id de
      * la persona
