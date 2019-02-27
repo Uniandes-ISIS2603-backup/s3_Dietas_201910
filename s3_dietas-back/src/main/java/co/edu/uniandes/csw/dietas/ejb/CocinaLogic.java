@@ -6,6 +6,7 @@
 package co.edu.uniandes.csw.dietas.ejb;
 
 import co.edu.uniandes.csw.dietas.entities.CocinaEntity;
+import co.edu.uniandes.csw.dietas.entities.SuspensionEntity;
 import co.edu.uniandes.csw.dietas.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.dietas.persistence.CocinaPersistence;
 import javax.ejb.Stateless;
@@ -34,6 +35,15 @@ public class CocinaLogic
         }
         cocinaP.create(cocina);
         return cocina;
+    }
+    
+    
+    public CocinaEntity getCocina(Long cocinaId) {
+        CocinaEntity cocinaEntity = cocinaP.findById(cocinaId);
+        if (cocinaEntity == null) {
+//            LOGGER.log(Level.SEVERE, "La editorial con el id = {0} no existe", dietaId);
+        }
+        return cocinaEntity;
     }
 }
 

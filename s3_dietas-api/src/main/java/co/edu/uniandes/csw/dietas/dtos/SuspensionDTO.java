@@ -5,28 +5,59 @@
  */
 package co.edu.uniandes.csw.dietas.dtos;
 
+import co.edu.uniandes.csw.dietas.entities.SuspensionEntity;
+import java.io.Serializable;
+
 /**
  *
  * @author Andrea Montoya Serje.
  */
-public class SuspensionDTO 
+public class SuspensionDTO implements Serializable
 {
-   private int id;
-   private boolean vigente;
+   private Long id;
+   private Boolean vigente;
    private String comentarios;
-   private int numDias;
+   private Integer numDias;
 
+   
+   
+    public SuspensionDTO(){
+        
+    }
+    
+    
+    public SuspensionDTO(SuspensionEntity entity){
+        
+        this.id = entity.getId();
+        this.comentarios = entity.getComentarios();
+        this.vigente = entity.isVigente();
+        this.numDias = entity.getNumDias();
+        
+    }
+    
+    
+   public SuspensionEntity toEntity( ){
+       SuspensionEntity entity = new SuspensionEntity();
+       entity.setComentarios(this.comentarios);
+       entity.setId(this.id);
+       entity.setNumDias(this.numDias);
+       entity.setVigente(this.vigente);
+       return entity;
+   }
+   
+   
+   
     /**
      * @return the id
      */
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
     /**
      * @param id the id to set
      */
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

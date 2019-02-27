@@ -5,25 +5,51 @@
  */
 package co.edu.uniandes.csw.dietas.dtos;
 
+import co.edu.uniandes.csw.dietas.entities.CocinaEntity;
+
 /**
  *
  * @author  Andrea Montoya Serje.
  */
 public class CocinaDTO {
-    private int id;
+    private Long id;
     private String direccion;
+    
+    
+     
+    public CocinaDTO(){
+        
+    }
+    
+    
+    public CocinaDTO(CocinaEntity entity){
+        
+        this.id = entity.getId();
+        this.direccion = entity.getDireccion();
+        
+    }
+    
+    
+   public CocinaEntity toEntity(){
+       CocinaEntity entity = new CocinaEntity();
+       entity.setDireccion(this.direccion);
+       return entity;
+   }
+    
+  
+  
 
     /**
      * @return the id
      */
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
     /**
      * @param id the id to set
      */
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

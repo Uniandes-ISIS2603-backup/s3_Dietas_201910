@@ -5,9 +5,13 @@
  */
 package co.edu.uniandes.csw.dietas.resources;
 import co.edu.uniandes.csw.dietas.dtos.SuspensionDTO;
+import co.edu.uniandes.csw.dietas.ejb.SuspensionLogic;
+import co.edu.uniandes.csw.dietas.entities.SuspensionEntity;
+import co.edu.uniandes.csw.dietas.exceptions.BusinessLogicException;
 import java.util.List;
 import java.util.logging.Logger;
 import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -21,7 +25,7 @@ import javax.ws.rs.Produces;
  *
  * @author Andrea Montoya Serje.
  */
-@Path("suspension")
+@Path("suspensiones")
 @Produces("application/json")
 @Consumes("application/json")
 @RequestScoped
@@ -29,10 +33,31 @@ public class SuspensionResource
 {
      private static final Logger LOGGER = Logger.getLogger(SuspensionResource.class.getName());
     
+       
+    @Inject
+    private SuspensionLogic suspensionLogic;
+     
+ 
+    /**
+     *
+     * @param suspension
+     * @return
+     * @throws co.edu.uniandes.csw.dietas.exceptions.BusinessLogicException
+     */
     @POST
-    public SuspensionDTO createSuspension(SuspensionDTO suspension){
-       return suspension; 
+    public SuspensionDTO createSuspension(SuspensionDTO suspension) throws BusinessLogicException{
+        SuspensionEntity suspensionEntity = suspension.toEntity();
+        suspensionEntity = suspensionLogic.createSuspension(suspensionEntity);
+        SuspensionDTO suspensionDTO = new SuspensionDTO(suspensionEntity);
+        return suspensionDTO; 
     }
+    
+    
+    @GET
+      public List<SuspensionDTO> getSuspensiones(){
+          return null;
+      }
+    
     
 //    @GET
 //    public List<SuspensionDTO> getSuspensiones(){

@@ -35,4 +35,12 @@ public class SuspensionLogic
         suspension = suspensionP.create(suspension);
         return suspension;
     }
+    
+     public SuspensionEntity getSuspension(Long suspensionId) {
+        SuspensionEntity suspensionEntity = suspensionP.findById(suspensionId);
+        if (suspensionEntity == null) {
+//            LOGGER.log(Level.SEVERE, "La editorial con el id = {0} no existe", dietaId);
+        }
+        return suspensionEntity;
+    }
 }
