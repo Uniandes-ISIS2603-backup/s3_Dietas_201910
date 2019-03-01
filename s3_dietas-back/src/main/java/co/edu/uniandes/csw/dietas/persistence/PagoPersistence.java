@@ -7,9 +7,12 @@ package co.edu.uniandes.csw.dietas.persistence;
 
 import co.edu.uniandes.csw.dietas.entities.PagoEntity;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 /**
@@ -21,6 +24,7 @@ public class PagoPersistence {
     
     @PersistenceContext(unitName = "dietasPU")
     protected EntityManager em;
+    private static final Logger LOGGER = Logger.getLogger(PagoPersistence.class.getName());
     
     public PagoEntity create(PagoEntity pagoEntity){
         em.persist(pagoEntity);
@@ -38,5 +42,22 @@ public class PagoPersistence {
         else
             result = sameModo.get(0);
         return result;
+    }
+    
+    public PagoEntity findById(Long pagoId){
+        TypedQuery<PagoEntity> query = em.createQuery("Select e from PagoEntity e where e.id = :pagoId", PagoEntity.class);
+        query = query.setParameter("pagoId", pagoId);
+        List<PagoEntity> sameModo = query.getResultList();
+        PagoEntity result;
+        if(sameModo == null || sameModo.isEmpty())
+            result = null;
+        else
+            result = sameModo.get(0);
+        return result;   
+    }
+    
+    public List<PagoEntity> findAll() {
+        Query q = em.createQuery("select u from PagoEntity u");
+        return q.getResultList();
     }
 }

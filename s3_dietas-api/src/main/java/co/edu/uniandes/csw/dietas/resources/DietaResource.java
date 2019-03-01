@@ -10,7 +10,9 @@ import co.edu.uniandes.csw.dietas.dtos.DietaDetailDTO;
 import co.edu.uniandes.csw.dietas.ejb.DietaLogic;
 import co.edu.uniandes.csw.dietas.entities.DietaEntity;
 import co.edu.uniandes.csw.dietas.exceptions.BusinessLogicException;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
@@ -47,7 +49,8 @@ public class DietaResource {
     
     @GET
     public List<DietaDetailDTO> getDietas(){
-        return null;
+        List<DietaDetailDTO> listaDietas = listEntity2DTO(logica.getDietas());
+        return listaDietas;
     }
     
     @GET
@@ -60,15 +63,31 @@ public class DietaResource {
         return new DietaDetailDTO(entidad);    
     }
     
-//    @PUT
-//    @Path("{dietasId: \\d+}")
-//    public DietaDetailDTO updateDieta(@PathParam("dietasId") Long dietasId, DietaDTO dieta){
-//        return null;
-//    }
-//    
-//    @DELETE
-//    @Path("{dietasId: \\d+}")
-//    public void deleteDieta(@PathParam("dietasId") Long dietasId){
-//        
-//    }
+    @PUT
+    @Path("{dietasId: \\d+}")
+    public DietaDetailDTO updateDieta(@PathParam("dietasId") Long dietasId, DietaDetailDTO dieta){
+        dieta.setId(dietasId);
+        if (logica.getDieta(dietasId) == null) {
+            throw new WebApplicationException("El recurso /dietas/" + dietasId + " no existe.", 404);
+        }
+        DietaDetailDTO detailDTO = new DietaDetailDTO(logica.updateDieta(dietasId, dieta.toEntity()));
+        return detailDTO;
+    }
+    
+    @DELETE
+    @Path("{dietasId: \\d+}")
+    public void deleteDieta(@PathParam("dietasId") Long dietasId) throws BusinessLogicException{
+        if (logica.getDieta(dietasId) == null) {
+            throw new WebApplicationException("El recurso /dietas/" + dietasId + " no existe.", 404);
+        }
+        logica.deleteDieta(dietasId);
+    }
+    
+    private List<DietaDetailDTO> listEntity2DTO(List<DietaEntity> entityList) {
+        List<DietaDetailDTO> list = new ArrayList<>();
+        for (DietaEntity entity : entityList) {
+            list.add(new DietaDetailDTO(entity));
+        }
+        return list;
+    }
 }

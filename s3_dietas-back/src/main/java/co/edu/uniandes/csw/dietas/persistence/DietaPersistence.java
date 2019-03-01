@@ -7,6 +7,8 @@ package co.edu.uniandes.csw.dietas.persistence;
 
 import co.edu.uniandes.csw.dietas.entities.DietaEntity;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -21,6 +23,8 @@ public class DietaPersistence {
     
     @PersistenceContext(unitName = "dietasPU")
     protected EntityManager em;
+    
+    private static final Logger LOGGER = Logger.getLogger(DietaPersistence.class.getName());
     
     public DietaEntity create(DietaEntity dietaEntity){
         
@@ -51,5 +55,20 @@ public class DietaPersistence {
         else
             result = sameID.get(0);
         return result;
+    }
+    
+    public List<DietaEntity> findAll() {
+//        LOGGER.log(Level.INFO, "Consultando todas las dietas");
+        TypedQuery query = em.createQuery("Select u from DietaEntity u", DietaEntity.class);
+        return query.getResultList();
+    }
+    
+    public DietaEntity update(DietaEntity dietaEntity){
+        return em.merge(dietaEntity);
+    }
+    
+    public void delete(Long dietasId) {
+        DietaEntity dietaEntity = em.find(DietaEntity.class, dietasId);
+        em.remove(dietaEntity);
     }
 }
