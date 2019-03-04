@@ -5,10 +5,13 @@
  */
 package co.edu.uniandes.csw.dietas.resources;
 import co.edu.uniandes.csw.dietas.dtos.CalificacionYComentarioDTO;
-import co.edu.uniandes.csw.dietas.dtos.SuspensionDTO;
+import co.edu.uniandes.csw.dietas.ejb.CalificacionYComentarioLogic;
+import co.edu.uniandes.csw.dietas.entities.CalificacionYComentarioEntity;
+import co.edu.uniandes.csw.dietas.exceptions.BusinessLogicException;
 import java.util.List;
 import java.util.logging.Logger;
 import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -29,10 +32,24 @@ import javax.ws.rs.Produces;
 public class CalificacionYComentarioResource 
 {
     private static final Logger LOGGER = Logger.getLogger(CalificacionYComentarioResource.class.getName());
+   
     
+     @Inject
+    private CalificacionYComentarioLogic calificacionYcomentarioLogic;
+     
+ 
+    /**
+     *
+     * @param suspension
+     * @return
+     * @throws co.edu.uniandes.csw.dietas.exceptions.BusinessLogicException
+     */
     @POST
-    public CalificacionYComentarioDTO createCalificacionYComentario(CalificacionYComentarioDTO calificacionycomentario){
-       return calificacionycomentario; 
+    public CalificacionYComentarioDTO createCalificacionYComentario(CalificacionYComentarioDTO cYc) throws BusinessLogicException{
+        CalificacionYComentarioEntity calificacionYcomentarioEntity = cYc.toEntity();
+        calificacionYcomentarioEntity = calificacionYcomentarioLogic.createCalificacionYComentario(calificacionYcomentarioEntity);
+        CalificacionYComentarioDTO calificacionYcomentarioDTO = new CalificacionYComentarioDTO(calificacionYcomentarioEntity);
+        return calificacionYcomentarioDTO; 
     }
     
 //    @GET

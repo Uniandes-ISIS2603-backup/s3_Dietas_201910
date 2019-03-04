@@ -5,27 +5,54 @@
  */
 package co.edu.uniandes.csw.dietas.dtos;
 
+import co.edu.uniandes.csw.dietas.entities.CalificacionYComentarioEntity;
+import co.edu.uniandes.csw.dietas.entities.SuspensionEntity;
+
 /**
  *
  * @author Andrea Montoya Serje.
  */
 public class CalificacionYComentarioDTO 
 {
-    private int id;
-    private int calificacion;
-    private String comentarios;
+    private Long id;
+    private Integer calificacion;
+    private String comentario;
+    
+    
+      
+    public CalificacionYComentarioDTO(){
+        
+    }
+    
+    
+    public CalificacionYComentarioDTO(CalificacionYComentarioEntity entity){
+        
+        this.id = entity.getId();
+        this.comentario = entity.getComentario();
+        this.calificacion = entity.getCalificacion();
+        
+    }
+    
+    
+   public CalificacionYComentarioEntity toEntity( ){
+       CalificacionYComentarioEntity entity = new CalificacionYComentarioEntity();
+       entity.setComentario(this.comentario);
+       entity.setCalificacion(this.calificacion);
+       return entity;
+   }
+    
 
      /**
      * @return the id
      */
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
     /**
      * @param id the id to set
      */
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
     
@@ -47,15 +74,15 @@ public class CalificacionYComentarioDTO
     /**
      * @return the comentarios
      */
-    public String getComentarios() {
-        return comentarios;
+    public String getComentario() {
+        return comentario;
     }
 
     /**
      * @param comentarios the comentarios to set
      */
-    public void setComentarios(String comentarios) {
-        this.comentarios = comentarios;
+    public void setComentario(String comentarios) {
+        this.comentario = comentarios;
     }
     
     

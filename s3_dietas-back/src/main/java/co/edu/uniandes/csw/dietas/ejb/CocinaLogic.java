@@ -29,7 +29,7 @@ public class CocinaLogic
     
     public CocinaEntity createCocina (CocinaEntity cocina) throws BusinessLogicException
     {
-        if(cocinaP.findById( cocina.getId())!= null)
+        if(cocinaP.findById( cocina.getId())!= null   ||  cocinaP.findByDirection(cocina.getDireccion()) != null )
         {
             throw new BusinessLogicException("Ya existe una cocina con ese id");
         }
@@ -41,7 +41,7 @@ public class CocinaLogic
     public CocinaEntity getCocina(Long cocinaId) {
         CocinaEntity cocinaEntity = cocinaP.findById(cocinaId);
         if (cocinaEntity == null) {
-//            LOGGER.log(Level.SEVERE, "La editorial con el id = {0} no existe", dietaId);
+//            LOGGER.log(Level.SEVERE, "La editorial con el id = {0} no existe", cocinaId);
         }
         return cocinaEntity;
     }

@@ -9,7 +9,6 @@ import co.edu.uniandes.csw.dietas.entities.CalificacionYComentarioEntity;
 import co.edu.uniandes.csw.dietas.entities.SuspensionEntity;
 import co.edu.uniandes.csw.dietas.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.dietas.persistence.CalificacionYComentarioPersistence;
-import co.edu.uniandes.csw.dietas.persistence.SuspensionPersistence;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
@@ -36,5 +35,14 @@ public class CalificacionYComentarioLogic
         }
         calificacionYcomentarioP.create(calificacionYcomentario);
         return calificacionYcomentario;
+    }
+    
+    
+     public CalificacionYComentarioEntity getCalificacionYComentario(Long calificacionYcomentarioId) {
+       CalificacionYComentarioEntity calificacionYcomentarioEntity = calificacionYcomentarioP.findById(calificacionYcomentarioId);
+        if (calificacionYcomentarioEntity == null) {
+//            LOGGER.log(Level.SEVERE, "La editorial con el id = {0} no existe", calificacionycomentarioId);
+        }
+        return calificacionYcomentarioEntity;
     }
 }

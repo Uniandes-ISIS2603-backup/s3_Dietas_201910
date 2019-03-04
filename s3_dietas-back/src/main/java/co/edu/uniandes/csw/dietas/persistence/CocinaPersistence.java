@@ -6,6 +6,7 @@
 package co.edu.uniandes.csw.dietas.persistence;
 
 import co.edu.uniandes.csw.dietas.entities.CocinaEntity;
+import co.edu.uniandes.csw.dietas.entities.DietaEntity;
 import co.edu.uniandes.csw.dietas.entities.SuspensionEntity;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -47,4 +48,20 @@ public class CocinaPersistence {
         }
         return result;
     }
+  
+    
+    
+    public CocinaEntity findByDirection(String direccion){
+        TypedQuery<CocinaEntity> query = em.createQuery("Select e From CocinaEntity e where e.direccion = :direccion", CocinaEntity.class);
+        query = query.setParameter("direccion", direccion);
+        List<CocinaEntity> sameDireccion = query.getResultList();
+        CocinaEntity result;
+        if(sameDireccion == null || sameDireccion.isEmpty())
+            result = null;
+        else
+            result = sameDireccion.get(0);
+        return result;
+    }
+    
+    
 }
