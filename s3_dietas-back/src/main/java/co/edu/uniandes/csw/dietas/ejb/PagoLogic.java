@@ -46,4 +46,13 @@ public class PagoLogic {
         List<PagoEntity> pagos = persistence.findAll();
         return pagos;
     }
+    
+    public PagoEntity updatePago(Long pagoId, PagoEntity pagoEntity) {
+        PagoEntity newPagoEntity = persistence.update(pagoEntity);
+        return newPagoEntity;
+    }
+    
+    public void deletePago(Long pagosId) throws BusinessLogicException {
+        persistence.delete(pagosId);
+    } 
 }

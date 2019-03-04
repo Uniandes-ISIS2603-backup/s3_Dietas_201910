@@ -60,4 +60,13 @@ public class PagoPersistence {
         Query q = em.createQuery("select u from PagoEntity u");
         return q.getResultList();
     }
+    
+    public PagoEntity update(PagoEntity pagoEntity){
+        return em.merge(pagoEntity);
+    }
+    
+    public void delete(Long pagosId) {
+        PagoEntity pagoEntity = em.find(PagoEntity.class, pagosId);
+        em.remove(pagoEntity);
+    }
 }

@@ -47,7 +47,7 @@ public class PagoResource {
     
     @GET
     @Path("{pagosId: \\d+}")
-    public PagoDTO getPago(@PathParam("id") Long pagosId){
+    public PagoDTO getPago(@PathParam("pagosId") Long pagosId){
         PagoEntity pago = logica.getPago(pagosId);
         if(pago == null){
             throw new WebApplicationException("El recurso /pagos/"+pagosId+" no existe.", 404);
@@ -61,17 +61,25 @@ public class PagoResource {
         return listaPagos;
     }
     
-//    @PUT
-//    @Path("{pagosId: \\d+}")
-//    public PagoDTO updatePago(@PathParam("pagosId") Long pagosId, PagoDTO pago){
-//        return null;
-//    }
-//    
-//    @DELETE
-//    @Path("{pagosId: \\d+}")
-//    public void deletePago(@PathParam("pagosId") Long pagosId){
-//        
-//    }
+    @PUT
+    @Path("{pagosId: \\d+}")
+    public PagoDTO updatePago(@PathParam("pagosId") Long pagosId, PagoDTO pago){
+        pago.setId(pagosId);
+        if (logica.getPago(pagosId) == null) {
+            throw new WebApplicationException("El recurso /pagos/" + pagosId + " no existe.", 404);
+        }
+        PagoDTO pagoDTO = new PagoDTO(logica.updatePago(pagosId, pago.toEntity()));
+        return pagoDTO;
+    }
+    
+    @DELETE
+    @Path("{pagosId: \\d+}")
+    public void deletePago(@PathParam("pagosId") Long pagosId)throws BusinessLogicException{
+        if (logica.getPago(pagosId) == null) {
+            throw new WebApplicationException("El recurso /pagos/" + pagosId + " no existe.", 404);
+        }
+        logica.deletePago(pagosId);
+    }
     
     private List<PagoDTO> listEntity2DetailDTO(List<PagoEntity> entityList) {
         List<PagoDTO> list = new ArrayList<>();
