@@ -5,6 +5,7 @@
  */
 package co.edu.uniandes.csw.dietas.dtos;
 
+import co.edu.uniandes.csw.dietas.entities.HallOfFameEntity;
 import java.io.Serializable;
 
 /**
@@ -17,6 +18,18 @@ public class HallOfFameDTO implements Serializable {
 
     public HallOfFameDTO(){
         
+    }
+    
+     public HallOfFameDTO (HallOfFameEntity entity){
+        this.id=entity.getId();
+        this.mensaje=entity.getMensaje();
+    }
+    
+    public HallOfFameEntity toEntity(){
+        HallOfFameEntity entity = new HallOfFameEntity();
+        entity.setId(this.getId());
+        entity.setMensaje(this.getMensaje());
+        return entity;
     }
     
     /**

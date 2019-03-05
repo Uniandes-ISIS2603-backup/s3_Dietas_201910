@@ -5,8 +5,11 @@
  */
 package co.edu.uniandes.csw.dietas.dtos;
 
+import co.edu.uniandes.csw.dietas.entities.HallOfFameEntity;
+import co.edu.uniandes.csw.dietas.entities.PersonaEntity;
 import java.io.Serializable;
 import java.util.List;
+import java.util.ArrayList;
 
 /**
  *
@@ -14,9 +17,35 @@ import java.util.List;
  */
 public class HallOfFameDetailDTO extends HallOfFameDTO implements Serializable {
     
-    //private List <PersonaDTO> personas;
+    private List <PersonaDTO> personas;
+ 
     
     public HallOfFameDetailDTO (){
-        
+        super();
     }
+    
+    public HallOfFameDetailDTO (HallOfFameEntity entity){
+        super(entity);
+        if(entity!=null){
+            if(entity.getPersonas() !=null){
+                personas= new ArrayList<>();
+                for(PersonaEntity personas: entity. getPersonas()){
+                    //personas.add(new PersonaDTO(persona));
+                }
+            }
+          }
+    }
+    public HallOfFameEntity toEntity(){
+        HallOfFameEntity entity=super.toEntity();
+        if(personas!=null){
+            List<PersonaEntity> personaEntity= new ArrayList<>();
+            for(PersonaDTO persona: personas)
+            {
+               //persona/entity.add(persona.toEntity()); 
+            }
+            entity.setPersonas(personaEntity);
+        }
+        return entity;
+    }
+    
 }

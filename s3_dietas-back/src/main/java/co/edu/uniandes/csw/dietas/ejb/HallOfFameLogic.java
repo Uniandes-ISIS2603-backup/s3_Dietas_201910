@@ -37,4 +37,12 @@ public class HallOfFameLogic {
         hall=persistence.create(hall);
         return hall;
     }
+    public HallOfFameEntity getHall(Long hallId){
+        HallOfFameEntity hallEntity= persistence.findById(hallId);
+        if(hallEntity == null){
+            //            LOGGER.log(Level.SEVERE, "El hall con el id = {0} no existe", hallId);
+        }
+        return hallEntity;
+    }
+    
 }

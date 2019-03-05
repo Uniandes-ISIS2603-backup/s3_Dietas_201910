@@ -5,6 +5,7 @@
  */
 package co.edu.uniandes.csw.dietas.dtos;
 
+import co.edu.uniandes.csw.dietas.entities.ComidaEntity;
 import java.io.Serializable;
 
 /**
@@ -21,6 +22,19 @@ public class ComidaDTO implements Serializable{
     */
     public ComidaDTO (){
         
+    }
+    /**
+     * Conviertir Entity a DTO (Crea un nuevo DTO con los valores que recibe en
+     * la entidad que viene de argumento.
+     *
+     * @param comidaEntity: Es la entidad que se va a convertir a DTO
+     */
+    public ComidaDTO(ComidaEntity comidaEntity) {
+        if (comidaEntity != null) {
+            this.id = comidaEntity.getId();
+            this.tipo = comidaEntity.getTipo();
+            this.alimentosYCantidades= comidaEntity.getAlimentosYCantidad();
+        }
     }
 
     /**
@@ -64,7 +78,20 @@ public class ComidaDTO implements Serializable{
     public void setAlimentosYCantidades(String alimentosYCantidades) {
         this.alimentosYCantidades = alimentosYCantidades;
     }
-    
+
+    /**
+     * Convertir DTO a Entity
+     *
+     * @return Un Entity con los valores del DTO
+     */
+    public ComidaEntity toEntity() {
+        ComidaEntity comidaEntity = new ComidaEntity();
+        comidaEntity.setId(this.id);
+        comidaEntity.setTipo(this.tipo);
+        comidaEntity.setAlimentosYCantidad(this.alimentosYCantidades);
+        return comidaEntity;
+   
+    }
    
 
   
