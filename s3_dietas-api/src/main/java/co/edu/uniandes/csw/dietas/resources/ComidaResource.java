@@ -17,10 +17,14 @@ import co.edu.uniandes.csw.dietas.ejb.ComidaLogic;
 import co.edu.uniandes.csw.dietas.entities.ComidaEntity;
 import javax.ws.rs.PathParam;
 import co.edu.uniandes.csw.dietas.exceptions.BusinessLogicException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.List;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
+import javax.ws.rs.PUT;
+import javax.ws.rs.WebApplicationException;
 
 
 /**
@@ -49,5 +53,50 @@ public class ComidaResource {
         ComidaDTO nuevoComidaDTO = new ComidaDTO(nuevoComidaEntity);
         LOGGER.log(Level.INFO, "ComidaResource createComida: output: {0}", nuevoComidaDTO);
         return nuevoComidaDTO;
+    }
+    
+    @GET
+    @Path("{comidasId: \\d+}")
+    public ComidaDTO getComida(@PathParam("comidasId") Long comidasId){
+        ComidaEntity comida = comidaLogic.getComida(comidasId);
+        if(comida == null){
+            throw new WebApplicationException("El recurso /comidas/"+comidasId+" no existe.", 404);
+        }
+        return new ComidaDTO(comida);
+    }
+    
+    
+    @GET
+    public List<ComidaDTO> getComidas(){
+        List<ComidaDTO> listaComidas = listEntity2DetailDTO(comidaLogic.getComidas());
+        return listaComidas;
+    }
+    
+    @PUT
+    @Path("{comidasId: \\d+}")
+    public ComidaDTO updateComida(@PathParam("comidasId") Long comidasId, ComidaDTO comida){
+        comida.setId(comidasId);
+        if (comidaLogic.getComida(comidasId) == null) {
+            throw new WebApplicationException("El recurso /comidas/" + comidasId + " no existe.", 404);
+        }
+        ComidaDTO comidaDTO = new ComidaDTO(comidaLogic.updateComida(comidasId, comida.toEntity()));
+        return comidaDTO;
+    }
+    
+    @DELETE
+    @Path("{comidasId: \\d+}")
+    public void deleteComida(@PathParam("comidasId") Long comidasId)throws BusinessLogicException{
+        if (comidaLogic.getComida(comidasId) == null) {
+            throw new WebApplicationException("El recurso /comidas/" + comidasId + " no existe.", 404);
+        }
+        comidaLogic.deleteComida(comidasId);
+    }
+    
+    private List<ComidaDTO> listEntity2DetailDTO(List<ComidaEntity> entityList) {
+        List<ComidaDTO> list = new ArrayList<>();
+        for (ComidaEntity entity : entityList) {
+            list.add(new ComidaDTO(entity));
+        }
+        return list;
     }
     }

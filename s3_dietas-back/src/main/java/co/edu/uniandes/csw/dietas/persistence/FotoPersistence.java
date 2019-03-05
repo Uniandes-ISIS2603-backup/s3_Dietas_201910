@@ -88,7 +88,20 @@ public class FotoPersistence {
         }
         return result;
     }
-    
+    public FotoEntity findById(Long id){
+        TypedQuery query = em.createQuery("select u from FotoEntity u where u.id = :id", FotoEntity.class);
+        query=query.setParameter("id", id);
+        List<FotoEntity> sameId = query.getResultList();
+        FotoEntity result;
+        if(sameId == null){
+            result=null;
+        }else if(sameId.isEmpty()){
+            result=null;
+        }else{
+            result = sameId.get(0);
+        }
+        return result;
+    }
     /**
      * Actualiza un foto
      * 

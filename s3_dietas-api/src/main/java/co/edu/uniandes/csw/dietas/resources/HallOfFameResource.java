@@ -11,6 +11,7 @@ import co.edu.uniandes.csw.dietas.entities.HallOfFameEntity;
 import co.edu.uniandes.csw.dietas.dtos.HallOfFameDetailDTO;
 import javax.ws.rs.PathParam;
 import co.edu.uniandes.csw.dietas.exceptions.BusinessLogicException;
+import java.util.ArrayList;
 import java.util.logging.Logger;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
@@ -20,6 +21,8 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.GET;
 import java.util.List;
+import javax.ws.rs.DELETE;
+import javax.ws.rs.PUT;
 import javax.ws.rs.WebApplicationException;
 
 /**
@@ -47,8 +50,9 @@ public class HallOfFameResource {
      }
      
     @GET
-    public List<HallOfFameDetailDTO> getHall(){
-       return null;
+    public List<HallOfFameDetailDTO> getHalls(){
+      List<HallOfFameDetailDTO> listaHalls = listEntity2DTO(hallLogic.getHalls());
+        return listaHalls;
     }
     
     @GET
@@ -60,6 +64,35 @@ public class HallOfFameResource {
         }
           return new HallOfFameDetailDTO(entity);
         
+    }
+    
+    
+    @PUT
+    @Path("{hallsId: \\d+}")
+    public HallOfFameDetailDTO updateHall(@PathParam("hallsId") Long hallsId, HallOfFameDetailDTO hall){
+        hall.setId(hallsId);
+        if (hallLogic.getHall(hallsId) == null) {
+            throw new WebApplicationException("El recurso /halls/" + hallsId + " no existe.", 404);
+        }
+        HallOfFameDetailDTO detailDTO = new HallOfFameDetailDTO(hallLogic.updateHall(hallsId, hall.toEntity()));
+        return detailDTO;
+    }
+    
+    @DELETE
+    @Path("{hallsId: \\d+}")
+    public void deleteHall(@PathParam("hallsId") Long hallsId) throws BusinessLogicException{
+        if (hallLogic.getHall(hallsId) == null) {
+            throw new WebApplicationException("El recurso /halls/" + hallsId + " no existe.", 404);
+        }
+        hallLogic.deleteHall(hallsId);
+    }
+    
+     private List<HallOfFameDetailDTO> listEntity2DTO(List<HallOfFameEntity> entityList) {
+        List<HallOfFameDetailDTO> list = new ArrayList<>();
+        for (HallOfFameEntity entity : entityList) {
+            list.add(new HallOfFameDetailDTO(entity));
+        }
+        return list;
     }
 }
      

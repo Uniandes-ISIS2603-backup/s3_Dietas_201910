@@ -8,6 +8,9 @@ package co.edu.uniandes.csw.dietas.ejb;
 import co.edu.uniandes.csw.dietas.entities.FotoEntity;
 import co.edu.uniandes.csw.dietas.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.dietas.persistence.FotoPersistence;
+import static co.edu.uniandes.csw.dietas.persistence.SemanaPersistence.LOGGER;
+import java.util.List;
+import java.util.logging.Level;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 /**
@@ -38,5 +41,25 @@ public class FotoLogic {
         return foto;
     }
     
+    public FotoEntity getFoto(Long fotoId){
+        FotoEntity fotoE = persistence.findById(fotoId);
+        if(fotoE == null){
+            LOGGER.log(Level.SEVERE, "La foto con el id = {0} no existe", fotoId);
+        }
+        return fotoE;
+    }
+     
+      public List<FotoEntity> getFotos() {
+        List<FotoEntity> fotos = persistence.findAll();
+        return fotos;
+    }
+      
+      public FotoEntity updateFoto(Long fotoId, FotoEntity fotoEntity) {
+        FotoEntity newFotoEntity = persistence.update(fotoEntity);
+        return newFotoEntity;
+    }
     
+    public void deleteFoto(Long fotosId) throws BusinessLogicException {
+        persistence.delete(fotosId);
+    } 
 }
