@@ -7,9 +7,9 @@ package co.edu.uniandes.csw.dietas.persistence;
 
 
 import co.edu.uniandes.csw.dietas.entities.SuspensionEntity;
-import static co.edu.uniandes.csw.dietas.persistence.SemanaPersistence.LOGGER;
 import java.util.List;
 import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -21,9 +21,12 @@ import javax.persistence.TypedQuery;
  */
 @Stateless
 public class SuspensionPersistence {
+    
+    private static final Logger LOGGER = Logger.getLogger(SuspensionPersistence.class.getName());
      @PersistenceContext(unitName="dietasPU")
     protected EntityManager em;
-    public SuspensionEntity create(SuspensionEntity suspensionParam)
+   
+     public SuspensionEntity create(SuspensionEntity suspensionParam)
     {
         em.persist(suspensionParam);
         return suspensionParam;

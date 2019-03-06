@@ -11,9 +11,6 @@ import co.edu.uniandes.csw.dietas.persistence.SuspensionPersistence;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.transaction.UserTransaction;
 
 /**
  *
@@ -40,14 +37,14 @@ public class SuspensionLogic
      public SuspensionEntity getSuspension(Long suspensionId) {
         SuspensionEntity suspensionEntity = suspensionP.findById(suspensionId);
         if (suspensionEntity == null) {
-//            LOGGER.log(Level.SEVERE, "La editorial con el id = {0} no existe", suspensionId);
+//            LOGGER.log(Level.SEVERE, "La suspension con el id = {0} no existe", suspensionId);
         }
         return suspensionEntity;
     }
      
      public List<SuspensionEntity> getSuspensiones() {
-        List<SuspensionEntity> pagos = suspensionP.findAll();
-        return pagos;
+        List<SuspensionEntity> suspensiones = suspensionP.findAll();
+        return suspensiones;
     }
      
      public SuspensionEntity updateSuspension(Long suspensionId, SuspensionEntity suspensionEntity) {

@@ -8,6 +8,8 @@ package co.edu.uniandes.csw.dietas.persistence;
 
 import co.edu.uniandes.csw.dietas.entities.CalificacionYComentarioEntity;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -20,13 +22,28 @@ import javax.persistence.TypedQuery;
 @Stateless
 public class CalificacionYComentarioPersistence 
 {
+    private static final Logger LOGGER = Logger.getLogger(CalificacionYComentarioPersistence.class.getName());
     @PersistenceContext(unitName="dietasPU")
     protected EntityManager em;
+    
+    
+    
     public CalificacionYComentarioEntity create(CalificacionYComentarioEntity calificacionYcomentariParam)
     {
         em.persist(calificacionYcomentariParam);
         return calificacionYcomentariParam;
     }
+    
+    
+    
+     public List<CalificacionYComentarioEntity> findAll() {
+        LOGGER.log(Level.INFO, "Consultando todas las CalificacionesYComentarios de una dieta");
+        // Se crea un query para buscar todas las CalificacionesYComentarios en la base de datos.
+        TypedQuery query = em.createQuery("select u from CalificacionYComentarioEntity u", CalificacionYComentarioEntity.class);
+        // Note que en el query se hace uso del método getResultList() que obtiene una lista de CalificacionesYComentarios.
+        return query.getResultList();
+    }
+    
     
     
      public CalificacionYComentarioEntity findById(Long id){
@@ -43,4 +60,13 @@ public class CalificacionYComentarioPersistence
         }
         return result;
     }
+     
+     
+     public void delete(Long calificacionYcomentarioId) {
+
+        LOGGER.log(Level.INFO, "Se borra la CalificacionYComentario con el id dado", calificacionYcomentarioId);
+        CalificacionYComentarioEntity calificacionYcomentarioEntity = em.find(CalificacionYComentarioEntity.class, calificacionYcomentarioId);
+        em.remove(calificacionYcomentarioEntity);
+    }
+     
 }

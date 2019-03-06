@@ -56,22 +56,16 @@ public class SuspensionResource
     
       
       @GET
-    @Path("{SuspensionId: \\d+}")
-    public SuspensionDTO getSuspension(@PathParam("SuspensionId") Long suspensionId){
-        SuspensionEntity suspension = suspensionLogic.getSuspension(suspensionId);
+    @Path("{suspensionesId: \\d+}")
+    public SuspensionDTO getSuspension(@PathParam("suspensionesId") Long suspensionesId){
+        SuspensionEntity suspension = suspensionLogic.getSuspension(suspensionesId);
         if(suspension == null){
-            throw new WebApplicationException("El recurso /suspension/"+suspensionId+" no existe.", 404);
+            throw new WebApplicationException("El recurso /suspensiones/"+suspensionesId+" no existe.", 404);
         }
         return new SuspensionDTO(suspension);
     }
     
-    private List<SuspensionDTO> listEntity2DetailDTO(List<SuspensionEntity> entityList) {
-        List<SuspensionDTO> list = new ArrayList<>();
-        for (SuspensionEntity entity : entityList) {
-            list.add(new SuspensionDTO(entity));
-        }
-        return list;
-    }
+    
     
     
      @GET
@@ -99,6 +93,15 @@ public class SuspensionResource
             throw new WebApplicationException("El recurso /suspensiones/" + suspensionesId + " no existe.", 404);
         }
         suspensionLogic.deleteSuspension(suspensionesId);
+    }
+    
+    
+    private List<SuspensionDTO> listEntity2DetailDTO(List<SuspensionEntity> entityList) {
+        List<SuspensionDTO> list = new ArrayList<>();
+        for (SuspensionEntity entity : entityList) {
+            list.add(new SuspensionDTO(entity));
+        }
+        return list;
     }
     
 }

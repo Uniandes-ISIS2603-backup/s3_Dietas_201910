@@ -8,6 +8,7 @@ import co.edu.uniandes.csw.dietas.dtos.CocinaDTO;
 import co.edu.uniandes.csw.dietas.ejb.CocinaLogic;
 import co.edu.uniandes.csw.dietas.entities.CocinaEntity;
 import co.edu.uniandes.csw.dietas.exceptions.BusinessLogicException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 import javax.enterprise.context.RequestScoped;
@@ -16,10 +17,10 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
-import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.WebApplicationException;
 
 /**
  *
@@ -45,24 +46,41 @@ public class CocinaResource
         CocinaDTO cocinaDTO = new CocinaDTO(cocinaEntity);
         return cocinaDTO; 
     }
+   
+     @GET
+    @Path("{CocinasId: \\d+}")
+    public CocinaDTO getCocina(@PathParam("CocinasId") Long cocinasId){
+        CocinaEntity cocina = cocinaLogic.getCocina(cocinasId);
+        if(cocina == null){
+            throw new WebApplicationException("El recurso /cocinas/"+cocinasId+" no existe.", 404);
+        }
+        return new CocinaDTO(cocina);
+    }
     
-//    @GET
-//    @Path("{cocinaId: \\d+}")
-//    public CocinaDTO getCocina(@PathParam("cocinanId") Long cocinaId){
-//        return null;
-//    }
-//    
-//    @GET
-//    @Path("{name: [a-zA-Z][a-zA-Z]*}}")
-//    public CocinaDTO getCocina(@PathParam("cocinanDireccion") String cocinaDireccion){
-//        return null;
-//    }
-//    
-//    
-//    @DELETE
-//    @Path("{cocinaId: \\d+}")
-//    public void deleteCocina(@PathParam("cocinaId") Long cocinaId){
-//        
-//    }
+    
+       
+     @GET
+    public List<CocinaDTO> getCocinas(){
+        List<CocinaDTO> list = listEntity2DetailDTO(cocinaLogic.getCocinas());
+        return list;
+    }
+    
+    private List<CocinaDTO> listEntity2DetailDTO(List<CocinaEntity> entityList) {
+        List<CocinaDTO> list = new ArrayList<>();
+        for (CocinaEntity entity : entityList) {
+            list.add(new CocinaDTO(entity));
+        }
+        return list;
+    }
+    
+    
+    @DELETE
+    @Path("{cocinasId: \\d+}")
+    public void deleteCocina(@PathParam("cocinasId") Long cocinasId)throws BusinessLogicException{
+        if (cocinaLogic.getCocina(cocinasId) == null) {
+            throw new WebApplicationException("El recurso /cocinas/" + cocinasId + " no existe.", 404);
+        }
+        cocinaLogic.deleteCocina(cocinasId);
+    }
     
 }
