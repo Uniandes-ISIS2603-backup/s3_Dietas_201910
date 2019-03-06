@@ -6,12 +6,13 @@
 package co.edu.uniandes.csw.dietas.dtos;
 
 import co.edu.uniandes.csw.dietas.entities.FotoEntity;
+import java.io.Serializable;
 
 /**
  *
  * @author Louis Gualtero
  */
-public class FotoDTO {
+public class FotoDTO implements Serializable{
     
     private Long id;
     private String nombre;

@@ -41,7 +41,7 @@ public class HallOfFameDetailDTO extends HallOfFameDTO implements Serializable {
             List<PersonaEntity> personaEntity= new ArrayList<>();
             for(PersonaDTO persona: personas)
             {
-               //persona/entity.add(persona.toEntity()); 
+               //personaEntity.add(persona.toEntity()); 
             }
             entity.setPersonas(personaEntity);
         }
