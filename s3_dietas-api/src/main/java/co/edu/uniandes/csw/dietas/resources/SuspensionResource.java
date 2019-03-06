@@ -8,6 +8,7 @@ import co.edu.uniandes.csw.dietas.dtos.SuspensionDTO;
 import co.edu.uniandes.csw.dietas.ejb.SuspensionLogic;
 import co.edu.uniandes.csw.dietas.entities.SuspensionEntity;
 import co.edu.uniandes.csw.dietas.exceptions.BusinessLogicException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 import javax.enterprise.context.RequestScoped;
@@ -20,6 +21,7 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.WebApplicationException;
 
 /**
  *
@@ -52,29 +54,51 @@ public class SuspensionResource
         return suspensionDTO; 
     }
     
+      
+      @GET
+    @Path("{SuspensionId: \\d+}")
+    public SuspensionDTO getSuspension(@PathParam("SuspensionId") Long suspensionId){
+        SuspensionEntity suspension = suspensionLogic.getSuspension(suspensionId);
+        if(suspension == null){
+            throw new WebApplicationException("El recurso /suspension/"+suspensionId+" no existe.", 404);
+        }
+        return new SuspensionDTO(suspension);
+    }
     
-    @GET
-      public List<SuspensionDTO> getSuspensiones(){
-          return null;
-      }
+    private List<SuspensionDTO> listEntity2DetailDTO(List<SuspensionEntity> entityList) {
+        List<SuspensionDTO> list = new ArrayList<>();
+        for (SuspensionEntity entity : entityList) {
+            list.add(new SuspensionDTO(entity));
+        }
+        return list;
+    }
     
     
-//    @GET
-//    public List<SuspensionDTO> getSuspensiones(){
-//        return null;
-//    }
-//    
-//    @GET
-//    @Path("{suspensionId: \\d+}")
-//    public SuspensionDTO getSuspension(@PathParam("suspensionId") Long suspensionId){
-//        return null;
-//    }
-//    
-//    @PUT
-//    @Path("{suspensionId: \\d+}")
-//    public SuspensionDTO updateSuspension(@PathParam("suspensionId") Long suspensionId, SuspensionDTO suspension){
-//        return null;
-//    }
+     @GET
+    public List<SuspensionDTO> getSuspensiones(){
+        List<SuspensionDTO> list = listEntity2DetailDTO(suspensionLogic.getSuspensiones());
+        return list;
+    }
     
+    
+      @PUT
+    @Path("{suspensionesId: \\d+}")
+    public SuspensionDTO updateSuspension(@PathParam("suspensionesId") Long suspensionesId, SuspensionDTO suspension){
+        suspension.setId(suspensionesId);
+        if (suspensionLogic.getSuspension(suspensionesId) == null) {
+            throw new WebApplicationException("El recurso /suspension/" + suspensionesId + " no existe.", 404);
+        }
+        SuspensionDTO suspensionDTO = new SuspensionDTO(suspensionLogic.updateSuspension(suspensionesId, suspension.toEntity()));
+        return suspensionDTO;
+    }
+    
+     @DELETE
+    @Path("{suspensionesId: \\d+}")
+    public void deleteSuspension(@PathParam("suspensionesId") Long suspensionesId)throws BusinessLogicException{
+        if (suspensionLogic.getSuspension(suspensionesId) == null) {
+            throw new WebApplicationException("El recurso /suspensiones/" + suspensionesId + " no existe.", 404);
+        }
+        suspensionLogic.deleteSuspension(suspensionesId);
+    }
     
 }

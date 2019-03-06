@@ -8,6 +8,7 @@ package co.edu.uniandes.csw.dietas.ejb;
 import co.edu.uniandes.csw.dietas.entities.SuspensionEntity;
 import co.edu.uniandes.csw.dietas.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.dietas.persistence.SuspensionPersistence;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
@@ -42,5 +43,19 @@ public class SuspensionLogic
 //            LOGGER.log(Level.SEVERE, "La editorial con el id = {0} no existe", suspensionId);
         }
         return suspensionEntity;
+    }
+     
+     public List<SuspensionEntity> getSuspensiones() {
+        List<SuspensionEntity> pagos = suspensionP.findAll();
+        return pagos;
+    }
+     
+     public SuspensionEntity updateSuspension(Long suspensionId, SuspensionEntity suspensionEntity) {
+        SuspensionEntity suspensionE = suspensionP.update(suspensionEntity);
+        return suspensionE;
+    }
+     
+     public void deleteSuspension(Long suspensionId) throws BusinessLogicException {
+        suspensionP.delete(suspensionId);
     }
 }

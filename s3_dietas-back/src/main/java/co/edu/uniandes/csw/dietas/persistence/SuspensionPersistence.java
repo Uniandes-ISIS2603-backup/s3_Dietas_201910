@@ -69,4 +69,17 @@ public class SuspensionPersistence {
         return result;
     }
     
+    
+     public SuspensionEntity update(SuspensionEntity suspensionEntity){
+        return em.merge(suspensionEntity);
+    }
+     
+     
+     public void delete(Long suspensionId) {
+
+        LOGGER.log(Level.INFO, "Se borra la suspension con el id dado", suspensionId);
+        SuspensionEntity suspensionEntity = em.find(SuspensionEntity.class, suspensionId);
+        em.remove(suspensionEntity);
+    }
+    
 }
