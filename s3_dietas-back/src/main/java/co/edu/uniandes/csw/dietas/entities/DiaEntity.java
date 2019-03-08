@@ -1,4 +1,4 @@
-/*
+ /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -29,9 +29,6 @@ public class DiaEntity extends BaseEntity implements Serializable {
     
     private boolean especial;
      
-    /**
-     * @return the id
-     */
 
      
     /**
@@ -46,6 +43,25 @@ public class DiaEntity extends BaseEntity implements Serializable {
      */
     public void setEspecial(boolean especial) {
         this.especial = especial;
+    }
+    
+    public void setComidas(List<ComidaEntity> menus)
+    {
+        this.comidas = menus;
+    }
+    public List<ComidaEntity> getComidas()
+    {
+        return comidas;
+    }
+    
+    public SemanaEntity getSemana()
+    {
+        return semana;
+    }
+    
+    public void setSemana(SemanaEntity semanaDelDía)
+    {
+        semana = semanaDelDía;
     }
     
    
