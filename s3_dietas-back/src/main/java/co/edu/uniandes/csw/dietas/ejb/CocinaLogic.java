@@ -49,6 +49,11 @@ public class CocinaLogic
         return cocinas;
     }
  
+     public CocinaEntity updateCocina(Long cocinaId, CocinaEntity cocinaEntity) {
+       CocinaEntity cocinaE = cocinaP.update(cocinaEntity);
+        return cocinaE;
+    }
+    
      
      public void deleteCocina(Long cocinaId) throws BusinessLogicException {
         cocinaP.delete(cocinaId);

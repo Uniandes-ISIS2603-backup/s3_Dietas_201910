@@ -52,6 +52,11 @@ public class CalificacionYComentarioLogic
         return calificacionesYcomentarios;
     }
      
+      public CalificacionYComentarioEntity updateCalificacionYComentario(Long calificacionYcomentarioId, CalificacionYComentarioEntity calificacionYcomentarioEntity) {
+        CalificacionYComentarioEntity calificacionYcomentarioE = calificacionYcomentarioP.update(calificacionYcomentarioEntity);
+        return calificacionYcomentarioE;
+    }
+     
      
      public void deleteCalificacionYComentario(Long calificacionesYcomentariosId) throws BusinessLogicException {
         calificacionYcomentarioP.delete(calificacionesYcomentariosId);

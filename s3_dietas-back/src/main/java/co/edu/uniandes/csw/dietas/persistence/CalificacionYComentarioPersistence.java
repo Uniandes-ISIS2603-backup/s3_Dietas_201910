@@ -61,6 +61,10 @@ public class CalificacionYComentarioPersistence
         return result;
     }
      
+      public CalificacionYComentarioEntity update(CalificacionYComentarioEntity calificacionYcomentarioEntity){
+        return em.merge(calificacionYcomentarioEntity);
+    }
+     
      
      public void delete(Long calificacionYcomentarioId) {
 

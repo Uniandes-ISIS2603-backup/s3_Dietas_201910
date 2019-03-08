@@ -74,6 +74,19 @@ public class CalificacionYComentarioResource
     }
     
     
+    
+     @PUT
+    @Path("{calificacionYcomentarioId: \\d+}")
+    public CalificacionYComentarioDTO updateCalificacionYComentario(@PathParam("calificacionYcomentarioId") Long calificacionYcomentarioId, CalificacionYComentarioDTO calificacionYcomentario){
+        calificacionYcomentario.setId(calificacionYcomentarioId);
+        if (calificacionYcomentarioLogic.getCalificacionYComentario(calificacionYcomentarioId) == null) {
+            throw new WebApplicationException("El recurso /calificacionYcomentario/" + calificacionYcomentarioId + " no existe.", 404);
+        }
+        CalificacionYComentarioDTO calificacionYcomentarioDTO = new CalificacionYComentarioDTO(calificacionYcomentarioLogic.updateCalificacionYComentario(calificacionYcomentarioId, calificacionYcomentario.toEntity()));
+        return calificacionYcomentarioDTO;
+    }
+    
+    
      @DELETE
     @Path("{calificacionYcomentarioId: \\d+}")
     public void deleteCalificacionYComentario(@PathParam("calificacionYcomentarioIdd") Long calificacionYcomentarioId)throws BusinessLogicException

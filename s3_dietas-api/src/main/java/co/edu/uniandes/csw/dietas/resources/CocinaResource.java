@@ -17,6 +17,7 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -71,6 +72,19 @@ public class CocinaResource
             list.add(new CocinaDTO(entity));
         }
         return list;
+    }
+    
+    
+     
+    @PUT
+    @Path("{cocinasId: \\d+}")
+    public CocinaDTO updateCocina(@PathParam("cocinasId") Long cocinasId, CocinaDTO cocina){
+        cocina.setId(cocinasId);
+        if (cocinaLogic.getCocina(cocinasId) == null) {
+            throw new WebApplicationException("El recurso /cocina/" + cocinasId + " no existe.", 404);
+        }
+        CocinaDTO cocinaDTO = new CocinaDTO(cocinaLogic.updateCocina(cocinasId, cocina.toEntity()));
+        return cocinaDTO;
     }
     
     

@@ -80,7 +80,9 @@ public class CocinaPersistence {
         return result;
     }
     
-    
+         public CocinaEntity update(CocinaEntity cocinaEntity){
+        return em.merge(cocinaEntity);
+    }
     
     public void delete(Long cocinaId) {
 
