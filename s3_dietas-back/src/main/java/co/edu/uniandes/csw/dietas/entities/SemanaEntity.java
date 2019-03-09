@@ -25,7 +25,7 @@ public class SemanaEntity extends BaseEntity implements Serializable
     
     private Date horaEntrega;
     private String lugarEntrega;
-    private int costo;
+    private Integer costo;
    
     @PodamExclude
     @OneToMany(mappedBy = "semana")
@@ -33,7 +33,7 @@ public class SemanaEntity extends BaseEntity implements Serializable
     
     @PodamExclude
     @ManyToOne
-    private DietaEntity dietas;
+    private DietaEntity dieta;
 
 
     /**
@@ -86,6 +86,28 @@ public class SemanaEntity extends BaseEntity implements Serializable
     public void setCosto(int costo) {
         this.costo = costo;
     }
+    /**
+     * Devuelve la dieta que tiene la semana
+     * @return la dieta a la cual pertenece la semana
+     */
+    private DietaEntity getDieta(){
+        return dieta;
+    }
+    /**
+     * Método que me permite asignar una dieta
+     * @param dieta dieta que se va a asignar
+     */
+    public void setDieta(DietaEntity dieta)
+    {
+        this.dieta= dieta;
+    }
     
+    public void setDias(List<DiaEntity> diasSemana)
+    {
+        this.dias = diasSemana;
+    }
+    public List<DiaEntity> getDias(){
+        return dias;
+    }
     
 }

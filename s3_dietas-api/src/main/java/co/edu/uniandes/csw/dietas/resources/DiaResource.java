@@ -29,7 +29,7 @@ import javax.ws.rs.WebApplicationException;
  *
  * @author Juan Antonio Restrepo
  */
-@Path("dia")
+@Path("dias")
 @Produces("application/json")
 @Consumes("application/json")
 @RequestScoped
@@ -55,7 +55,7 @@ public class DiaResource {
    
     }
     @GET
-    @Path("(diasId:\\d+)")
+    @Path("{diasId:\\d+}")
     public DiaDetailDTO getDia(@PathParam("diasId") Long diaId){
         DiaEntity buscado = diaLogic.getDia(diaId);
         if(buscado == null)
@@ -66,7 +66,7 @@ public class DiaResource {
     }
     
     @PUT 
-    @Path("(diasId: \\d+)")
+    @Path("{diasId: \\d+}")
     public DiaDetailDTO updateDia(@PathParam("diasId")Long diasId, DiaDetailDTO dia){
        dia.setId(diasId);
        if(diaLogic.getDia(diasId) == null){
@@ -77,7 +77,7 @@ public class DiaResource {
     }
     
     @DELETE
-    @Path("(diasId: \\d+)")
+    @Path("{diasId: \\d+}")
     public void deleteDia(@PathParam("diasId")Long diaId) throws BusinessLogicException
     {
         if(diaLogic.getDia(diaId) == null)

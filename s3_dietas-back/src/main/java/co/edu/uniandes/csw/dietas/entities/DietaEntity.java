@@ -49,7 +49,7 @@ public class DietaEntity extends BaseEntity implements Serializable {
     private List<SuspensionEntity> suspensiones = new ArrayList<SuspensionEntity>( );
     
     @PodamExclude
-    @OneToMany (mappedBy = "dietas")
+    @OneToMany (mappedBy = "dieta")
     private List<SemanaEntity> semanas = new ArrayList<SemanaEntity>( );
  
     private String tipo;

@@ -5,75 +5,53 @@
  */
 package co.edu.uniandes.csw.dietas.dtos;
 
+import co.edu.uniandes.csw.dietas.entities.DiaEntity;
+import co.edu.uniandes.csw.dietas.entities.SemanaEntity;
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  *
  * @author estudiante
  */
-public class SemanaDetailDTO {
+public class SemanaDetailDTO extends SemanaDTO implements Serializable
+{
     
     private Date horaEntrega;
-    private int id;
+    private Long id;
     private String lugarEntrega;
-    private int costo;
-
-    /**
-     * @return the horaEntrega
-     */
-    public Date getHoraEntrega() {
-        return horaEntrega;
-    }
-
-    /**
-     * @param horaEntrega the horaEntrega to set
-     */
-    public void setHoraEntrega(Date horaEntrega) {
-        this.horaEntrega = horaEntrega;
-    }
-
-    /**
-     * @return the id
-     */
-    public int getId() {
-        return id;
-    }
-
-    /**
-     * @param id the id to set
-     */
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    /**
-     * @return the lugarEntrega
-     */
-    public String getLugarEntrega() {
-        return lugarEntrega;
-    }
-
-    /**
-     * @param lugarEntrega the lugarEntrega to set
-     */
-    public void setLugarEntrega(String lugarEntrega) {
-        this.lugarEntrega = lugarEntrega;
-    }
-
-    /**
-     * @return the costo
-     */
-    public int getCosto() {
-        return costo;
-    }
-
-    /**
-     * @param costo the costo to set
-     */
-    public void setCosto(int costo) {
-        this.costo = costo;
-    }
+    private Integer costo;
     
+    private List<DiaDTO> dias;
+    
+    public SemanaDetailDTO (SemanaEntity entity)
+    {
+         super(entity);
+        if(entity!=null){
+            if(entity.getDias() !=null){
+                dias= new ArrayList<>();
+                for(DiaEntity dias: entity. getDias()){
+//                    dias.add(new ComidaDTO(dia));
+                }
+            }
+          }
+    }
+   
+    
+    public SemanaEntity toEntity(){
+        SemanaEntity entity=super.toEntity();
+        if(dias!=null){
+            List<DiaEntity> diaEntity= new ArrayList<>();
+            for(DiaDTO dia: dias)
+            {
+               diaEntity.add(dia.toEntity()); 
+            }
+            entity.setDias(diaEntity);
+        }
+        return entity;
+    }
     
     
 }

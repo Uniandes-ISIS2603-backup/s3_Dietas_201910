@@ -5,32 +5,76 @@
  */
 package co.edu.uniandes.csw.dietas.dtos;
 
+import co.edu.uniandes.csw.dietas.entities.TipoDietaEntity;
+
 /**
  *
- * @author estudiante
+ * @author Juan Antonio Restrepo
  */
 public class TipoDietaDTO {
     
-    private int id;
+    private Long id;
     private String nombre;
-    
+     private String descripcion;
+     private String tipo;
+    /**
+     * Constructor de la clase vacío
+     */
     public TipoDietaDTO()
     {
         
+    }
+    /**
+     * Constructor de la clase no vacío
+     * @param tipo tipo de entidad que se va a crear
+     */
+    public TipoDietaDTO(TipoDietaEntity tipo){
+        this.id = tipo.getId();
+        this.nombre = tipo.getNombre();
+        this.tipo = tipo.getTipo();
+        this.descripcion = tipo.getDescripcion();
     }
 
     /**
      * @return the id
      */
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
     /**
      * @param id the id to set
      */
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
+    }
+
+    /**
+     * @return the tipo
+     */
+    public String getTipo() {
+        return tipo;
+    }
+
+    /**
+     * @param tipo the tipo to set
+     */
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
+    /**
+     * @return the descripcion
+     */
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    /**
+     * @param descripcion the descripcion to set
+     */
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 
     /**
@@ -45,6 +89,15 @@ public class TipoDietaDTO {
      */
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+    public TipoDietaEntity toEntity()
+    {
+        TipoDietaEntity entity = new TipoDietaEntity();
+        entity.setDescripcion(this.getDescripcion());
+        entity.setNombre(this.getNombre());
+        entity.setTipo(this.getDescripcion());
+        return entity;
+        
     }
     
 }

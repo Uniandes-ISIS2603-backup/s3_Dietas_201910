@@ -16,9 +16,15 @@ public class DiaDTO implements Serializable
 {
     private boolean diaEspecial;
     private Long id;
+   
     public DiaDTO ()
     {
         
+    }
+    public DiaDTO(DiaEntity diaEntity)
+    {
+        this.id = diaEntity.getId();
+        this.diaEspecial = diaEntity.isEspecial();
     }
 
     /**
@@ -34,6 +40,8 @@ public class DiaDTO implements Serializable
     public void setDiaEspecial(boolean diaEspecial) {
         this.diaEspecial = diaEspecial;
     }
+    
+    
 
     /**
      * @return the id
@@ -52,15 +60,11 @@ public class DiaDTO implements Serializable
     public DiaEntity toEntity()
     {
         DiaEntity entity = new DiaEntity();
-        entity.setEspecial(this.diaEspecial);
+        entity.setEspecial(this.isDiaEspecial());
         entity.setId(this.getId());
         return entity;
     }
-    public DiaDTO(DiaEntity diaEntity)
-    {
-        this.id = diaEntity.getId();
-        this.diaEspecial = diaEntity.isEspecial();
-    }
+    
     
     
 }

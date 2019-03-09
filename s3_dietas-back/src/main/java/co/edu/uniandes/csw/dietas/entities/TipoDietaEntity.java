@@ -76,6 +76,14 @@ public class TipoDietaEntity extends BaseEntity implements Serializable{
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
+    
+    public List<DietaEntity> getDietas()
+    {
+        return dietas;
+    }
+    public void setDietas(List<DietaEntity> diet){
+        this.dietas = diet;
+    }
    
     
 }

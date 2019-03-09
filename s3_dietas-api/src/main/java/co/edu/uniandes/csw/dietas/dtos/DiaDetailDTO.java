@@ -42,7 +42,7 @@ public class DiaDetailDTO extends DiaDTO implements Serializable
             List<ComidaEntity> comidaEntity= new ArrayList<>();
             for(ComidaDTO comida: comidas)
             {
-               //comida/entity.add(comida.toEntity()); 
+               comidaEntity.add(comida.toEntity()); 
             }
             entity.setComidas(comidaEntity);
         }

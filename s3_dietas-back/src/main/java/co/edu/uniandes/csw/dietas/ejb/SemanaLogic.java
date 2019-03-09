@@ -8,6 +8,9 @@ package co.edu.uniandes.csw.dietas.ejb;
 import co.edu.uniandes.csw.dietas.entities.SemanaEntity;
 import co.edu.uniandes.csw.dietas.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.dietas.persistence.SemanaPersistence;
+import static co.edu.uniandes.csw.dietas.persistence.SemanaPersistence.LOGGER;
+import java.util.List;
+import java.util.logging.Level;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 
@@ -31,4 +34,26 @@ public class SemanaLogic {
         semana = persistence.create(semana);
         return semana;
     }
+     public SemanaEntity getSemana(Long semanaId)
+    {
+        SemanaEntity entidad = persistence.findId(semanaId);
+        if(entidad == null)
+        {
+            LOGGER.log(Level.SEVERE, "El semana con el id = {0} no existe", semanaId);
+        }
+        return entidad;
+    }
+    public List<SemanaEntity> getSemanas(){
+        List<SemanaEntity> semanas = persistence.findAll();
+        return semanas;
+    }
+    public SemanaEntity updateSemana(Long semanaId, SemanaEntity entidadNueva){
+        SemanaEntity nuevo = persistence.update(entidadNueva);
+        return nuevo;
+    }
+    
+    public void deleteSemana(Long idSemana)throws BusinessLogicException{
+        persistence.delete(idSemana);
+    }
+    
 }

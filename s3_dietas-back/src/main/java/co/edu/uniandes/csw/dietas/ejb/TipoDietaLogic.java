@@ -8,6 +8,9 @@ package co.edu.uniandes.csw.dietas.ejb;
 import co.edu.uniandes.csw.dietas.entities.TipoDietaEntity;
 import co.edu.uniandes.csw.dietas.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.dietas.persistence.TipoDietaPersistence;
+import static co.edu.uniandes.csw.dietas.persistence.TipoDietaPersistence.LOGGER;
+import java.util.List;
+import java.util.logging.Level;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 
@@ -30,5 +33,25 @@ public class TipoDietaLogic {
         tipoDieta = persistence.create(tipoDieta);
         return tipoDieta;
     }
+     public TipoDietaEntity getTipoDieta(Long TipoDietaId)
+    {
+        TipoDietaEntity entidad = persistence.findId(TipoDietaId);
+        if(entidad == null)
+        {
+            LOGGER.log(Level.SEVERE, "El TipoDieta con el id = {0} no existe", TipoDietaId);
+        }
+        return entidad;
+    }
+    public List<TipoDietaEntity> getTipoDietas(){
+        List<TipoDietaEntity> TipoDietas = persistence.findAll();
+        return TipoDietas;
+    }
+    public TipoDietaEntity updateTipoDieta(Long TipoDietaId, TipoDietaEntity entidadNueva){
+        TipoDietaEntity nuevo = persistence.update(entidadNueva);
+        return nuevo;
+    }
     
+    public void deleteTipoDieta(Long idTipoDieta)throws BusinessLogicException{
+        persistence.delete(idTipoDieta);
+    }
 }
