@@ -130,7 +130,7 @@ public class DietaEntity extends BaseEntity implements Serializable {
     /**
      * @param tDieta the tDieta to set
      */
-    public void settDietas(List<TipoDietaEntity> tDieta) {
+    public void setDietas(List<TipoDietaEntity> tDieta) {
         this.tDietas = tDieta;
     }
 
