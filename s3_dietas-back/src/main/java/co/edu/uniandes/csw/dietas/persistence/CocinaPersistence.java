@@ -52,7 +52,7 @@ public class CocinaPersistence {
     
       
     public CocinaEntity findById(Long id){
-        TypedQuery query = em.createQuery("select u from ComidaEntity u where u.id = :id", CocinaEntity.class);
+        TypedQuery query = em.createQuery("select u from CocinaEntity u where u.id = :id", CocinaEntity.class);
         query=query.setParameter("id", id);
         List<CocinaEntity> sameId = query.getResultList();
         CocinaEntity result;
@@ -80,7 +80,7 @@ public class CocinaPersistence {
         return result;
     }
     
-         public CocinaEntity update(CocinaEntity cocinaEntity){
+        public CocinaEntity update(CocinaEntity cocinaEntity){
         return em.merge(cocinaEntity);
     }
     

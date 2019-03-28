@@ -1,0 +1,203 @@
+{
+	"info": {
+		"_postman_id": "fa9c0857-0eec-40ed-8029-98c26db82032",
+		"name": "TestCocina",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8080/s3_dietas-api/api/cocinas",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"disabled": false
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \n   \"direccion\": \"alla\"}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/s3_dietas-api/api/cocinas",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"s3_dietas-api",
+						"api",
+						"cocinas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/s3_dietas-api/api/cocinas",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"disabled": false
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \n   \"direccion\": \"aqui\"}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/s3_dietas-api/api/cocinas",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"s3_dietas-api",
+						"api",
+						"cocinas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/s3_dietas-api/api/cocinas/1",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"disabled": false
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/s3_dietas-api/api/cocinas/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"s3_dietas-api",
+						"api",
+						"cocinas",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/s3_dietas-api/api/cocinas",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"disabled": false
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/s3_dietas-api/api/cocinas",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"s3_dietas-api",
+						"api",
+						"cocinas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/s3_dietas-api/api/cocinas",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"disabled": false
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/s3_dietas-api/api/cocinas",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"s3_dietas-api",
+						"api",
+						"cocinas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/s3_dietas-api/api/cocinas/3",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"disabled": false
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \n   \"direccion\": \"otra más\"}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/s3_dietas-api/api/cocinas/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"s3_dietas-api",
+						"api",
+						"cocinas",
+						"3"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

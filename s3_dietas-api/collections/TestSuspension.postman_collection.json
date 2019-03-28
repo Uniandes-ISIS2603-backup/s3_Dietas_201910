@@ -1,0 +1,207 @@
+{
+	"info": {
+		"_postman_id": "d26b016e-358c-49fe-bf29-0daf0080c6fc",
+		"name": "TestSuspension",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8080/s3_dietas-api/api/suspension",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"disabled": false
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"vigente\":true ,\n   \"numDias\":5,\n   \"comentarios\": \"todo bien\"}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/s3_dietas-api/api/suspension",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"s3_dietas-api",
+						"api",
+						"suspension"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/s3_dietas-api/api/suspensiones",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"disabled": false
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{  \"vigente\":true ,\n   \"numDias\":5,\n   \"comentarios\": \"todo bien\"}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/s3_dietas-api/api/suspensiones",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"s3_dietas-api",
+						"api",
+						"suspensiones"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/s3_dietas-api/api/suspensiones/2",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"disabled": false
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/s3_dietas-api/api/suspensiones/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"s3_dietas-api",
+						"api",
+						"suspensiones",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/s3_dietas-api/api/suspensiones/2",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"disabled": false
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/s3_dietas-api/api/suspensiones/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"s3_dietas-api",
+						"api",
+						"suspensiones",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/s3_dietas-api/api/suspensiones",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"disabled": false
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/s3_dietas-api/api/suspensiones",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"s3_dietas-api",
+						"api",
+						"suspensiones"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/s3_dietas-api/api/suspensiones/3",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"disabled": false
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/s3_dietas-api/api/suspensiones/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"s3_dietas-api",
+						"api",
+						"suspensiones",
+						"3"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
