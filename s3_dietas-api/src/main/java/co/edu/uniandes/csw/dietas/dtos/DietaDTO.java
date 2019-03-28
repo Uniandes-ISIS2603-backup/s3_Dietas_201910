@@ -43,6 +43,7 @@ public class DietaDTO implements Serializable{
         setObjetivo(entity.getObjetivo());
         setDiasSuspendida(entity.getDiasSuspendida());
         setNombre(entity.getNombre());
+        
     }
     
     public DietaEntity toEntity(){

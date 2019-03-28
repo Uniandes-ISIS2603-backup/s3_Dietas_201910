@@ -31,13 +31,13 @@ public class DietaDetailDTO extends DietaDTO implements Serializable{
             if(entity.getSemanas() != null){
                 semanas = new ArrayList<>();
                 for (SemanaEntity semana : entity.getSemanas()) {
-//                semanas.add(new SemanaDTO(semana));
+                semanas.add(new SemanaDTO(semana));
                 }
             }
             if(entity.getSuspension() != null){
                 suspensiones = new ArrayList<>();
                 for (SuspensionEntity suspension : entity.getSuspension()) {
-//                    suspensiones.add(new SuspensionDTO(suspension))
+                    suspensiones.add(new SuspensionDTO(suspension));
                 }
             }
             
@@ -50,14 +50,14 @@ public class DietaDetailDTO extends DietaDTO implements Serializable{
         if(semanas != null){
             List<SemanaEntity> semanaEntity = new ArrayList<>();
             for (SemanaDTO semana : semanas) {
-//                semanaEntity.add(semana.toEntity());
+                semanaEntity.add(semana.toEntity());
             }
             entity.setSemanas(semanaEntity);
         }
         if(suspensiones != null){
             List<SuspensionEntity> suspensionEntity = new ArrayList<>();
             for (SuspensionDTO suspension : suspensiones) {
-//                suspensionEntity.add(suspension.toEntity());
+                suspensionEntity.add(suspension.toEntity());
             }
             entity.setSuspension(suspensionEntity);
         }
