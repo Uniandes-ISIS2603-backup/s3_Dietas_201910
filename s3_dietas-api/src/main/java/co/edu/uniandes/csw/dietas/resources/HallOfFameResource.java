@@ -66,6 +66,17 @@ public class HallOfFameResource {
         
     }
     
+    @GET
+    @Path("{hallsId: \\d+}")
+    public HallOfFameDetailDTO getPersonas(@PathParam("hallsId") Long hallsId){
+        HallOfFameEntity entity = hallLogic.getHall(hallsId);
+        if(entity == null){
+            throw new WebApplicationException("El recurso /halls/"+hallsId+" no existe.",404);
+        }
+          return new HallOfFameDetailDTO(entity);
+        
+    }
+    
     
     @PUT
     @Path("{hallsId: \\d+}")

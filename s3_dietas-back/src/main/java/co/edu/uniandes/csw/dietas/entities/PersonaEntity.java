@@ -25,7 +25,7 @@ public class PersonaEntity extends BaseEntity implements Serializable {
     private String tipo;
     private String nombre;
     private Date fechaIngreso;
-    private String[] objetivos;
+    private String objetivos;
     private int tiempoEsperadoMejora;
     private boolean solicitudEspecial;
     private boolean tarjetaFidelidad;
@@ -95,14 +95,14 @@ public class PersonaEntity extends BaseEntity implements Serializable {
     /**
      * @return the objetivos
      */
-    public String[] getObjetivos() {
+    public String getObjetivos() {
         return objetivos;
     }
 
     /**
      * @param objetivos the objetivos to set
      */
-    public void setObjetivos(String[] objetivos) {
+    public void setObjetivos(String objetivos) {
         this.objetivos = objetivos;
     }
 
