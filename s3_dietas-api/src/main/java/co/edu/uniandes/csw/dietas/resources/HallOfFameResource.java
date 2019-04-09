@@ -68,7 +68,6 @@ public class HallOfFameResource {
     }
     
     @GET
-    @Path("{hallsId: \\d+}")
     public List<PersonaDTO> getPersonas(@PathParam("hallsId") Long hallsId){
         HallOfFameEntity entity = hallLogic.getHall(hallsId);
         if(entity == null){
