@@ -144,4 +144,66 @@ public class HallOfFameLogicTest {
         hallLogic.createHallOfFame(newEntity);
     }
     
+     /**
+     * Prueba para consultar la lista de halls.
+     */
+    @Test
+    public void getHallsTest() {
+        List<HallOfFameEntity> list = hallLogic.getHalls();
+        Assert.assertEquals(data.size(), list.size());
+        for (HallOfFameEntity entity : list) {
+            boolean found = false;
+            for (HallOfFameEntity storedEntity : data) {
+                if (entity.getId().equals(storedEntity.getId())) {
+                    found = true;
+                }
+            }
+            Assert.assertTrue(found);
+        }
+    }
+    
+    /**
+     * Prueba para consultar un hall.
+     */
+    @Test
+    public void getHallTest() {
+        HallOfFameEntity entity = data.get(0);
+        HallOfFameEntity resultEntity = hallLogic.getHall(entity.getId());
+        Assert.assertNotNull(resultEntity);
+        Assert.assertEquals(entity.getId(), resultEntity.getId());
+        Assert.assertEquals(entity.getId(), resultEntity.getId());
+    }
+    
+      /**
+     * Prueba para actualizar un hall.
+     */
+    @Test
+    public void updateDietaTest() {
+        HallOfFameEntity entity = data.get(0);
+        HallOfFameEntity pojoEntity = factory.manufacturePojo(HallOfFameEntity.class);
+
+        pojoEntity.setId(entity.getId());
+
+        hallLogic.updateHall(pojoEntity.getId(), pojoEntity);
+
+        HallOfFameEntity resp = em.find(HallOfFameEntity.class, entity.getId());
+
+        Assert.assertEquals(pojoEntity.getId(), resp.getId());
+        Assert.assertEquals(pojoEntity.getId(), resp.getId());
+        Assert.assertEquals(pojoEntity.getMensaje(), resp.getMensaje());
+    }
+    
+        /**
+     * Prueba para eliminar una Hall
+     *
+     * @throws co.edu.uniandes.csw.dietas.exceptions.BusinessLogicException
+     */
+    @Test
+    public void deleteDietaTest() throws BusinessLogicException {
+        HallOfFameEntity entity = data.get(0);
+        hallLogic.deleteHall(entity.getId());
+        HallOfFameEntity deleted = em.find(HallOfFameEntity.class, entity.getId());
+        Assert.assertNull(deleted);
+    }
+
 }

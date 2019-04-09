@@ -38,7 +38,7 @@ public class HallOfFameLogic {
          // Invoca la persistencia para crear la hall
         hall=persistence.create(hall);
         return hall;
-    }
+    }        
     public HallOfFameEntity getHall(Long hallId){
         HallOfFameEntity hallEntity= persistence.findById(hallId);
         if(hallEntity == null){

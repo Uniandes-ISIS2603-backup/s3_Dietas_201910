@@ -144,4 +144,64 @@ public class ComidaLogicTest {
         newEntity.setId(data.get(0).getId());
         comidaLogic.createComida(newEntity);
     }
+     /**
+     * Prueba para consultar la lista de Comidas.
+     */
+    @Test
+    public void getComidasTest() {
+        List<ComidaEntity> list = comidaLogic.getComidas();
+        Assert.assertEquals(data.size(), list.size());
+        for (ComidaEntity entity : list) {
+            boolean found = false;
+            for (ComidaEntity storedEntity : data) {
+                if (entity.getId().equals(storedEntity.getId())) {
+                    found = true;
+                }
+            }
+            Assert.assertTrue(found);
+        }
+    }
+    
+     /**
+     * Prueba para consultar un Comida.
+     */
+    @Test
+    public void getComidaTest() {
+        ComidaEntity entity = data.get(0);
+        ComidaEntity resultEntity = comidaLogic.getComida(entity.getId());
+        Assert.assertNotNull(resultEntity);
+        Assert.assertEquals(entity.getId(), resultEntity.getId());
+        Assert.assertEquals(entity.getAlimentosYCantidad(), resultEntity.getAlimentosYCantidad());
+    }
+    /**
+     * Prueba para actualizar una Comida.
+     */
+    @Test
+    public void updateComidaTest() {
+        ComidaEntity entity = data.get(0);
+        ComidaEntity pojoEntity = factory.manufacturePojo(ComidaEntity.class);
+
+        pojoEntity.setId(entity.getId());
+
+        comidaLogic.updateComida(pojoEntity.getId(), pojoEntity);
+
+        ComidaEntity resp = em.find(ComidaEntity.class, entity.getId());
+
+        Assert.assertEquals(pojoEntity.getId(), resp.getId());
+        Assert.assertEquals(pojoEntity.getAlimentosYCantidad(), resp.getAlimentosYCantidad());
+        Assert.assertEquals(pojoEntity.getTipo(), resp.getTipo());
+    }
+    
+    /**
+     * Prueba para eliminar una Comida
+     *
+     * @throws co.edu.uniandes.csw.dietas.exceptions.BusinessLogicException
+     */
+    @Test
+    public void deleteComidaTest() throws BusinessLogicException {
+        ComidaEntity entity = data.get(0);
+        comidaLogic.deleteComida(entity.getId());
+        ComidaEntity deleted = em.find(ComidaEntity.class, entity.getId());
+        Assert.assertNull(deleted);
+    }
 }
