@@ -8,9 +8,7 @@ package co.edu.uniandes.csw.dietas.resources;
 import co.edu.uniandes.csw.dietas.dtos.PersonaDetailDTO;
 import co.edu.uniandes.csw.dietas.ejb.DietaPersonaLogic;
 import co.edu.uniandes.csw.dietas.ejb.PersonaLogic;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.logging.Level;
+import co.edu.uniandes.csw.dietas.mappers.WebApplicationExceptionMapper;
 import java.util.logging.Logger;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
@@ -26,7 +24,7 @@ import javax.ws.rs.core.MediaType;
 
 /**
  *
- * @author Alejandra Bravo
+ * @author Alejandra Bravoa
  */
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
@@ -40,131 +38,33 @@ public class DietaPersonaResource {
     @Inject
     private PersonaLogic personaLogic; // Variable para acceder a la lógica de la aplicación. Es una inyección de dependencias.
 
-    /**
-     * Asocia un autor existente con un libro existente
-     *
-     * @param authorsId El ID del autor que se va a asociar
-     * @param booksId El ID del libro al cual se le va a asociar el autor
-     * @return JSON {@link AuthorDetailDTO} - El autor asociado.
-     * @throws WebApplicationException {@link WebApplicationExceptionMapper} -
-     * Error de lógica que se genera cuando no se encuentra el autor.
-     */
+//    /**
+//     * Asocia una persona existente con una dieta existente
+//     *
+//     * @param personasId El ID de la persona que se va a asociar
+//     * @param dietasId El ID de la dieta a la cual se le va a asociar la persona
+//     * @return JSON {@link PersonaDetailDTO} - La persona asociada.
+//     * @throws WebApplicationException {@link WebApplicationExceptionMapper} -
+//     * Error de lógica que se genera cuando no se encuentra la persona.
+//     */
 //    @POST
 //    @Path("{personasId: \\d+}")
-//    public PersonaDetailDTO addAuthor(@PathParam("dietasId") Long dietasId, @PathParam("personasId") Long personasId) {
+//    public PersonaDetailDTO addPersona(@PathParam("dietasId") Long dietasId, @PathParam("personasId") Long personasId) {
 //        if (personaLogic.getPersona(personasId) == null) {
-//            throw new WebApplicationException("El recurso /dietas/" + dietasId + " no existe.", 404);
+//            throw new WebApplicationException("El recurso /personas/" + personasId + " no existe.", 404);
 //        }
-//        PersonaDetailDTO detailDTO = new PersonaDetailDTO(DietaPersonaLogic.addAuthor(booksId, authorsId));
+//        PersonaDetailDTO detailDTO = new PersonaDetailDTO(DietaPersonaLogic.addPersona(dietasId, personasId));
 //        return detailDTO;
 //    }
 //
 //    /**
-//     * Busca y devuelve todos los autores que existen en un libro.
+//     * Busca y devuelve la persona que existen en una dieta.
 //     *
-//     * @param booksId El ID del libro del cual se buscan los autores
-//     * @return JSONArray {@link AuthorDetailDTO} - Los autores encontrados en el
-//     * libro. Si no hay ninguno retorna una lista vacía.
+//     * @param dietasId El ID de la dieta del cual se busca la persona
+//     * @return PersonaDetailDTO.
 //     */
 //    @GET
-//    public List<AuthorDetailDTO> getAuthors(@PathParam("booksId") Long booksId) {
-//        LOGGER.log(Level.INFO, "BookAuthorsResource getAuthors: input: {0}", booksId);
-//        List<AuthorDetailDTO> lista = authorsListEntity2DTO(bookAuthorLogic.getAuthors(booksId));
-//        LOGGER.log(Level.INFO, "BookAuthorsResource getAuthors: output: {0}", lista);
-//        return lista;
-//    }
-//
-//    /**
-//     * Busca y devuelve el autor con el ID recibido en la URL, relativo a un
-//     * libro.
-//     *
-//     * @param authorsId El ID del autor que se busca
-//     * @param booksId El ID del libro del cual se busca el autor
-//     * @return {@link AuthorDetailDTO} - El autor encontrado en el libro.
-//     * @throws WebApplicationException {@link WebApplicationExceptionMapper}
-//     * Error de lógica que se genera cuando no se encuentra el autor.
-//     */
-//    @GET
-//    @Path("{authorsId: \\d+}")
-//    public AuthorDetailDTO getAuthor(@PathParam("booksId") Long booksId, @PathParam("authorsId") Long authorsId) {
-//        LOGGER.log(Level.INFO, "BookAuthorsResource getAuthor: input: booksId {0} , authorsId {1}", new Object[]{booksId, authorsId});
-//        if (authorLogic.getAuthor(authorsId) == null) {
-//            throw new WebApplicationException("El recurso /authors/" + authorsId + " no existe.", 404);
-//        }
-//        AuthorDetailDTO detailDTO = new AuthorDetailDTO(bookAuthorLogic.getAuthor(booksId, authorsId));
-//        LOGGER.log(Level.INFO, "BookAuthorsResource getAuthor: output: {0}", detailDTO);
-//        return detailDTO;
-//    }
-//
-//    /**
-//     * Actualiza la lista de autores de un libro con la lista que se recibe en
-//     * el cuerpo.
-//     *
-//     * @param booksId El ID del libro al cual se le va a asociar la lista de
-//     * autores
-//     * @param authors JSONArray {@link AuthorDetailDTO} - La lista de autores
-//     * que se desea guardar.
-//     * @return JSONArray {@link AuthorDetailDTO} - La lista actualizada.
-//     * @throws WebApplicationException {@link WebApplicationExceptionMapper}
-//     * Error de lógica que se genera cuando no se encuentra el autor.
-//     */
-//    @PUT
-//    public List<AuthorDetailDTO> replaceAuthors(@PathParam("booksId") Long booksId, List<AuthorDetailDTO> authors) {
-//        LOGGER.log(Level.INFO, "BookAuthorsResource replaceAuthors: input: booksId {0} , authors {1}", new Object[]{booksId, authors});
-//        for (AuthorDetailDTO author : authors) {
-//            if (authorLogic.getAuthor(author.getId()) == null) {
-//                throw new WebApplicationException("El recurso /authors/" + author.getId() + " no existe.", 404);
-//            }
-//        }
-//        List<AuthorDetailDTO> lista = authorsListEntity2DTO(bookAuthorLogic.replaceAuthors(booksId, authorsListDTO2Entity(authors)));
-//        LOGGER.log(Level.INFO, "BookAuthorsResource replaceAuthors: output:{0}", lista);
-//        return lista;
-//    }
-//
-//    /**
-//     * Elimina la conexión entre el autor y el libro recibidos en la URL.
-//     *
-//     * @param booksId El ID del libro al cual se le va a desasociar el autor
-//     * @param authorsId El ID del autor que se desasocia
-//     * @throws WebApplicationException {@link WebApplicationExceptionMapper}
-//     * Error de lógica que se genera cuando no se encuentra el autor.
-//     */
-//    @DELETE
-//    @Path("{authorsId: \\d+}")
-//    public void removeAuthor(@PathParam("booksId") Long booksId, @PathParam("authorsId") Long authorsId) {
-//        LOGGER.log(Level.INFO, "BookAuthorsResource removeAuthor: input: booksId {0} , authorsId {1}", new Object[]{booksId, authorsId});
-//        if (authorLogic.getAuthor(authorsId) == null) {
-//            throw new WebApplicationException("El recurso /authors/" + authorsId + " no existe.", 404);
-//        }
-//        bookAuthorLogic.removeAuthor(booksId, authorsId);
-//        LOGGER.info("BookAuthorsResource removeAuthor: output: void");
-//    }
-//
-//    /**
-//     * Convierte una lista de AuthorEntity a una lista de AuthorDetailDTO.
-//     *
-//     * @param entityList Lista de AuthorEntity a convertir.
-//     * @return Lista de AuthorDetailDTO convertida.
-//     */
-//    private List<AuthorDetailDTO> authorsListEntity2DTO(List<AuthorEntity> entityList) {
-//        List<AuthorDetailDTO> list = new ArrayList<>();
-//        for (AuthorEntity entity : entityList) {
-//            list.add(new AuthorDetailDTO(entity));
-//        }
-//        return list;
-//    }
-//
-//    /**
-//     * Convierte una lista de AuthorDetailDTO a una lista de AuthorEntity.
-//     *
-//     * @param dtos Lista de AuthorDetailDTO a convertir.
-//     * @return Lista de AuthorEntity convertida.
-//     */
-//    private List<AuthorEntity> authorsListDTO2Entity(List<AuthorDetailDTO> dtos) {
-//        List<AuthorEntity> list = new ArrayList<>();
-//        for (AuthorDetailDTO dto : dtos) {
-//            list.add(dto.toEntity());
-//        }
-//        return list;
-//    }  
+//    public PersonaDetailDTO getPersona(@PathParam("dietasId") Long dietasId) {
+//        return PersonaDetailDTO(dietaPersonaLogic.getPersona(dietasId));
+//    } 
 }

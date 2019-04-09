@@ -147,5 +147,65 @@ public class FotoLogicTest {
         newEntity.setNombre(data.get(0).getNombre());
         fotoLogic.createFoto(newEntity);
     }
+      /**
+     * Prueba para consultar la lista de Fotos.
+     */
+    @Test
+    public void getFotosTest() {
+        List<FotoEntity> list = fotoLogic.getFotos();
+        Assert.assertEquals(data.size(), list.size());
+        for (FotoEntity entity : list) {
+            boolean found = false;
+            for (FotoEntity storedEntity : data) {
+                if (entity.getId().equals(storedEntity.getId())) {
+                    found = true;
+                }
+            }
+            Assert.assertTrue(found);
+        }
+    }
     
+     /**
+     * Prueba para consultar un Foto.
+     */
+    @Test
+    public void getFotoTest() {
+        FotoEntity entity = data.get(0);
+        FotoEntity resultEntity = fotoLogic.getFoto(entity.getId());
+        Assert.assertNotNull(resultEntity);
+        Assert.assertEquals(entity.getId(), resultEntity.getId());
+        Assert.assertEquals(entity.getNombre(), resultEntity.getNombre());
+    }
+    /**
+     * Prueba para actualizar una Foto.
+     */
+    @Test
+    public void updateFotoTest() {
+        FotoEntity entity = data.get(0);
+        FotoEntity pojoEntity = factory.manufacturePojo(FotoEntity.class);
+
+        pojoEntity.setId(entity.getId());
+
+        fotoLogic.updateFoto(pojoEntity.getId(), pojoEntity);
+
+        FotoEntity resp = em.find(FotoEntity.class, entity.getId());
+
+        Assert.assertEquals(pojoEntity.getId(), resp.getId());
+        Assert.assertEquals(pojoEntity.getNombre(), resp.getNombre());
+        Assert.assertEquals(pojoEntity.getUrl(), resp.getUrl());
+    }
+    
+    /**
+     * Prueba para eliminar una Foto
+     *
+     * @throws co.edu.uniandes.csw.dietas.exceptions.BusinessLogicException
+     */
+    @Test
+    public void deleteFotoTest() throws BusinessLogicException {
+        FotoEntity entity = data.get(0);
+        fotoLogic.deleteFoto(entity.getId());
+        FotoEntity deleted = em.find(FotoEntity.class, entity.getId());
+        Assert.assertNull(deleted);
+    }
+
 }

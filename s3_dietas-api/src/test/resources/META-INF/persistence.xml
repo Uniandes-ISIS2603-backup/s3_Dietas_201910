@@ -5,6 +5,9 @@
     <!--Toca entity por entity, exclude-unlisted-clases = false no funciona-->
     <class>co.edu.uniandes.csw.dietas.entities.DietaEntity</class>
     <class>co.edu.uniandes.csw.dietas.entities.PagoEntity</class>
+    <class>co.edu.uniandes.csw.dietas.entities.SuspensionEntity</class>
+    <class>co.edu.uniandes.csw.dietas.entities.CalificacionYComentarioEntity</class>
+    <class>co.edu.uniandes.csw.dietas.entities.CocinaEntity</class>
     <exclude-unlisted-classes>true</exclude-unlisted-classes>
  <shared-cache-mode>NONE</shared-cache-mode>
     <properties>

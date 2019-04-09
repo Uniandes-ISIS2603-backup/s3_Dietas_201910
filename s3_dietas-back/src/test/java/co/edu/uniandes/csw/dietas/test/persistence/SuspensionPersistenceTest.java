@@ -30,9 +30,21 @@ import uk.co.jemos.podam.api.PodamFactoryImpl;
  */
 @RunWith(Arquillian.class)
 public class SuspensionPersistenceTest {
-     @Inject
+   
+    @Inject
    private SuspensionPersistence suspension;
-   @Deployment
+     
+    
+    @Inject
+    UserTransaction utx;
+  
+     
+     @PersistenceContext
+     private EntityManager em;
+    private List<SuspensionEntity> data = new ArrayList<SuspensionEntity>(); 
+    
+     
+     @Deployment
    public static JavaArchive createDeployment()
    {
        return ShrinkWrap.create(JavaArchive.class)
@@ -50,5 +62,106 @@ public class SuspensionPersistenceTest {
        
        
    }
+   
+   
+    @Test
+    public void createSuspensionEntityTest() {
+    PodamFactory factory = new PodamFactoryImpl();
+    SuspensionEntity newEntity = factory.manufacturePojo(SuspensionEntity.class);
+    SuspensionEntity result = suspension.create(newEntity);
+
+    Assert.assertNotNull(result);
+    SuspensionEntity entity = em.find(SuspensionEntity.class, result.getId());
+    Assert.assertNotNull(entity);
+    }
+    
+    
+    
+     /**
+     * Configuración inicial de la prueba.
+     */
+    @Before
+    public void configTest() {
+        try {
+            utx.begin();
+            em.joinTransaction();
+            clearData();
+            insertData();
+            utx.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+            try {
+                utx.rollback();
+            } catch (Exception e1) {
+                e1.printStackTrace();
+            }
+        }
+    }
+    
+    
+      /**
+     * Limpia las tablas que están implicadas en la prueba.
+     */
+    private void clearData() {
+        em.createQuery("delete from SuspensionEntity").executeUpdate();
+    }
+
+    /**
+     * Inserta los datos iniciales para el correcto funcionamiento de las
+     * pruebas.
+     */
+    private void insertData() {
+        PodamFactory factory = new PodamFactoryImpl();
+        for (int i = 0; i < 3; i++) {
+            SuspensionEntity entity = factory.manufacturePojo(SuspensionEntity.class);
+
+            em.persist(entity);
+            data.add(entity);
+        }
+    }
+    
+    
+    
+    
+     /**
+     * Prueba para consultar la lista de suspensiones.
+     */
+    @Test
+    public void getSuspensionesTest() {
+        List<SuspensionEntity> list = suspension.findAll();
+        Assert.assertEquals(data.size(), list.size());
+        for (SuspensionEntity ent : list) {
+            boolean found = false;
+            for (SuspensionEntity entity : data) {
+                if (ent.getId().equals(entity.getId())) {
+                    found = true;
+                }
+            }
+            Assert.assertTrue(found);
+        }
+    }
+    @Test
+    public void getSuspensionTest() {
+        SuspensionEntity entity = data.get(0);
+        SuspensionEntity newEntity = suspension.findById(entity.getId());
+        Assert.assertNotNull(newEntity);
+        Assert.assertEquals(entity.getId(), newEntity.getId());
+        Assert.assertEquals(entity.getNumDias(), newEntity.getNumDias());
+    }
+    
+    
+      /**
+     * Prueba para eliminar una Suspension.
+     */
+    @Test
+    public void deleteSuspensionTest() {
+        SuspensionEntity entity = data.get(0);
+        suspension.delete(entity.getId());
+        SuspensionEntity deleted = em.find(SuspensionEntity.class, entity.getId());
+        Assert.assertNull(deleted);
+    }
+    
+    
+    
     
 }

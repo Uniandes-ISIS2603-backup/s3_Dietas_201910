@@ -144,7 +144,7 @@ public class QuejaYReclamoLogicTest {
         Assert.assertEquals(pojoEntity.getEspecificacion(), resp.getEspecificacion());
     }
     
-        /**
+    /**
      * Prueba para eliminar un Pago
      *
      * @throws co.edu.uniandes.csw.bookstore.exceptions.BusinessLogicException

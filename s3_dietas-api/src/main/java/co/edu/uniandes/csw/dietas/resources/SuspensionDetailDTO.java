@@ -7,8 +7,8 @@ package co.edu.uniandes.csw.dietas.resources;
 
 /**
  *
- * @author estudiantea
+ * @author estudiante
  */
-public class DietaSemanasResource {
+class SuspensionDetailDTO {
     
 }

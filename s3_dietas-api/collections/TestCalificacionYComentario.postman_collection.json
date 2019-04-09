@@ -1,0 +1,139 @@
+{
+	"info": {
+		"_postman_id": "7baf5dd2-2b53-4a58-9e5e-0a2299d190e7",
+		"name": "TestCalificacionYComentario",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8080/s3_dietas-api/api/calificacionycomentario",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"disabled": false
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"calificacion\":3,\n\"comentario\":\"a\" }"
+				},
+				"url": {
+					"raw": "http://localhost:8080/s3_dietas-api/api/calificacionycomentario",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"s3_dietas-api",
+						"api",
+						"calificacionycomentario"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/s3_dietas-api/api/calificacionycomentario",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"disabled": false
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/s3_dietas-api/api/calificacionycomentario",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"s3_dietas-api",
+						"api",
+						"calificacionycomentario"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/s3_dietas-api/api/calificacionycomentario/1",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"disabled": false
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"calificacion\":3,\n\"comentario\":\"a\" }"
+				},
+				"url": {
+					"raw": "http://localhost:8080/s3_dietas-api/api/calificacionycomentario/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"s3_dietas-api",
+						"api",
+						"calificacionycomentario",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/s3_dietas-api/api/calificacionycomentario/1",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"disabled": false
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"calificacion\":28,\n\"comentario\":\"a\" }"
+				},
+				"url": {
+					"raw": "http://localhost:8080/s3_dietas-api/api/calificacionycomentario/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"s3_dietas-api",
+						"api",
+						"calificacionycomentario",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
