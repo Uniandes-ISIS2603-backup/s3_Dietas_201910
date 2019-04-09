@@ -53,7 +53,7 @@ public class HallOfFameResource {
     @GET
     public List<HallOfFameDetailDTO> getHalls(){
       List<HallOfFameDetailDTO> listaHalls = listEntity2DTO(hallLogic.getHalls());
-        return listaHalls;
+       return listaHalls;
     }
     
     @GET
