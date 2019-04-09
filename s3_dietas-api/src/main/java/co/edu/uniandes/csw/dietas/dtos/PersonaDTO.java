@@ -5,6 +5,7 @@
  */
 package co.edu.uniandes.csw.dietas.dtos;
 
+import co.edu.uniandes.csw.dietas.entities.PersonaEntity;
 import java.util.Date;
 
 /**
@@ -22,6 +23,20 @@ public class PersonaDTO {
     private Boolean solicitudEspecial;
     private Boolean tarjetaFidelidad;
 
+    public PersonaDTO(){
+        
+    }
+    public PersonaDTO(PersonaEntity persona )
+    {
+        this.setId(persona.getId());
+        this.setTipo(persona.getTipo());
+        this.setNombre(persona.getNombre());
+        this.setFechaIngreso(persona.getFechaIngreso());
+        this.setObjetivos(persona.getObjetivos());
+        this.setTiempoEsperadoMejora(persona.getTiempoEsperadoMejora());
+        this.setSolicitudEspecial(persona.isSolicitudEspecial());
+        this.setTarjetaFidelidad(persona.isTarjetaFidelidad());
+    }
     /**
      * @return the id
      */
@@ -133,7 +148,22 @@ public class PersonaDTO {
     public void setTarjetaFidelidad(Boolean tarjetaFidelidad) {
         this.tarjetaFidelidad = tarjetaFidelidad;
     }
+    
+    public PersonaEntity toEntity()
+    {
+        PersonaEntity entidad= new PersonaEntity();
+        entidad.setId(this.id);
+        entidad.setNombre(this.nombre);
+        entidad.setTipo(this.tipo);
+        entidad.setFechaIngreso(this.fechaIngreso);
+        entidad.setObjetivos(this.objetivos);
+        entidad.setTiempoEsperadoMejora(this.tiempoEsperadoMejora);
+        entidad.setTarjetaFidelidad(this.tarjetaFidelidad);
+        return entidad;
+    }
 
+
+    
 
 
     
