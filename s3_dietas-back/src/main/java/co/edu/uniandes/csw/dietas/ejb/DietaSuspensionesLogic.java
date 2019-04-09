@@ -17,7 +17,7 @@ import javax.inject.Inject;
 
 /**
  *
- * @author Alejandra Bravo
+ * @author Alejandra Bravoa
  */
 @Stateless
 public class DietaSuspensionesLogic {

@@ -13,7 +13,7 @@
 //
 ///**
 // *
-// * @author Alejandra Bravo
+// * @author Alejandra Bravoa
 // */
 //@Stateless
 //public class DietaSemanasLogic {

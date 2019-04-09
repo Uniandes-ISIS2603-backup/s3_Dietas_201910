@@ -15,7 +15,7 @@ import javax.inject.Inject;
 
 /**
  *
- * @author estudiante
+ * @author a.bravo
  */
 @Stateless
 public class DietaPersonaLogic {

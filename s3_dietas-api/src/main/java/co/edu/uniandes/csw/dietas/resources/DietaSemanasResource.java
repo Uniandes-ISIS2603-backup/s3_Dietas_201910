@@ -7,7 +7,7 @@ package co.edu.uniandes.csw.dietas.resources;
 
 /**
  *
- * @author estudiante
+ * @author estudiantea
  */
 public class DietaSemanasResource {
     

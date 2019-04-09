@@ -28,7 +28,7 @@ import javax.ws.rs.core.MediaType;
 
 /**
  *
- * @author Alejandra Bravo
+ * @author Alejandra Bravoa
  */
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
