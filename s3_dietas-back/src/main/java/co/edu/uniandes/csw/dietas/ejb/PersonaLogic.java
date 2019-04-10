@@ -8,15 +8,15 @@ package co.edu.uniandes.csw.dietas.ejb;
 import co.edu.uniandes.csw.dietas.entities.PersonaEntity;
 import co.edu.uniandes.csw.dietas.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.dietas.persistence.PersonaPersistence;
-<<<<<<< HEAD
-import static co.edu.uniandes.csw.dietas.persistence.SemanaPersistence.LOGGER;
+
+
 import java.util.List;
-import java.util.logging.Level;
-=======
+
+
 import java.util.logging.Level;
 
 import java.util.logging.Logger;
->>>>>>> 7422917bca8a605f047553b10e2561d53763cd5d
+
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 
@@ -41,7 +41,7 @@ public class PersonaLogic {
         persona = persistence.create(persona);
         return persona;
     }
-<<<<<<< HEAD
+
     
     public PersonaEntity getPersona(Long personaId) {
         PersonaEntity personaEntity = persistence.findById(personaId);
@@ -77,15 +77,6 @@ public class PersonaLogic {
 //        persistence.delete(dietasId);
     }
 
-=======
-    public PersonaEntity getPersona(Long hallId){
-        PersonaEntity entity= persistence.findById(hallId);
-        if(entity == null){
-                   LOGGER.log(Level.SEVERE, "La persona con el id = {0} no existe", hallId);
-        }
-          return entity;
-}
-    
->>>>>>> 7422917bca8a605f047553b10e2561d53763cd5d
+
 }
 

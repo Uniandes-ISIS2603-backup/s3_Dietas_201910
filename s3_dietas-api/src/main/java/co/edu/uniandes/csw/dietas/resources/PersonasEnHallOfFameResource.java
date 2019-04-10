@@ -8,6 +8,7 @@ package co.edu.uniandes.csw.dietas.resources;
 import co.edu.uniandes.csw.dietas.dtos.PersonaDTO;
 import co.edu.uniandes.csw.dietas.ejb.PersonaLogic;
 import co.edu.uniandes.csw.dietas.ejb.PersonasEnHallOfFameLogic;
+import co.edu.uniandes.csw.dietas.entities.PersonaEntity;
 import co.edu.uniandes.csw.dietas.exceptions.BusinessLogicException;
 import java.util.ArrayList;
 import java.util.List;
@@ -63,4 +64,32 @@ public class PersonasEnHallOfFameResource {
         
         return dto;
     }
+    
+     /**
+     * Busca y devuelve todas las personas que existen en una hall.
+     *
+     * @param dietasId El ID de la dieta del cual se buscan las suspensiones
+     * @return JSONArray {@link SuspensionDTO} - Las suspensiones encontradas en la
+     * dieta. Si no hay ninguna retorna una lista vacía.
+     */
+    @GET
+    public List<PersonaDTO> getPersonas(@PathParam("hallsId") Long hallsId) {
+        List<PersonaDTO> lista = personaListEntity2DTO(personasEnHallOfFameLogic.getPersonas(hallsId));
+        return lista;
+    }
+    
+    /**
+     * Convierte una lista de PersonaEntity a una lista de PersonaDTO.
+     *
+     * @param entityList Lista de PersonaEntity a convertir.
+     * @return Lista de PersonaDTO convertida.
+     */
+    private List<PersonaDTO> personaListEntity2DTO(List<PersonaEntity> entityList) {
+        List<PersonaDTO> list = new ArrayList<>();
+        for (PersonaEntity entity : entityList) {
+            list.add(new PersonaDTO(entity));
+        }
+        return list;
+    }
+
 }

@@ -12,6 +12,7 @@ import co.edu.uniandes.csw.dietas.persistence.PersonaPersistence;
 import java.util.logging.Logger;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
+import java.util.List;
 
 /**
  *
@@ -45,5 +46,17 @@ public class PersonasEnHallOfFameLogic {
         
         
         return personaPersistence.findById(personasId);
+    }
+    
+    /**
+     * Obtiene una colección de instancias de PersonaEntity asociadas a una
+     * instancia de Hall
+     *
+     * @param hallsId Identificador de la instancia de Dieta
+     * @return Colección de instancias de PersonaEntity asociadas a la instancia
+     * de Hall
+     */
+    public List<PersonaEntity> getPersonas(Long hallsId) {
+        return hallOfFamePersistence.find(hallsId).getPersonas();
     }
 }
