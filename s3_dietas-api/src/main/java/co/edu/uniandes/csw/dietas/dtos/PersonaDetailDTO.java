@@ -40,7 +40,7 @@ public class PersonaDetailDTO extends PersonaDTO implements Serializable{
             {
                 calificacionesYComentarios=new ArrayList<CalificacionYComentarioDTO>();
                 for(CalificacionYComentarioEntity calificacionYComentarioEntity: personaEntity.getCalificacionesYComentarios())
-                {//  calificacionesYComentarios.add(new CalificacionYComentarioDTO(calificacionYComentarioEntity));
+                { calificacionesYComentarios.add(new CalificacionYComentarioDTO(calificacionYComentarioEntity));
                 }
             }
             if(personaEntity.getFotos()!=null)
@@ -48,7 +48,7 @@ public class PersonaDetailDTO extends PersonaDTO implements Serializable{
                 fotos= new ArrayList<FotoDTO>();
                 for(FotoEntity fotoEntity: personaEntity.getFotos())
                 {
-                    //fotos.add(new FotoDTO(fotoEntity));
+                    fotos.add(new FotoDTO(fotoEntity));
                 }
             }
            if(personaEntity.getQuejas()!=null)
@@ -56,7 +56,7 @@ public class PersonaDetailDTO extends PersonaDTO implements Serializable{
                 quejasYReclamos= new ArrayList<QuejaYReclamoDTO>();
                 for(QuejaYReclamoEntity quejaEntity: personaEntity.getQuejas())
                 {
-                    //quejasYReclamos.add(new QuejaYReclamoDTO(quejaEntity));
+                    quejasYReclamos.add(new QuejaYReclamoDTO(quejaEntity));
                 }
             }
         if(personaEntity.getDietas()!=null)
@@ -64,7 +64,7 @@ public class PersonaDetailDTO extends PersonaDTO implements Serializable{
                 dietas= new ArrayList<DietaDTO>();
                 for(DietaEntity dietaEntity: personaEntity.getDietas())
                 {
-                    //dietas.add(new DietaDTO(dietaEntity));
+                    dietas.add(new DietaDTO(dietaEntity));
                 }
             }
 
@@ -73,10 +73,57 @@ public class PersonaDetailDTO extends PersonaDTO implements Serializable{
                 pagos= new ArrayList<PagoDTO>();
                 for(PagoEntity pagoEntity: personaEntity.getPagos())
                 {
-                    //pagos.add(new PagoDTO(pagoEntity));
+                    pagos.add(new PagoDTO(pagoEntity));
                 }
             }
         }
         
+    }
+        
+    public PersonaEntity toEntity(){
+        PersonaEntity entity = super.toEntity();
+            if(calificacionesYComentarios!=null)
+            {
+                List<CalificacionYComentarioEntity> calificaciones=new ArrayList<>();
+                for(CalificacionYComentarioDTO calificacionYComentarioDTO:calificacionesYComentarios )
+                { calificaciones.add(calificacionYComentarioDTO.toEntity());
+                
+                }
+                 entity.setCalificacionesYComentarios(calificaciones);
+            }
+            if(fotos!=null)
+            {
+                List<FotoEntity> fotosEntitys=new ArrayList<>();
+                for(FotoDTO foto: fotos)
+                {
+                    fotosEntitys.add(foto.toEntity());
+                }               
+            }
+            if(quejasYReclamos!=null)
+            {
+                List<QuejaYReclamoEntity> quejas=new ArrayList<>();
+                for(QuejaYReclamoDTO queja:quejasYReclamos)
+                {
+                    quejas.add(queja.toEntity());
+                }
+            }
+            if(dietas!=null)
+            {
+                List<DietaEntity> dietasss=new ArrayList<>();
+                for(DietaDTO diet: dietas)
+                {
+                    dietasss.add(diet.toEntity());
+                }
+            }
+
+            if(pagos!=null)
+            {
+                List<PagoEntity> pagoss=new ArrayList<>();
+                for(PagoDTO pagoD: pagos)
+                {
+                    pagoss.add(pagoD.toEntity());
+                }
+            }
+        return entity;
     }
 }
