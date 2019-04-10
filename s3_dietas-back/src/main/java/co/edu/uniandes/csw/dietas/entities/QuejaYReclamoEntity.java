@@ -38,6 +38,20 @@ public class QuejaYReclamoEntity extends BaseEntity implements Serializable{
     public void setEspecificacion(String especificacion) {
         this.especificacion = especificacion;
     }
+
+    /**
+     * @return the persona
+     */
+    public PersonaEntity getPersona() {
+        return persona;
+    }
+
+    /**
+     * @param persona the persona to set
+     */
+    public void setPersona(PersonaEntity persona) {
+        this.persona = persona;
+    }
     
     
 }
