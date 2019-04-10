@@ -10,10 +10,7 @@
     <packaging>pom</packaging>
     <name>s3_dietas</name>
  
-    <modules>
-        <module>s3_dietas-back</module>
-        <module>s3_dietas-api</module>
-    </modules>
+    <modules></modules>
     
     <repositories>
         <repository>
