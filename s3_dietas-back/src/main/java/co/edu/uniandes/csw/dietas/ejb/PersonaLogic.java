@@ -8,6 +8,9 @@ package co.edu.uniandes.csw.dietas.ejb;
 import co.edu.uniandes.csw.dietas.entities.PersonaEntity;
 import co.edu.uniandes.csw.dietas.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.dietas.persistence.PersonaPersistence;
+import java.util.logging.Level;
+
+import java.util.logging.Logger;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 
@@ -19,7 +22,8 @@ import javax.inject.Inject;
 @Stateless
 public class PersonaLogic {
     
-    
+     private static final Logger LOGGER = Logger.getLogger(PersonaLogic.class.getName());
+     
     @Inject
     private PersonaPersistence persistence;
     
@@ -31,4 +35,12 @@ public class PersonaLogic {
         persona = persistence.create(persona);
         return persona;
     }
+    public PersonaEntity getPersona(Long hallId){
+        PersonaEntity entity= persistence.findById(hallId);
+        if(entity == null){
+                   LOGGER.log(Level.SEVERE, "La persona con el id = {0} no existe", hallId);
+        }
+          return entity;
+}
+    
 }
