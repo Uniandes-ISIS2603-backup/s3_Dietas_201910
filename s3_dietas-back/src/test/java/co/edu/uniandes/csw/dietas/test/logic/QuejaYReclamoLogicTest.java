@@ -96,12 +96,15 @@ public class QuejaYReclamoLogicTest {
          newEntity.setId(data.get(0).getId());
          quejaYReclamoLogic.createQuejaYReclamo(newEntity);
      }
+
       /**
      * Prueba para consultar la lista de quejas.
      */
     @Test
     public void getQuejasYReclamosTest() {
-        List<QuejaYReclamoEntity> list = quejaYReclamoLogic.getQuejaYReclamo();
+
+        List<QuejaYReclamoEntity> list = quejaYReclamoLogic.getQuejasYReclamos();
+
         Assert.assertEquals(data.size(), list.size());
         for (QuejaYReclamoEntity entity : list) {
             boolean found = false;
@@ -125,7 +128,7 @@ public class QuejaYReclamoLogicTest {
         Assert.assertEquals(entity.getId(), resultEntity.getId());
         Assert.assertEquals(entity.getEspecificacion(), resultEntity.getEspecificacion());
     }
-     
+       
      /**
      * Prueba para actualizar una queja.
      */
@@ -133,24 +136,22 @@ public class QuejaYReclamoLogicTest {
     public void updateQuejaYReclamoTest() {
         QuejaYReclamoEntity entity = data.get(0);
         QuejaYReclamoEntity pojoEntity = factory.manufacturePojo(QuejaYReclamoEntity.class);
-
         pojoEntity.setId(entity.getId());
-
         quejaYReclamoLogic.updateQuejaYReclamo(pojoEntity.getId(), pojoEntity);
-
         QuejaYReclamoEntity resp = em.find(QuejaYReclamoEntity.class, entity.getId());
-
         Assert.assertEquals(pojoEntity.getId(), resp.getId());
         Assert.assertEquals(pojoEntity.getEspecificacion(), resp.getEspecificacion());
     }
-    
+
+
     /**
-     * Prueba para eliminar un Pago
+     * Prueba para eliminar una queja
      *
      * @throws co.edu.uniandes.csw.bookstore.exceptions.BusinessLogicException
      */
     @Test
     public void deleteQuejaYReclamoTest() throws BusinessLogicException {
+
         QuejaYReclamoEntity entity = data.get(0);
         quejaYReclamoLogic.deleteQuejaYReclamo(entity.getId());
         QuejaYReclamoEntity deleted = em.find(QuejaYReclamoEntity.class, entity.getId());

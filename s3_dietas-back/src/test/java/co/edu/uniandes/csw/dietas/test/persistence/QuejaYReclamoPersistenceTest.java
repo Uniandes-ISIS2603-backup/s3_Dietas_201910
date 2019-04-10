@@ -35,26 +35,16 @@ public class QuejaYReclamoPersistenceTest {
     
     @Inject
    private QuejaYReclamoPersistence quejita;
-   @Deployment
-   public static JavaArchive createDeployment()
-   {
-       return ShrinkWrap.create(JavaArchive.class)
-               .addPackage(QuejaYReclamoEntity.class.getPackage())
-               .addPackage(QuejaYReclamoPersistence.class.getPackage())
-               .addAsManifestResource("META-INf/persistence.xml","persistence.xml")
-               .addAsManifestResource("META-INF/beans.xml","beans.xml");
-   }
-
+    
     @PersistenceContext
-     private EntityManager em;
+    private EntityManager em;
     
     @Inject
     UserTransaction utx;
 
     private List<QuejaYReclamoEntity> data = new ArrayList<QuejaYReclamoEntity>();
     
-   
-     /**
+    /**
      * Configuración inicial de la prueba.
      */
      @Before
@@ -96,6 +86,16 @@ public class QuejaYReclamoPersistenceTest {
         }
     }
      
+   @Deployment
+   public static JavaArchive createDeployment()
+   {
+       return ShrinkWrap.create(JavaArchive.class)
+               .addPackage(QuejaYReclamoEntity.class.getPackage())
+               .addPackage(QuejaYReclamoPersistence.class.getPackage())
+               .addAsManifestResource("META-INf/persistence.xml","persistence.xml")
+               .addAsManifestResource("META-INF/beans.xml","beans.xml");
+   }
+        
     /**
      * Prueba para crear una Queja.
      */
@@ -109,10 +109,13 @@ public class QuejaYReclamoPersistenceTest {
          Assert.assertNotNull(result);
          QuejaYReclamoEntity entity = em.find(QuejaYReclamoEntity.class, result.getId());
 
-        Assert.assertEquals(newEntity.getEspecificacion(), entity.getEspecificacion());
-     }
+
+        Assert.assertEquals(newEntity.getEspecificacion(), entity.getEspecificacion());             
+   }
+     
      
      /**
+
      * Prueba para consultar la lista de quejas.
      */
     @Test
@@ -131,7 +134,7 @@ public class QuejaYReclamoPersistenceTest {
     }
 
     /**
-     * Prueba para consultar un Pago.
+     * Prueba para consultar una queja.
      */
     @Test
     public void getQuejaYReclamoTest() {
@@ -169,4 +172,5 @@ public class QuejaYReclamoPersistenceTest {
         QuejaYReclamoEntity deleted = em.find(QuejaYReclamoEntity.class, entity.getId());
         Assert.assertNull(deleted);
     }
+
 }

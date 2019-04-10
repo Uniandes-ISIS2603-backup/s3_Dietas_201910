@@ -11,6 +11,15 @@ import co.edu.uniandes.csw.dietas.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.dietas.persistence.PersonaPersistence;
 import co.edu.uniandes.csw.dietas.persistence.QuejaYReclamoPersistence;
 import java.util.logging.Level;
+
+import javax.ejb.Stateless;
+import javax.inject.Inject;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.ejb.Stateless;
+import javax.inject.Inject;
+
 import java.util.logging.Logger;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -36,16 +45,17 @@ public class QuejaYReclamoLogic {
         quejaYReclamo= persistence.create(quejaYReclamo);
         return quejaYReclamo;
     }
-    
+
+        
     public QuejaYReclamoEntity getQuejaYReclamo(Long quejaId){
-     QuejaYReclamoEntity quejaA = persistence.findById(quejaId);
-        if(quejaA == null){
+        QuejaYReclamoEntity queja = persistence.findById(quejaId);
+        if(queja == null){
             LOGGER.log(Level.SEVERE, "La queja con el id = {0} no existe", quejaId);
         }
-        return quejaA;
+        return queja;
     }
-    
-    public List<QuejaYReclamoEntity> getQuejaYReclamo() {
+
+    public List<QuejaYReclamoEntity> getQuejasYReclamos() {
         List<QuejaYReclamoEntity> quejas = persistence.findAll();
         return quejas;
     }

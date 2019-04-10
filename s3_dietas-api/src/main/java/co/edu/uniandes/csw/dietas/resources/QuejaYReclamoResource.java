@@ -35,20 +35,12 @@ import javax.ws.rs.WebApplicationException;
 @RequestScoped
 public class QuejaYReclamoResource {
     private static final Logger LOGGER = Logger.getLogger(PersonaResource.class.getName());
-    
-    @POST
-    public QuejaYReclamoDTO createPersona(QuejaYReclamoDTO quejaParam){
-       return quejaParam; 
-    }
-//    @DELETE
-//    @Path("{quejaYReclamoId: \\d+}")
-//    public void deletepersona(@PathParam("quejaYReclamoId") Long quejaYReclamoId){
-//        
-//    }
-       
-    
+  
     @Inject
+    
     private QuejaYReclamoLogic logica;
+    
+    //hola mundo
     
     @POST
     public QuejaYReclamoDTO createQuejaYReclamo(QuejaYReclamoDTO queja)throws BusinessLogicException{
@@ -58,40 +50,39 @@ public class QuejaYReclamoResource {
     }
     
     @GET
-    
-    @Path("{quejaId: \\d+}")
-    public QuejaYReclamoDTO getQuejaYReclamo(@PathParam("quejaId") Long quejaId){
-        QuejaYReclamoEntity queja = logica.getQuejaYReclamo(quejaId);
+    @Path("{quejasId: \\d+}")
+    public QuejaYReclamoDTO getQuejaYReclamo(@PathParam("quejasId") Long quejasId){
+        QuejaYReclamoEntity queja = logica.getQuejaYReclamo(quejasId);
         if(queja == null){
-            throw new WebApplicationException("El recurso /quejas/"+quejaId+" no existe.", 404);
+            throw new WebApplicationException("El recurso /quejas/"+quejasId+" no existe.", 404);
         }
         return new QuejaYReclamoDTO(queja);
     }
     
     @GET
-    public List<QuejaYReclamoDTO> getQuejaYReclamo(){
-        List<QuejaYReclamoDTO> listaQuejas = listEntity2DetailDTO(logica.getQuejaYReclamo());
+    public List<QuejaYReclamoDTO> getQuejasYReclamos(){
+        List<QuejaYReclamoDTO> listaQuejas = listEntity2DetailDTO(logica.getQuejasYReclamos());
         return listaQuejas;
     }
     
     @PUT
-    @Path("{quejaId: \\d+}")
-    public QuejaYReclamoDTO updateQuejaYReclamo(@PathParam("quejaId") Long quejaId, QuejaYReclamoDTO queja){
-        queja.setId(quejaId);
-        if (logica.getQuejaYReclamo(quejaId) == null) {
-            throw new WebApplicationException("El recurso /quejas/" + quejaId + " no existe.", 404);
+    @Path("{quejasId: \\d+}")
+    public QuejaYReclamoDTO updateQuejaYReclamo(@PathParam("quejasId") Long quejasId, QuejaYReclamoDTO queja){
+        queja.setId(quejasId);
+        if (logica.getQuejaYReclamo(quejasId) == null) {
+            throw new WebApplicationException("El recurso /quejas/" + quejasId + " no existe.", 404);
         }
-        QuejaYReclamoDTO quejaDTO = new QuejaYReclamoDTO(logica.updateQuejaYReclamo(quejaId, queja.toEntity()));
+        QuejaYReclamoDTO quejaDTO = new QuejaYReclamoDTO(logica.updateQuejaYReclamo(quejasId, queja.toEntity()));
         return quejaDTO;
     }
     
     @DELETE
-    @Path("{quejaId: \\d+}")
-    public void deleteQuejaYReclamo(@PathParam("quejaId") Long quejaId)throws BusinessLogicException{
-        if (logica.getQuejaYReclamo(quejaId) == null) {
-            throw new WebApplicationException("El recurso /quejas/" + quejaId + " no existe.", 404);
+    @Path("{pagosId: \\d+}")
+    public void deleteQuejaYReclamo(@PathParam("quejasId") Long quejasId)throws BusinessLogicException{
+        if (logica.getQuejaYReclamo(quejasId) == null) {
+            throw new WebApplicationException("El recurso /quejas/" + quejasId + " no existe.", 404);
         }
-        logica.deleteQuejaYReclamo(quejaId);
+        logica.deleteQuejaYReclamo(quejasId);
     }
     
     private List<QuejaYReclamoDTO> listEntity2DetailDTO(List<QuejaYReclamoEntity> entityList) {

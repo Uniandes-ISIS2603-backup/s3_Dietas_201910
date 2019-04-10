@@ -17,6 +17,7 @@ public class QuejaYReclamoDTO {
     private String especificacion;
     private PersonaDTO persona;
 
+    
     public QuejaYReclamoDTO(){
         
     }
@@ -24,15 +25,17 @@ public class QuejaYReclamoDTO {
     public QuejaYReclamoDTO(QuejaYReclamoEntity entity){
         setId(entity.getId());
         setEspecificacion(entity.getEspecificacion());
+       
     }
     
     public QuejaYReclamoEntity toEntity(){
         QuejaYReclamoEntity entity = new QuejaYReclamoEntity();
         entity.setId(this.getId());
         entity.setEspecificacion(this.getEspecificacion());
+       
         return entity;
     }
-    /**
+        /**
      * @return the id
      */
     public Long getId() {
@@ -59,7 +62,6 @@ public class QuejaYReclamoDTO {
     public void setEspecificacion(String especificacion) {
         this.especificacion = especificacion;
     }
-    
     /**
      * @return the persona
      */

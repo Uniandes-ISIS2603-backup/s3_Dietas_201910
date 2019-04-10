@@ -52,6 +52,5 @@ public class QuejaYReclamoEntity extends BaseEntity implements Serializable{
     public void setEspecificacion(String especificacion) {
         this.especificacion = especificacion;
     }
-    
-    
+
 }
