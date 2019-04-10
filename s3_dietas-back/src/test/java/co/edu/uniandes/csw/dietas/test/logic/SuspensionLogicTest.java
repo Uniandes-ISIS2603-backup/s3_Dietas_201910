@@ -1,4 +1,4 @@
-/*
+ /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -111,13 +111,82 @@ public class SuspensionLogicTest
    }
      
      
-     @Test //(expected = BusinessLogicException.class)
+     @Test (expected = BusinessLogicException.class)
      public void createSuspensionConMismoIdTest() throws BusinessLogicException
      {   
          SuspensionEntity newEntity = factory.manufacturePojo(SuspensionEntity.class);
          newEntity.setId(data.get(0).getId());
          suspensionLogic.createSuspension(newEntity);
      }
+     
+     
+     
+     /**
+     * Prueba para consultar la lista de Suspensiones.
+     */
+    @Test
+    public void getSuspensionesTest() {
+        List<SuspensionEntity> list = suspensionLogic.getSuspensiones();
+        Assert.assertEquals(data.size(), list.size());
+        for (SuspensionEntity entity : list) {
+            boolean found = false;
+            for (SuspensionEntity storedEntity : data) {
+                if (entity.getId().equals(storedEntity.getId())) {
+                    found = true;
+                }
+            }
+            Assert.assertTrue(found);
+        }
+    }
+    
+    
+    
+    /**
+     * Prueba para consultar una Suspension.
+     */
+    @Test
+    public void getSuspensionTest() {
+        SuspensionEntity entity = data.get(0);
+        SuspensionEntity resultEntity = suspensionLogic.getSuspension(entity.getId());
+        Assert.assertNotNull(resultEntity);
+        Assert.assertEquals(entity.getId(), resultEntity.getId());
+        Assert.assertEquals(entity.getComentarios(), resultEntity.getComentarios());
+    }
+    
+    
+    
+     /**
+     * Prueba para actualizar una Suspension.
+     */
+    @Test
+    public void updateSuspensionTest() {
+        SuspensionEntity entity = data.get(0);
+        SuspensionEntity pojoEntity = factory.manufacturePojo(SuspensionEntity.class);
+
+        pojoEntity.setId(entity.getId());
+
+        suspensionLogic.updateSuspension(pojoEntity.getId(), pojoEntity);
+
+        SuspensionEntity resp = em.find(SuspensionEntity.class, entity.getId());
+
+        Assert.assertEquals(pojoEntity.getId(), resp.getId());
+        Assert.assertEquals(pojoEntity.getNumDias(), resp.getNumDias());
+    }
+    
+    
+        /**
+     * Prueba para eliminar una Suspension
+     *
+     * @throws BusinessLogicException
+     */
+    @Test
+    public void deleteSuspensionTest() throws BusinessLogicException {
+        SuspensionEntity entity = data.get(0);
+        suspensionLogic.deleteSuspension(entity.getId());
+        SuspensionEntity deleted = em.find(SuspensionEntity.class, entity.getId());
+        Assert.assertNull(deleted);
+    }
+    
      
    
 }

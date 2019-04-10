@@ -21,7 +21,7 @@ import javax.ws.rs.WebApplicationException;
 
 /**
  *
- * @author estudiante
+ * @author Daniel Espitia
  */
 public class FotoDePersonaResource {
      private static final Logger LOGGER = Logger.getLogger(FotoDePersonaResource.class.getName());
