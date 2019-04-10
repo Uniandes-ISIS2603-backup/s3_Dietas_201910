@@ -43,7 +43,7 @@ public class PersonaResource {
     @POST
     public PersonaDTO createPersona(PersonaDTO persona)throws BusinessLogicException{
         PersonaEntity personaEntity = persona.toEntity();
-        //personaEntity = personaLogica.createPersona(personaEntity);
+        personaEntity = personaLogica.createPersona(personaEntity);
        return new PersonaDTO(personaEntity);
     }
     
