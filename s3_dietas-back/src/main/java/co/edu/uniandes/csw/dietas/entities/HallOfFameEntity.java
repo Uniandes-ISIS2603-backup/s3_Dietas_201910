@@ -61,5 +61,16 @@ public class HallOfFameEntity extends BaseEntity implements Serializable{
         this.personas = personas;
     }
     
+    public PersonaEntity addPersona (PersonaEntity personaE){
+        
+        if(personaE !=null && !personas.contains(personaE)){
+            personas.add(personaE);
+            return personaE;
+        }else{
+            //la persona dad por parametro es nula o ya esta en la lista
+            return null;
+        }
+        
+    }
     
 }

@@ -31,13 +31,17 @@ public class PersonaEntity extends BaseEntity implements Serializable {
     private boolean tarjetaFidelidad;
   
     @PodamExclude
+    @OneToMany(mappedBy = "personaDieta")
+    private List<DietaEntity> dietas = new ArrayList<>();
+    
+    @PodamExclude
     @ManyToOne()
     private HallOfFameEntity hall;
 
     @PodamExclude
     @OneToMany(mappedBy = "persona")
     private List<QuejaYReclamoEntity> quejas = new ArrayList<>();
-    
+        
     @PodamExclude
     @OneToMany(mappedBy = "persona")
     private List<PagoEntity> pagos = new ArrayList<>();
@@ -98,7 +102,7 @@ public class PersonaEntity extends BaseEntity implements Serializable {
     public String getObjetivos() {
         return objetivos;
     }
-
+  
     /**
      * @param objetivos the objetivos to set
      */
@@ -152,14 +156,14 @@ public class PersonaEntity extends BaseEntity implements Serializable {
      * @return the halls
      */
     public HallOfFameEntity getHalls() {
-        return hall;
+        return getHall();
     }
 
     /**
      * @param halls the halls to set
      */
     public void setHalls(HallOfFameEntity halls) {
-        this.hall = hall;
+        this.setHall(getHall());
     }
 
     /**
@@ -217,5 +221,35 @@ public class PersonaEntity extends BaseEntity implements Serializable {
     public void setFotos(List<FotoEntity> fotos) {
         this.fotos = fotos;
     }
+
+    /**
+     * @return the dietas
+     */
+    public List<DietaEntity> getDietas() {
+        return dietas;
+    }
+
+    /**
+     * @param dietas the dietas to set
+     */
+    public void setDietas(List<DietaEntity> dietas) {
+        this.dietas = dietas;
+    }
+
+    /**
+     * @return the hall
+     */
+    public HallOfFameEntity getHall() {
+        return hall;
+    }
+
+    /**
+     * @param hall the hall to set
+     */
+    public void setHall(HallOfFameEntity hall) {
+        this.hall = hall;
+    }
           
 }
+     
+

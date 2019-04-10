@@ -17,6 +17,20 @@ import uk.co.jemos.podam.common.PodamExclude;
 
 @Entity
 public class QuejaYReclamoEntity extends BaseEntity implements Serializable{
+
+    /**
+     * @return the persona
+     */
+    public PersonaEntity getPersona() {
+        return persona;
+    }
+
+    /**
+     * @param persona the persona to set
+     */
+    public void setPersona(PersonaEntity persona) {
+        this.persona = persona;
+    }
     
    
     private String especificacion;
@@ -39,19 +53,4 @@ public class QuejaYReclamoEntity extends BaseEntity implements Serializable{
         this.especificacion = especificacion;
     }
 
-    /**
-     * @return the persona
-     */
-    public PersonaEntity getPersona() {
-        return persona;
-    }
-
-    /**
-     * @param persona the persona to set
-     */
-    public void setPersona(PersonaEntity persona) {
-        this.persona = persona;
-    }
-    
-    
 }

@@ -95,9 +95,13 @@ public class QuejaYReclamoPersistenceTest {
                .addAsManifestResource("META-INf/persistence.xml","persistence.xml")
                .addAsManifestResource("META-INF/beans.xml","beans.xml");
    }
-   @Test
-   public void createQuejaYReclamoTest()
-   {PodamFactory factory = new PodamFactoryImpl();
+        
+    /**
+     * Prueba para crear una Queja.
+     */
+     @Test
+     public void createQuejaYReclamoTest(){
+         PodamFactory factory = new PodamFactoryImpl();
          QuejaYReclamoEntity newEntity = factory.manufacturePojo(QuejaYReclamoEntity.class);
          System.out.print(newEntity);
          QuejaYReclamoEntity result = quejita.create(newEntity);
@@ -105,10 +109,13 @@ public class QuejaYReclamoPersistenceTest {
          Assert.assertNotNull(result);
          QuejaYReclamoEntity entity = em.find(QuejaYReclamoEntity.class, result.getId());
 
+
         Assert.assertEquals(newEntity.getEspecificacion(), entity.getEspecificacion());             
    }
-   
-    /**
+     
+     
+     /**
+
      * Prueba para consultar la lista de quejas.
      */
     @Test
@@ -165,5 +172,5 @@ public class QuejaYReclamoPersistenceTest {
         QuejaYReclamoEntity deleted = em.find(QuejaYReclamoEntity.class, entity.getId());
         Assert.assertNull(deleted);
     }
-   
+
 }

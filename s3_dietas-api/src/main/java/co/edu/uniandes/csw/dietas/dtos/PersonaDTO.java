@@ -23,7 +23,10 @@ public class PersonaDTO {
     private Boolean solicitudEspecial;
     private Boolean tarjetaFidelidad;
 
-    
+    public PersonaDTO(){
+        
+    }
+
     public PersonaDTO(PersonaEntity entity){
         setId(entity.getId());
         setTipo(entity.getTipo());
@@ -33,8 +36,6 @@ public class PersonaDTO {
         setTiempoEsperadoMejora(entity.getTiempoEsperadoMejora());
         setSolicitudEspecial(entity.isSolicitudEspecial());
         setTarjetaFidelidad(entity.isTarjetaFidelidad());
-        
-        
     }
     /**
      * @return the id
@@ -147,7 +148,22 @@ public class PersonaDTO {
     public void setTarjetaFidelidad(Boolean tarjetaFidelidad) {
         this.tarjetaFidelidad = tarjetaFidelidad;
     }
+    
+    public PersonaEntity toEntity()
+    {
+        PersonaEntity entidad= new PersonaEntity();
+        entidad.setId(this.id);
+        entidad.setNombre(this.nombre);
+        entidad.setTipo(this.tipo);
+        entidad.setFechaIngreso(this.fechaIngreso);
+        entidad.setObjetivos(this.objetivos);
+        entidad.setTiempoEsperadoMejora(this.tiempoEsperadoMejora);
+        entidad.setTarjetaFidelidad(this.tarjetaFidelidad);
+        return entidad;
+    }
 
+
+    
 
 
     

@@ -16,6 +16,7 @@ public class QuejaYReclamoDTO {
     private Long id;
     private String especificacion;
     private PersonaDTO persona;
+
     
     public QuejaYReclamoDTO(){
         
@@ -34,9 +35,7 @@ public class QuejaYReclamoDTO {
        
         return entity;
     }
-    
-
-    /**
+        /**
      * @return the id
      */
     public Long getId() {
@@ -63,7 +62,6 @@ public class QuejaYReclamoDTO {
     public void setEspecificacion(String especificacion) {
         this.especificacion = especificacion;
     }
-
     /**
      * @return the persona
      */
