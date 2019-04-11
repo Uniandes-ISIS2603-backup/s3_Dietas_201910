@@ -9,10 +9,10 @@ delete from CocinaEntity;
 delete from QuejaYReclamoEntity;
 delete from HallOfFameEntity;
 delete from PersonaEntity;
-delete from HallOfFamePersonaEntity;
+-- delete from HallOfFamePersonaEntity;
 delete from CalificacionYComentarioEntity;
 delete from FotoEntity;
-delete from PersonaPagoEntity;
+-- delete from PersonaPagoEntity;
 
 insert into DietaEntity (id, tipo, objetivo, diasSupendida, id_persona, id_tipodieta) values (1, 'Executive Secretary', 'Nulla ut erat id mauris vulputate elementum. Nullam varius.', '08', 1, 1);
 insert into DietaEntity (id, tipo, objetivo, diasSupendida, id_persona, id_tipodieta) values (2, 'Structural Analysis Engineer', 'In blandit ultrices enim.', '55', 2, 2);
@@ -78,11 +78,11 @@ insert into PersonaEntity (id, nombre, tipo, fechaIngreso, objetivos, tiempoEspe
 insert into PersonaEntity (id, nombre, tipo, fechaIngreso, objetivos, tiempoEsperadoMejora, solicitudEspecial, TarjetaFidelidad) values (4, 'Xenia', 'Technical Writer', '10/31/2018', 'Nam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla. Sed vel enim sit amet nunc viverra dapibus.', '49593', false, false);
 insert into PersonaEntity (id, nombre, tipo, fechaIngreso, objetivos, tiempoEsperadoMejora, solicitudEspecial, TarjetaFidelidad) values (5, 'Trisha', 'Physical Therapy Assistant', '8/14/2018', 'Nulla mollis molestie lorem.', '5010', false, true);
 
-insert into HallOfFamePersonaEntity (id_halloffame, id_persona) values (1, 1);
-insert into HallOfFamePersonaEntity (id_halloffame, id_persona) values (2, 2);
-insert into HallOfFamePersonaEntity (id_halloffame, id_persona) values (3, 3);
-insert into HallOfFamePersonaEntity (id_halloffame, id_persona) values (4, 4);
-insert into HallOfFamePersonaEntity (id_halloffame, id_persona) values (5, 5);
+-- insert into HallOfFamePersonaEntity (id_halloffame, id_persona) values (1, 1);
+-- insert into HallOfFamePersonaEntity (id_halloffame, id_persona) values (2, 2);
+-- insert into HallOfFamePersonaEntity (id_halloffame, id_persona) values (3, 3);
+-- insert into HallOfFamePersonaEntity (id_halloffame, id_persona) values (4, 4);
+-- insert into HallOfFamePersonaEntity (id_halloffame, id_persona) values (5, 5);
 
 insert into CalificacionYComentarioEntity (id, calificacion, comentario, id_persona) values (1, '63040', 'Morbi vel lectus in quam fringilla rhoncus. Mauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis.', 1);
 insert into CalificacionYComentarioEntity (id, calificacion, comentario, id_persona) values (2, '9639', 'Praesent id massa id nisl venenatis lacinia. Aenean sit amet justo.', 2);
@@ -96,8 +96,8 @@ insert into FotoEntity (id, nombre, url, id_persona) values (3, '01609', 'http:/
 insert into FotoEntity (id, nombre, url, id_persona) values (4, '140', 'http://dummyimage.com/226x131.jpg/ff4444/ffffff', 4);
 insert into FotoEntity (id, nombre, url, id_persona) values (5, '4791', 'http://dummyimage.com/172x230.jpg/dddddd/000000', 5);
 
-insert into PersonaPagoEntity (id_persona, id_pago) values (1, 1);
-insert into PersonaPagoEntity (id_persona, id_pago) values (2, 2);
-insert into PersonaPagoEntity (id_persona, id_pago) values (3, 1);
-insert into PersonaPagoEntity (id_persona, id_pago) values (4, 2);
-insert into PersonaPagoEntity (id_persona, id_pago) values (5, 2);
+-- insert into PersonaPagoEntity (id_persona, id_pago) values (1, 1);
+-- insert into PersonaPagoEntity (id_persona, id_pago) values (2, 2);
+-- insert into PersonaPagoEntity (id_persona, id_pago) values (3, 1);
+-- insert into PersonaPagoEntity (id_persona, id_pago) values (4, 2);
+-- insert into PersonaPagoEntity (id_persona, id_pago) values (5, 2);
