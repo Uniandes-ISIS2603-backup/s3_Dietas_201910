@@ -25,11 +25,15 @@ public class PersonaEntity extends BaseEntity implements Serializable {
     private String tipo;
     private String nombre;
     private Date fechaIngreso;
-    private String[] objetivos;
+    private String objetivos;
     private int tiempoEsperadoMejora;
     private boolean solicitudEspecial;
     private boolean tarjetaFidelidad;
   
+    @PodamExclude
+    @OneToMany(mappedBy = "personaDieta")
+    private List<DietaEntity> dietas = new ArrayList<>();
+    
     @PodamExclude
     @ManyToOne()
     private HallOfFameEntity hall;
@@ -37,7 +41,7 @@ public class PersonaEntity extends BaseEntity implements Serializable {
     @PodamExclude
     @OneToMany(mappedBy = "persona")
     private List<QuejaYReclamoEntity> quejas = new ArrayList<>();
-    
+        
     @PodamExclude
     @OneToMany(mappedBy = "persona")
     private List<PagoEntity> pagos = new ArrayList<>();
@@ -95,14 +99,14 @@ public class PersonaEntity extends BaseEntity implements Serializable {
     /**
      * @return the objetivos
      */
-    public String[] getObjetivos() {
+    public String getObjetivos() {
         return objetivos;
     }
-
+  
     /**
      * @param objetivos the objetivos to set
      */
-    public void setObjetivos(String[] objetivos) {
+    public void setObjetivos(String objetivos) {
         this.objetivos = objetivos;
     }
 
@@ -152,14 +156,14 @@ public class PersonaEntity extends BaseEntity implements Serializable {
      * @return the halls
      */
     public HallOfFameEntity getHalls() {
-        return hall;
+        return getHall();
     }
 
     /**
      * @param halls the halls to set
      */
     public void setHalls(HallOfFameEntity halls) {
-        this.hall = hall;
+        this.setHall(getHall());
     }
 
     /**
@@ -217,5 +221,66 @@ public class PersonaEntity extends BaseEntity implements Serializable {
     public void setFotos(List<FotoEntity> fotos) {
         this.fotos = fotos;
     }
-          
+
+    /**
+     * @return the dietas
+     */
+    public List<DietaEntity> getDietas() {
+        return dietas;
+    }
+
+    /**
+     * @param dietas the dietas to set
+     */
+    public void setDietas(List<DietaEntity> dietas) {
+        this.dietas = dietas;
+    }
+
+    /**
+     * @return the hall
+     */
+    public HallOfFameEntity getHall() {
+        return hall;
+    }
+
+    /**
+     * @param hall the hall to set
+     */
+    public void setHall(HallOfFameEntity hall) {
+        this.hall = hall;
+    }
+    
+    
+    /**
+     * @param hall the hall to set
+     */
+    public void addFoto(FotoEntity foto) {
+       this.fotos.add(foto);
+    }
+    
+    /**
+     * @param hall the hall to set
+     */
+    public void addCalificacionYComentario(CalificacionYComentarioEntity calificacion) {
+        this.calificacionesYComentarios.add(calificacion);
+    }
+    
+    /**
+     * @param hall the hall to set
+     */
+    public void addPago(PagoEntity pago) {
+        this.pagos.add(pago);
+    }
+   
+    public void addDieta(DietaEntity dieta){
+        this.dietas.add(dieta);
+    }
+       /**{
+     * @param hall the hall to set
+     */
+    public void addQuejaYReclamo(QuejaYReclamoEntity queja) {
+        this.quejas.add(queja);
+    }
 }
+     
+

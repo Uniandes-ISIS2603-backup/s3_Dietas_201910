@@ -1,0 +1,328 @@
+{
+	"info": {
+		"_postman_id": "b48bb361-7f28-48e3-ace2-c0acfb13a378",
+		"name": "ComidaResourceTest",
+		"description": "Comida Resource Test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Obtener todas las comidas",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "5cb4c2bc-36b6-4ae3-acf8-a5b90713f1ee",
+						"exec": [
+							"tests[\"No genera error en el Get\"] = responseCode.code === 200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s3_dietas-api/api/comidas",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s3_dietas-api",
+						"api",
+						"comidas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear una comida",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "22a69e67-dc7a-49bf-a0e1-af3b52eac907",
+						"exec": [
+							"var data = JSON.parse(responseBody);",
+							"postman.setGlobalVariable(\"new_id_e\",data.id);",
+							"tests[\"no genera error en el Post\"] = responseCode.code === 200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"tipo\":\"desayuno\", \"alimentosYCantidad\":\"Queso:20gr, pollo:25gr\"}"
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s3_dietas-api/api/comidas",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s3_dietas-api",
+						"api",
+						"comidas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear una comida 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "3631d99c-e5b9-424a-94c8-86379cfc0f79",
+						"exec": [
+							"var data = JSON.parse(responseBody);",
+							"postman.setGlobalVariable(\"new_id_e2\",data.id);",
+							"tests[\"no genera error en el Post\"] = responseCode.code === 200;",
+							"console.log(data.id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"tipo\":\"Almuerzo\", \"alimentosYCantidad\":\"Queso:20gr, Pollo:25gr, Arroz:35gr\"}"
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s3_dietas-api/api/comidas",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s3_dietas-api",
+						"api",
+						"comidas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Editar una comida",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "04b5a744-d803-4775-8c8e-aeca394621b5",
+						"exec": [
+							"console.log(responseBody);",
+							"var data = JSON.parse(responseBody);",
+							"tests[\"No genera error en el Put\"] = responseCode.code === 200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"id\":1}"
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s3_dietas-api/api/comidas/{{new_id_e}}",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s3_dietas-api",
+						"api",
+						"comidas",
+						"{{new_id_e}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Editar una comida que no existe",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "1ff8f1d0-9666-46b1-b580-68b774f75c5e",
+						"exec": [
+							"tests[\"No actualiza con id que no existe\"] = responseCode.code === 404;",
+							"tests[\"Mensaje correcto de error\"] = responseBody.has(\"El recurso /comidas/0 no existe.\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"tipo\":\"editorial con un nuevo tipo\"}"
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s3_dietas-api/api/comidas/0",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s3_dietas-api",
+						"api",
+						"comidas",
+						"0"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener comida con id que no existe 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "6403e52d-2c07-40c4-ad32-4b11985e61ad",
+						"exec": [
+							"tests[\"No actualiza con id que no existe\"] = responseCode.code === 404;",
+							"tests[\"Mensaje correcto de error\"] = responseBody.has(\"El recurso /comidas/0 no existe.\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s3_dietas-api/api/comidas/0",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s3_dietas-api",
+						"api",
+						"comidas",
+						"0"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Eliminar una comida",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "22a69e67-dc7a-49bf-a0e1-af3b52eac907",
+						"exec": [
+							"tests[\"No genera error en el Delete\"] = responseCode.code === 204;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s3_dietas-api/api/comidas/{{new_id_e}}",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s3_dietas-api",
+						"api",
+						"comidas",
+						"{{new_id_e}}"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

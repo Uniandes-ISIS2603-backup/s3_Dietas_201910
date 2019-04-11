@@ -15,6 +15,7 @@ import javax.persistence.TypedQuery;
 import java.util.logging.Logger;
 import java.util.logging.Level;
 
+
 /**
  *
  * @author  Louis Gualtero. 
@@ -125,5 +126,7 @@ public class HallOfFamePersistence {
         em.remove(hallEntity);
     }
      
+    
+    
          
 }

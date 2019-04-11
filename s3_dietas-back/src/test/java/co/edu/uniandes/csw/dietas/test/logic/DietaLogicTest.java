@@ -42,7 +42,11 @@ public class DietaLogicTest {
     private UserTransaction utx;
     private List<DietaEntity> data = new ArrayList<DietaEntity>();
 
-    
+    /**
+     * @return Devuelve el jar que Arquillian va a desplegar en Payara embebido.
+     * El jar contiene las clases, el descriptor de la base de datos y el
+     * archivo beans.xml para resolver la inyección de dependencias.
+     */
     @Deployment
      public static JavaArchive createDeployment(){
          return ShrinkWrap.create(JavaArchive.class)
@@ -53,6 +57,9 @@ public class DietaLogicTest {
                  .addAsManifestResource("META-INF/beans.xml","beans.xml");
      }
      
+     /**
+     * Configuración inicial de la prueba.
+     */
      @Before
     public void configTest() {
         try {
@@ -70,10 +77,17 @@ public class DietaLogicTest {
         }
     }
     
+    /**
+     * Limpia las tablas que están implicadas en la prueba.
+     */
     private void clearData() {
         em.createQuery("delete from DietaEntity").executeUpdate();
     }
      
+    /**
+     * Inserta los datos iniciales para el correcto funcionamiento de las
+     * pruebas.
+     */
      private void insertData(){
          for (int i = 0; i < 3; i++) {
              DietaEntity entity = factory.manufacturePojo(DietaEntity.class);
@@ -82,6 +96,9 @@ public class DietaLogicTest {
          }
      }
      
+     /**
+     * Prueba para crear una Dieta.
+     */
      @Test
      public void createDietaTest() throws BusinessLogicException{
          DietaEntity newEntity = factory.manufacturePojo(DietaEntity.class);
@@ -92,6 +109,9 @@ public class DietaLogicTest {
          Assert.assertEquals(newEntity.getObjetivo(), entity.getObjetivo());
      } 
      
+     /**
+     * Prueba para crear una Dieta con el mismo id.
+     */
      @Test(expected = BusinessLogicException.class)
      public void createDietaConMismoId()throws BusinessLogicException{
          DietaEntity newEntity = factory.manufacturePojo(DietaEntity.class);
@@ -105,4 +125,67 @@ public class DietaLogicTest {
          newEntity.setNombre(data.get(0).getNombre());
          dietaLogic.createDieta(newEntity);
      }
+
+     /**
+     * Prueba para consultar la lista de Pagos.
+     */
+    @Test
+    public void getAuthorsTest() {
+        List<DietaEntity> list = dietaLogic.getDietas();
+        Assert.assertEquals(data.size(), list.size());
+        for (DietaEntity entity : list) {
+            boolean found = false;
+            for (DietaEntity storedEntity : data) {
+                if (entity.getId().equals(storedEntity.getId())) {
+                    found = true;
+                }
+            }
+            Assert.assertTrue(found);
+        }
+    }
+
+    /**
+     * Prueba para consultar un Pago.
+     */
+    @Test
+    public void getAuthorTest() {
+        DietaEntity entity = data.get(0);
+        DietaEntity resultEntity = dietaLogic.getDieta(entity.getId());
+        Assert.assertNotNull(resultEntity);
+        Assert.assertEquals(entity.getId(), resultEntity.getId());
+        Assert.assertEquals(entity.getNombre(), resultEntity.getNombre());
+    }
+     
+    /**
+     * Prueba para actualizar una Dieta.
+     */
+    @Test
+    public void updateDietaTest() {
+        DietaEntity entity = data.get(0);
+        DietaEntity pojoEntity = factory.manufacturePojo(DietaEntity.class);
+
+        pojoEntity.setId(entity.getId());
+
+        dietaLogic.updateDieta(pojoEntity.getId(), pojoEntity);
+
+        DietaEntity resp = em.find(DietaEntity.class, entity.getId());
+
+        Assert.assertEquals(pojoEntity.getId(), resp.getId());
+        Assert.assertEquals(pojoEntity.getNombre(), resp.getNombre());
+        Assert.assertEquals(pojoEntity.getObjetivo(), resp.getObjetivo());
+    }
+
+    /**
+     * Prueba para eliminar una Dieta
+     *
+     * @throws co.edu.uniandes.csw.dietas.exceptions.BusinessLogicException
+     */
+    @Test
+    public void deleteDietaTest() throws BusinessLogicException {
+        DietaEntity entity = data.get(0);
+        dietaLogic.deleteDieta(entity.getId());
+        DietaEntity deleted = em.find(DietaEntity.class, entity.getId());
+        Assert.assertNull(deleted);
+    }
 }
+

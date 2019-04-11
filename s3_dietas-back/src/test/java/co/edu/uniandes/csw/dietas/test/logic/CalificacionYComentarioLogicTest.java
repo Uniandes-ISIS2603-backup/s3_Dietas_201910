@@ -6,13 +6,10 @@
 package co.edu.uniandes.csw.dietas.test.logic;
 
 import co.edu.uniandes.csw.dietas.ejb.CalificacionYComentarioLogic;
-import co.edu.uniandes.csw.dietas.ejb.SuspensionLogic;
 import co.edu.uniandes.csw.dietas.entities.CalificacionYComentarioEntity;
 import co.edu.uniandes.csw.dietas.entities.CalificacionYComentarioEntity;
-import co.edu.uniandes.csw.dietas.entities.SuspensionEntity;
 import co.edu.uniandes.csw.dietas.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.dietas.persistence.CalificacionYComentarioPersistence;
-import co.edu.uniandes.csw.dietas.persistence.SuspensionPersistence;
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
@@ -122,4 +119,74 @@ public class CalificacionYComentarioLogicTest
          calificacionYcomentarioLogic.createCalificacionYComentario(newEntity);
      }
    
+     
+     
+     
+         
+      /**
+     * Prueba para consultar la lista de CalificacionesYComentarios.
+     */
+    @Test
+    public void getCalificacionesYComentariosTest() {
+        List<CalificacionYComentarioEntity> list = calificacionYcomentarioLogic.getCalificacionesYComentarios();
+        Assert.assertEquals(data.size(), list.size());
+        for (CalificacionYComentarioEntity entity : list) {
+            boolean found = false;
+            for (CalificacionYComentarioEntity storedEntity : data) {
+                if (entity.getId().equals(storedEntity.getId())) {
+                    found = true;
+                }
+            }
+            Assert.assertTrue(found);
+        }
+    }
+    
+    
+    
+    /**
+     * Prueba para consultar una CalificacionYComentario.
+     */
+    @Test
+    public void getCalificacionYComentarioTest() {
+        CalificacionYComentarioEntity entity = data.get(0);
+        CalificacionYComentarioEntity resultEntity = calificacionYcomentarioLogic.getCalificacionYComentario(entity.getId());
+        Assert.assertNotNull(resultEntity);
+        Assert.assertEquals(entity.getId(), resultEntity.getId());
+        Assert.assertEquals(entity.getCalificacion(), resultEntity.getCalificacion());
+    }
+    
+    
+    
+     /**
+     * Prueba para actualizar una CalificacionYComentario.
+     */
+    @Test
+    public void updateCalificacionYComentarioTest() {
+        CalificacionYComentarioEntity entity = data.get(0);
+        CalificacionYComentarioEntity pojoEntity = factory.manufacturePojo(CalificacionYComentarioEntity.class);
+        pojoEntity.setId(entity.getId());
+        calificacionYcomentarioLogic.updateCalificacionYComentario(pojoEntity.getId(), pojoEntity);
+        CalificacionYComentarioEntity resp = em.find(CalificacionYComentarioEntity.class, entity.getId());
+        Assert.assertEquals(pojoEntity.getId(), resp.getId());
+        Assert.assertEquals(pojoEntity.getCalificacion(), resp.getCalificacion());
+    }
+    
+    
+        /**
+     * Prueba para eliminar una CalificacionYComentario
+     *
+     * @throws BusinessLogicException
+     */
+    @Test
+    public void deleteCalificacionYComentarioTest() throws BusinessLogicException {
+        CalificacionYComentarioEntity entity = data.get(0);
+        calificacionYcomentarioLogic.deleteCalificacionYComentario(entity.getId());
+        CalificacionYComentarioEntity deleted = em.find(CalificacionYComentarioEntity.class, entity.getId());
+        Assert.assertNull(deleted);
+    }
+     
+     
+     
+     
+     
 }

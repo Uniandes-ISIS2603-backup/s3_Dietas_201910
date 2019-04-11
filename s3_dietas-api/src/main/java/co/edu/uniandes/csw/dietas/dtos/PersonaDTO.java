@@ -5,6 +5,7 @@
  */
 package co.edu.uniandes.csw.dietas.dtos;
 
+import co.edu.uniandes.csw.dietas.entities.PersonaEntity;
 import java.util.Date;
 
 /**
@@ -17,11 +18,25 @@ public class PersonaDTO {
     private String tipo;
     private String nombre;
     private Date fechaIngreso;
-    private String[] objetivos;
+    private String objetivos;
     private Integer tiempoEsperadoMejora;
     private Boolean solicitudEspecial;
     private Boolean tarjetaFidelidad;
 
+    public PersonaDTO(){
+        
+    }
+
+    public PersonaDTO(PersonaEntity entity){
+        setId(entity.getId());
+        setTipo(entity.getTipo());
+        setNombre(entity.getNombre());
+        setFechaIngreso(entity.getFechaIngreso());
+        setObjetivos(entity.getObjetivos());
+        setTiempoEsperadoMejora(entity.getTiempoEsperadoMejora());
+        setSolicitudEspecial(entity.isSolicitudEspecial());
+        setTarjetaFidelidad(entity.isTarjetaFidelidad());
+    }
     /**
      * @return the id
      */
@@ -81,14 +96,14 @@ public class PersonaDTO {
     /**
      * @return the objetivos
      */
-    public String[] getObjetivos() {
+    public String getObjetivos() {
         return objetivos;
     }
 
     /**
      * @param objetivos the objetivos to set
      */
-    public void setObjetivos(String[] objetivos) {
+    public void setObjetivos(String objetivos) {
         this.objetivos = objetivos;
     }
 
@@ -133,7 +148,22 @@ public class PersonaDTO {
     public void setTarjetaFidelidad(Boolean tarjetaFidelidad) {
         this.tarjetaFidelidad = tarjetaFidelidad;
     }
+    
+    public PersonaEntity toEntity()
+    {
+        PersonaEntity entidad= new PersonaEntity();
+        entidad.setId(this.id);
+        entidad.setNombre(this.nombre);
+        entidad.setTipo(this.tipo);
+        entidad.setFechaIngreso(this.fechaIngreso);
+        entidad.setObjetivos(this.objetivos);
+        entidad.setTiempoEsperadoMejora(this.tiempoEsperadoMejora);
+        entidad.setTarjetaFidelidad(this.tarjetaFidelidad);
+        return entidad;
+    }
 
+
+    
 
 
     

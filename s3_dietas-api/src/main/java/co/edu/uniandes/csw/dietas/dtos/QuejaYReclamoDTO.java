@@ -5,6 +5,8 @@
  */
 package co.edu.uniandes.csw.dietas.dtos;
 
+import co.edu.uniandes.csw.dietas.entities.QuejaYReclamoEntity;
+
 /**
  *
  * @author estudiante
@@ -13,8 +15,27 @@ public class QuejaYReclamoDTO {
     
     private Long id;
     private String especificacion;
+    private PersonaDTO persona;
 
-    /**
+    
+    public QuejaYReclamoDTO(){
+        
+    }
+    
+    public QuejaYReclamoDTO(QuejaYReclamoEntity entity){
+        setId(entity.getId());
+        setEspecificacion(entity.getEspecificacion());
+       
+    }
+    
+    public QuejaYReclamoEntity toEntity(){
+        QuejaYReclamoEntity entity = new QuejaYReclamoEntity();
+        entity.setId(this.getId());
+        entity.setEspecificacion(this.getEspecificacion());
+       
+        return entity;
+    }
+        /**
      * @return the id
      */
     public Long getId() {
@@ -40,5 +61,18 @@ public class QuejaYReclamoDTO {
      */
     public void setEspecificacion(String especificacion) {
         this.especificacion = especificacion;
+    }
+    /**
+     * @return the persona
+     */
+    public PersonaDTO getPersona() {
+        return persona;
+    }
+
+    /**
+     * @param persona the persona to set
+     */
+    public void setPersona(PersonaDTO persona) {
+        this.persona = persona;
     }
 }

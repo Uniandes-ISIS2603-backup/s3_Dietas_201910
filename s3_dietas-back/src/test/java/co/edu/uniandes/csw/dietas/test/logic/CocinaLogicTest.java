@@ -109,13 +109,83 @@ public class CocinaLogicTest
    }
      
      
-     @Test
+     @Test(expected = BusinessLogicException.class)
      public void createCocinaConMismoIdTest() throws BusinessLogicException
      {   
          CocinaEntity newEntity = factory.manufacturePojo(CocinaEntity.class);
          newEntity.setId(data.get(0).getId());
          cocinaLogic.createCocina(newEntity);
      }
+     
+   
+     
+     
+     
+      /**
+     * Prueba para consultar la lista de Cocinas.
+     */
+    @Test
+    public void getCocinasTest() {
+        List<CocinaEntity> list = cocinaLogic.getCocinas();
+        Assert.assertEquals(data.size(), list.size());
+        for (CocinaEntity entity : list) {
+            boolean found = false;
+            for (CocinaEntity storedEntity : data) {
+                if (entity.getId().equals(storedEntity.getId())) {
+                    found = true;
+                }
+            }
+            Assert.assertTrue(found);
+        }
+    }
+    
+    
+    
+    /**
+     * Prueba para consultar una Cocina.
+     */
+    @Test
+    public void getCocinaTest() {
+        CocinaEntity entity = data.get(0);
+        CocinaEntity resultEntity = cocinaLogic.getCocina(entity.getId());
+        Assert.assertNotNull(resultEntity);
+        Assert.assertEquals(entity.getId(), resultEntity.getId());
+        Assert.assertEquals(entity.getDireccion(), resultEntity.getDireccion());
+    }
+    
+    
+    
+     /**
+     * Prueba para actualizar una Cocina.
+     */
+    @Test
+    public void updateCocinaTest() {
+        CocinaEntity entity = data.get(0);
+        CocinaEntity pojoEntity = factory.manufacturePojo(CocinaEntity.class);
+        pojoEntity.setId(entity.getId());
+        cocinaLogic.updateCocina(pojoEntity.getId(), pojoEntity);
+        CocinaEntity resp = em.find(CocinaEntity.class, entity.getId());
+        Assert.assertEquals(pojoEntity.getId(), resp.getId());
+        Assert.assertEquals(pojoEntity.getDireccion(), resp.getDireccion());
+    }
+    
+    
+        /**
+     * Prueba para eliminar una Cocina
+     *
+     * @throws BusinessLogicException
+     */
+    @Test
+    public void deleteCocinaTest() throws BusinessLogicException {
+        CocinaEntity entity = data.get(0);
+        cocinaLogic.deleteCocina(entity.getId());
+        CocinaEntity deleted = em.find(CocinaEntity.class, entity.getId());
+        Assert.assertNull(deleted);
+    }
+    
+     
+     
+     
      
    
 }

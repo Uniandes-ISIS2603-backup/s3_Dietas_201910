@@ -1,0 +1,183 @@
+{
+	"info": {
+		"_postman_id": "79eea675-bd75-493f-bff3-3abf5134c385",
+		"name": "TestPago",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://{{ip}}:{{puerto}}/s3_dietas-api/api/pagos",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a71d340a-a000-4f14-85ac-837b3d85ad6d",
+						"exec": [
+							"tests[\"No genera error en el POST\"] = responseCode.code === 200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"disabled": false
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"modoPago\":\"electronico1\"}"
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s3_dietas-api/api/pagos",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s3_dietas-api",
+						"api",
+						"pagos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://{{ip}}:{{puerto}}/s3_dietas-api/api/pagos",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "76bdfe41-4842-42da-9f80-40425a9aae3a",
+						"exec": [
+							"tests[\"No genera error en el GET\"] = responseCode.code === 200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"disabled": false
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s3_dietas-api/api/pagos",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s3_dietas-api",
+						"api",
+						"pagos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://{{ip}}:{{puerto}}/s3_dietas-api/api/pagos/1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d22cce6f-60dd-46e7-980e-4ee2003886f7",
+						"exec": [
+							"tests[\"No genera error en el GET\"] = responseCode.code === 200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"disabled": false
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s3_dietas-api/api/pagos/6",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s3_dietas-api",
+						"api",
+						"pagos",
+						"6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://{{ip}}:{{puerto}}/s3_dietas-api/api/pagos/3",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "465ca910-3993-4ac2-a5cf-465e3f520464",
+						"exec": [
+							"tests[\"No genera error en el PUT\"] = responseCode.code === 200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"disabled": false
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"modoPago\":\"electronicoOtro\"}"
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s3_dietas-api/api/pagos/6",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s3_dietas-api",
+						"api",
+						"pagos",
+						"6"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
