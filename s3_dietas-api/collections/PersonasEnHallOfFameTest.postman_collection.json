@@ -1,0 +1,132 @@
+{
+	"info": {
+		"_postman_id": "461c0d71-52ec-43c2-ba84-9a85b7991c62",
+		"name": "PersonasEnHallOfFameTest",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "crear una persona",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "88f6f10c-d7e7-4f5a-b5f8-6ec54de5bdd0",
+						"exec": [
+							"var data = JSON.parse(responseBody);",
+							"postman.setGlobalVariable(\"new_id_a\",data.id);",
+							"tests[\"no genera error en el Post\"] = responseCode.code === 200;",
+							"console.log(data.id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " {\n        \n        \"tipo\": \"Cliente\",\n        \"nombre\": \"Angel José de la Concorddosdflsdfwehf\",\n        \"fechaIngreso\": \"1927-03-03\",\n        \"objetivos\": \"ser mas flco que peter languila\",\n        \"tiempoEsperadoMejora\": 10,\n         \"solicitudEspecial\": false,\n         \"tarjetaFidelidad\": false\n        \n    }\n   "
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s3_dietas-api/api/personas",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s3_dietas-api",
+						"api",
+						"personas"
+					],
+					"query": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get personas",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "fa5d44c3-69ce-4be4-80d8-1a00cc624fcc",
+						"exec": [
+							"tests[\"no genera error en el Post\"] = responseCode.code === 200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s3_dietas-api/api/halls/3/personas",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s3_dietas-api",
+						"api",
+						"halls",
+						"3",
+						"personas"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "a50554e8-4c5c-4079-bfa0-222d244c23a1",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "b2261fc8-87da-41be-8a7e-d806afb2daf8",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
