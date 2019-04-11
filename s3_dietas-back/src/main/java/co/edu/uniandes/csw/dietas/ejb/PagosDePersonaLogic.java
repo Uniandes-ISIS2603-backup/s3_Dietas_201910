@@ -5,9 +5,9 @@
  */
 package co.edu.uniandes.csw.dietas.ejb;
 
-import co.edu.uniandes.csw.dietas.entities.FotoEntity;
+import co.edu.uniandes.csw.dietas.entities.PagoEntity;
 import co.edu.uniandes.csw.dietas.entities.PersonaEntity;
-import co.edu.uniandes.csw.dietas.persistence.FotoPersistence;
+import co.edu.uniandes.csw.dietas.persistence.PagoPersistence;
 import co.edu.uniandes.csw.dietas.persistence.PersonaPersistence;
 import java.util.List;
 import java.util.logging.Logger;
@@ -16,18 +16,19 @@ import javax.inject.Inject;
 
 /**
  *
- * @author Daniel Espitia
+ * @author estudiante
  */
+
 @Stateless
-public class FotoDePersonaLogic {
-    
-    private static final Logger LOGGER = Logger.getLogger(FotoDePersonaLogic.class.getName());
+public class PagosDePersonaLogic {
+            
+     private static final Logger LOGGER = Logger.getLogger(PagosDePersonaLogic.class.getName());
 
     @Inject
     private PersonaPersistence personaPersistence;
 
     @Inject
-    private FotoPersistence fotoPersistence;
+    private PagoPersistence pagoPersistence;
     
     /**
      * Asocia una persona existente a un hall
@@ -36,14 +37,14 @@ public class FotoDePersonaLogic {
      * @param personasId Identificador de la instancia de Suspension
      * @return Instancia de PersonaEntity que fue asociada a hall
      */
-    public FotoEntity addFoto(Long personaId, Long fotoId) {
-        FotoEntity fotoEntity = fotoPersistence.findById(fotoId);
+    public PagoEntity addPago(Long personaId, Long pagoid) {
+        PagoEntity pagoEntity = pagoPersistence.findById(pagoid);
         PersonaEntity personaEntity = personaPersistence.find(personaId);
         
-        personaEntity.addFoto(fotoEntity);     
+        personaEntity.addPago(pagoEntity);     
         
         
-        return fotoPersistence.findById(fotoId);
+        return pagoPersistence.findById(pagoid);
     }
     
     /**
@@ -54,7 +55,7 @@ public class FotoDePersonaLogic {
      * @return Colección de instancias de PersonaEntity asociadas a la instancia
      * de Hall
      */
-    public List<FotoEntity> getFotos(Long hallsId) {
-        return personaPersistence.find(hallsId).getFotos();
+    public List<PagoEntity> getPagos(Long personaId) {
+        return personaPersistence.find(personaId).getPagos();
     }
 }
