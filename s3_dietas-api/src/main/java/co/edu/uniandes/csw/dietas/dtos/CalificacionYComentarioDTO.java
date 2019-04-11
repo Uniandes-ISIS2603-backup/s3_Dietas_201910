@@ -7,12 +7,13 @@ package co.edu.uniandes.csw.dietas.dtos;
 
 import co.edu.uniandes.csw.dietas.entities.CalificacionYComentarioEntity;
 import co.edu.uniandes.csw.dietas.entities.SuspensionEntity;
+import java.io.Serializable;
 
 /**
  *
  * @author Andrea Montoya Serje.
  */
-public class CalificacionYComentarioDTO 
+public class CalificacionYComentarioDTO implements Serializable
 {
     private Long id;
     private Integer calificacion;
