@@ -85,7 +85,7 @@ public class DietaSuspensionesResource {
      */
     @GET
     @Path("{suspensionesId: \\d+}")
-    public SuspensionDTO getAuthor(@PathParam("dietasId") Long dietasId, @PathParam("suspensionesId") Long suspensionesId) {
+    public SuspensionDTO getSuspension(@PathParam("dietasId") Long dietasId, @PathParam("suspensionesId") Long suspensionesId) {
         if (suspensionLogic.getSuspension(suspensionesId) == null) {
             throw new WebApplicationException("El recurso /suspensiones/" + suspensionesId + " no existe.", 404);
         }
@@ -162,4 +162,6 @@ public class DietaSuspensionesResource {
         }
         return list;
     }
+    
+    
 }
