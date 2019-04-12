@@ -10,6 +10,7 @@ import java.io.Serializable;
 
 /**
  *
+ * 
  * @author Andrea Montoya Serje.
  */
 public class SuspensionDTO implements Serializable

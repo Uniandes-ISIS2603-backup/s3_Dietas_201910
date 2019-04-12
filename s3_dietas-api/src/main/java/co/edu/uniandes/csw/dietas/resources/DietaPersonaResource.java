@@ -38,33 +38,33 @@ public class DietaPersonaResource {
     @Inject
     private PersonaLogic personaLogic; // Variable para acceder a la lógica de la aplicación. Es una inyección de dependencias.
 
-//    /**
-//     * Asocia una persona existente con una dieta existente
-//     *
-//     * @param personasId El ID de la persona que se va a asociar
-//     * @param dietasId El ID de la dieta a la cual se le va a asociar la persona
-//     * @return JSON {@link PersonaDetailDTO} - La persona asociada.
-//     * @throws WebApplicationException {@link WebApplicationExceptionMapper} -
-//     * Error de lógica que se genera cuando no se encuentra la persona.
-//     */
-//    @POST
-//    @Path("{personasId: \\d+}")
-//    public PersonaDetailDTO addPersona(@PathParam("dietasId") Long dietasId, @PathParam("personasId") Long personasId) {
-//        if (personaLogic.getPersona(personasId) == null) {
-//            throw new WebApplicationException("El recurso /personas/" + personasId + " no existe.", 404);
-//        }
-//        PersonaDetailDTO detailDTO = new PersonaDetailDTO(DietaPersonaLogic.addPersona(dietasId, personasId));
-//        return detailDTO;
-//    }
-//
-//    /**
-//     * Busca y devuelve la persona que existen en una dieta.
-//     *
-//     * @param dietasId El ID de la dieta del cual se busca la persona
-//     * @return PersonaDetailDTO.
-//     */
-//    @GET
-//    public PersonaDetailDTO getPersona(@PathParam("dietasId") Long dietasId) {
-//        return PersonaDetailDTO(dietaPersonaLogic.getPersona(dietasId));
-//    } 
+    /**
+     * Asocia una persona existente con una dieta existente
+     *
+     * @param personasId El ID de la persona que se va a asociar
+     * @param dietasId El ID de la dieta a la cual se le va a asociar la persona
+     * @return JSON {@link PersonaDetailDTO} - La persona asociada.
+     * @throws WebApplicationException {@link WebApplicationExceptionMapper} -
+     * Error de lógica que se genera cuando no se encuentra la persona.
+     */
+    @POST
+    @Path("{personasId: \\d+}")
+    public PersonaDetailDTO addPersona(@PathParam("dietasId") Long dietasId, @PathParam("personasId") Long personasId) {
+        if (personaLogic.getPersona(personasId) == null) {
+            throw new WebApplicationException("El recurso /personas/" + personasId + " no existe.", 404);
+        }
+        PersonaDetailDTO detailDTO = new PersonaDetailDTO(dietaPersonaLogic.addPersona(dietasId, personasId));
+        return detailDTO;
+    }
+
+    /**
+     * Busca y devuelve la persona que existen en una dieta.
+     *
+     * @param dietasId El ID de la dieta del cual se busca la persona
+     * @return PersonaDetailDTO.
+     */
+    @GET
+    public PersonaDetailDTO getPersona(@PathParam("dietasId") Long dietasId) {
+        return new PersonaDetailDTO(dietaPersonaLogic.getPersona(dietasId));
+    } 
 }

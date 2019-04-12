@@ -32,6 +32,7 @@ import javax.ws.rs.core.MediaType;
  */
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
+
 public class PersonasEnHallOfFameResource {
     
     private static final Logger LOGGER = Logger.getLogger(PersonasEnHallOfFameResource.class.getName());

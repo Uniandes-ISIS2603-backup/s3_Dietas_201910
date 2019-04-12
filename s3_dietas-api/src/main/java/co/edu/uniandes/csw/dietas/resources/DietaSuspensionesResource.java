@@ -57,7 +57,7 @@ public class DietaSuspensionesResource {
         if (suspensionLogic.getSuspension(suspensionesId) == null) {
             throw new WebApplicationException("El recurso /suspensiones/" + suspensionesId + " no existe.", 404);
         }
-        SuspensionDTO dto = new SuspensionDTO(dietaSuspensionLogic.addAuthor(dietasId, suspensionesId));
+        SuspensionDTO dto = new SuspensionDTO(dietaSuspensionLogic.addSuspension(dietasId, suspensionesId));
         return dto;
     }
 
