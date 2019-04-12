@@ -69,7 +69,7 @@ public class DietaSuspensionesResource {
      * dieta. Si no hay ninguna retorna una lista vacía.
      */
     @GET
-    public List<SuspensionDTO> getAuthors(@PathParam("dietasId") Long dietasId) {
+    public List<SuspensionDTO> getSuspensiones(@PathParam("dietasId") Long dietasId) {
         List<SuspensionDTO> lista = suspensionListEntity2DTO(dietaSuspensionLogic.getSuspensiones(dietasId));
         return lista;
     }
