@@ -79,4 +79,51 @@ public class PersonaDetailDTO extends PersonaDTO implements Serializable{
         }
         
     }
+        
+    public PersonaEntity toEntity(){
+        PersonaEntity entity = super.toEntity();
+            if(calificacionesYComentarios!=null)
+            {
+                List<CalificacionYComentarioEntity> calificaciones=new ArrayList<>();
+                for(CalificacionYComentarioDTO calificacionYComentarioDTO:calificacionesYComentarios )
+                { calificaciones.add(calificacionYComentarioDTO.toEntity());
+                
+                }
+                 entity.setCalificacionesYComentarios(calificaciones);
+            }
+            if(fotos!=null)
+            {
+                List<FotoEntity> fotosEntitys=new ArrayList<>();
+                for(FotoDTO foto: fotos)
+                {
+                    fotosEntitys.add(foto.toEntity());
+                }               
+            }
+            if(quejasYReclamos!=null)
+            {
+                List<QuejaYReclamoEntity> quejas=new ArrayList<>();
+                for(QuejaYReclamoDTO queja:quejasYReclamos)
+                {
+                    quejas.add(queja.toEntity());
+                }
+            }
+            if(dietas!=null)
+            {
+                List<DietaEntity> dietasss=new ArrayList<>();
+                for(DietaDTO diet: dietas)
+                {
+                    dietasss.add(diet.toEntity());
+                }
+            }
+
+            if(pagos!=null)
+            {
+                List<PagoEntity> pagoss=new ArrayList<>();
+                for(PagoDTO pagoD: pagos)
+                {
+                    pagoss.add(pagoD.toEntity());
+                }
+            }
+        return entity;
+    }
 }

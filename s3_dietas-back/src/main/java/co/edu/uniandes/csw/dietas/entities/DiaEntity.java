@@ -41,7 +41,7 @@ public class DiaEntity extends BaseEntity implements Serializable {
     /**
      * @param especial the especial to set
      */
-    public void setEspecial(boolean especial) {
+    public void setEspecial(Boolean especial) {
         this.especial = especial;
     }
     

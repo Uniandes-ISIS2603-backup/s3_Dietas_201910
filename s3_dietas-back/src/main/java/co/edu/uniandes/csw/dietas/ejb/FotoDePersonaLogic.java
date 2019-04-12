@@ -5,30 +5,29 @@
  */
 package co.edu.uniandes.csw.dietas.ejb;
 
-import co.edu.uniandes.csw.dietas.entities.HallOfFameEntity;
+import co.edu.uniandes.csw.dietas.entities.FotoEntity;
 import co.edu.uniandes.csw.dietas.entities.PersonaEntity;
-import co.edu.uniandes.csw.dietas.persistence.HallOfFamePersistence;
+import co.edu.uniandes.csw.dietas.persistence.FotoPersistence;
 import co.edu.uniandes.csw.dietas.persistence.PersonaPersistence;
+import java.util.List;
 import java.util.logging.Logger;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
-import java.util.List;
 
 /**
  *
- * @author Louis
+ * @author Daniel Espitia
  */
-
 @Stateless
-public class PersonasEnHallOfFameLogic {
+public class FotoDePersonaLogic {
     
-     private static final Logger LOGGER = Logger.getLogger(PersonasEnHallOfFameLogic.class.getName());
-
-    @Inject
-    private HallOfFamePersistence hallOfFamePersistence;
+    private static final Logger LOGGER = Logger.getLogger(FotoDePersonaLogic.class.getName());
 
     @Inject
     private PersonaPersistence personaPersistence;
+
+    @Inject
+    private FotoPersistence fotoPersistence;
     
     /**
      * Asocia una persona existente a un hall
@@ -37,15 +36,14 @@ public class PersonasEnHallOfFameLogic {
      * @param personasId Identificador de la instancia de Suspension
      * @return Instancia de PersonaEntity que fue asociada a hall
      */
-    public PersonaEntity addPersona(Long hallId, Long personasId) {
-        PersonaEntity personaEntity = personaPersistence.findById(personasId);
-        HallOfFameEntity hallEntity = hallOfFamePersistence.find(hallId);
+    public FotoEntity addFoto(Long personaId, Long fotoId) {
+        FotoEntity fotoEntity = fotoPersistence.findById(fotoId);
+        PersonaEntity personaEntity = personaPersistence.find(personaId);
+        
+        personaEntity.addFoto(fotoEntity);     
         
         
-        hallEntity.addPersona(personaEntity);
-        
-        
-        return personaPersistence.findById(personasId);
+        return fotoPersistence.findById(fotoId);
     }
     
     /**
@@ -56,7 +54,7 @@ public class PersonasEnHallOfFameLogic {
      * @return Colección de instancias de PersonaEntity asociadas a la instancia
      * de Hall
      */
-    public List<PersonaEntity> getPersonas(Long hallsId) {
-        return hallOfFamePersistence.find(hallsId).getPersonas();
+    public List<FotoEntity> getFotos(Long hallsId) {
+        return personaPersistence.find(hallsId).getFotos();
     }
 }

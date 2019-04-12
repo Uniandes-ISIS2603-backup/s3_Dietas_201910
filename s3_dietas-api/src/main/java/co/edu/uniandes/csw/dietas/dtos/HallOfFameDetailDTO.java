@@ -41,7 +41,7 @@ public class HallOfFameDetailDTO extends HallOfFameDTO implements Serializable {
             List<PersonaEntity> personaEntity= new ArrayList<>();
             for(PersonaDTO persona: getPersonas())
             {
-               //personaEntity.add(persona.toEntity()); 
+               personaEntity.add(persona.toEntity()); 
             }
             entity.setPersonas(personaEntity);
         }
@@ -61,7 +61,7 @@ public class HallOfFameDetailDTO extends HallOfFameDTO implements Serializable {
     public void agregarPersonas(List <PersonaDTO> personas) {
         for (int i = 0; i < 10; i++) {
             if(!this.personas.contains(personas.get(i))){
-                this.personas.add(personas.get(i));
+                this.getPersonas().add(personas.get(i));
             }else{
                 System.out.print("la persona ya existe");
             }
@@ -74,11 +74,18 @@ public class HallOfFameDetailDTO extends HallOfFameDTO implements Serializable {
     public void eliminarPersona(PersonaDTO persona) {
       
             if(!this.personas.contains(persona)){
-                this.personas.remove(persona);
+                this.getPersonas().remove(persona);
             }else{
                 System.out.print("la persona ya existe");
             }
         
+    }
+
+    /**
+     * @param personas the personas to set
+     */
+    public void setPersonas(List <PersonaDTO> personas) {
+        this.personas = personas;
     }
     
 }

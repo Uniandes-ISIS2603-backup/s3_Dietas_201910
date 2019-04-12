@@ -14,7 +14,7 @@ import java.io.Serializable;
  */
 public class DiaDTO implements Serializable
 {
-    private boolean diaEspecial;
+    private Boolean diaEspecial;
     private Long id;
    
     public DiaDTO ()

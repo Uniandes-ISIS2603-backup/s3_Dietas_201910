@@ -54,7 +54,7 @@ public class PersonasEnHallOfFameResource {
      */
     @POST
     @Path("{personasId: \\d+}")
-    public PersonaDTO addPersona(@PathParam("dietasId") Long hallsId, @PathParam("personasId") Long personasId) {
+    public PersonaDTO addPersona(@PathParam("hallsId") Long hallsId, @PathParam("personasId") Long personasId) {
         if (personaLogic.getPersona(personasId) == null) {
             throw new WebApplicationException("El recurso /personas/" + personasId + " no existe.", 404);
         }

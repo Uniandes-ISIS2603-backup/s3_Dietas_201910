@@ -249,7 +249,38 @@ public class PersonaEntity extends BaseEntity implements Serializable {
     public void setHall(HallOfFameEntity hall) {
         this.hall = hall;
     }
-          
+    
+    
+    /**
+     * @param hall the hall to set
+     */
+    public void addFoto(FotoEntity foto) {
+       this.fotos.add(foto);
+    }
+    
+    /**
+     * @param hall the hall to set
+     */
+    public void addCalificacionYComentario(CalificacionYComentarioEntity calificacion) {
+        this.calificacionesYComentarios.add(calificacion);
+    }
+    
+    /**
+     * @param hall the hall to set
+     */
+    public void addPago(PagoEntity pago) {
+        this.pagos.add(pago);
+    }
+   
+    public void addDieta(DietaEntity dieta){
+        this.dietas.add(dieta);
+    }
+       /**{
+     * @param hall the hall to set
+     */
+    public void addQuejaYReclamo(QuejaYReclamoEntity queja) {
+        this.quejas.add(queja);
+    }
 }
      
 

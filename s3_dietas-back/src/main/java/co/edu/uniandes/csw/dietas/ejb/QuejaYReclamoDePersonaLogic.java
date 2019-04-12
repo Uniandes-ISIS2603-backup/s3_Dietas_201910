@@ -5,30 +5,28 @@
  */
 package co.edu.uniandes.csw.dietas.ejb;
 
-import co.edu.uniandes.csw.dietas.entities.HallOfFameEntity;
 import co.edu.uniandes.csw.dietas.entities.PersonaEntity;
-import co.edu.uniandes.csw.dietas.persistence.HallOfFamePersistence;
+import co.edu.uniandes.csw.dietas.entities.QuejaYReclamoEntity;
 import co.edu.uniandes.csw.dietas.persistence.PersonaPersistence;
+import co.edu.uniandes.csw.dietas.persistence.QuejaYReclamoPersistence;
+import java.util.List;
 import java.util.logging.Logger;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
-import java.util.List;
 
 /**
  *
- * @author Louis
+ * @author estudiante
  */
-
 @Stateless
-public class PersonasEnHallOfFameLogic {
-    
-     private static final Logger LOGGER = Logger.getLogger(PersonasEnHallOfFameLogic.class.getName());
-
-    @Inject
-    private HallOfFamePersistence hallOfFamePersistence;
+public class QuejaYReclamoDePersonaLogic {
+    private static final Logger LOGGER = Logger.getLogger(PagosDePersonaLogic.class.getName());
 
     @Inject
     private PersonaPersistence personaPersistence;
+
+    @Inject
+    private QuejaYReclamoPersistence quejaPersistence;
     
     /**
      * Asocia una persona existente a un hall
@@ -37,15 +35,14 @@ public class PersonasEnHallOfFameLogic {
      * @param personasId Identificador de la instancia de Suspension
      * @return Instancia de PersonaEntity que fue asociada a hall
      */
-    public PersonaEntity addPersona(Long hallId, Long personasId) {
-        PersonaEntity personaEntity = personaPersistence.findById(personasId);
-        HallOfFameEntity hallEntity = hallOfFamePersistence.find(hallId);
+    public QuejaYReclamoEntity addQueja(Long personaId, Long quejaId) {
+        QuejaYReclamoEntity quejaEntity = quejaPersistence.findById(quejaId);
+        PersonaEntity personaEntity = personaPersistence.find(personaId);
+        
+        personaEntity.addQuejaYReclamo(quejaEntity);
         
         
-        hallEntity.addPersona(personaEntity);
-        
-        
-        return personaPersistence.findById(personasId);
+        return quejaPersistence.findById(quejaId);
     }
     
     /**
@@ -56,7 +53,7 @@ public class PersonasEnHallOfFameLogic {
      * @return Colección de instancias de PersonaEntity asociadas a la instancia
      * de Hall
      */
-    public List<PersonaEntity> getPersonas(Long hallsId) {
-        return hallOfFamePersistence.find(hallsId).getPersonas();
+    public List<QuejaYReclamoEntity> getQuejas(Long personaId) {
+        return personaPersistence.find(personaId).getQuejas();
     }
 }
