@@ -6,12 +6,13 @@
 package co.edu.uniandes.csw.dietas.dtos;
 
 import co.edu.uniandes.csw.dietas.entities.QuejaYReclamoEntity;
+import java.io.Serializable;
 
 /**
  *
  * @author estudiante
  */
-public class QuejaYReclamoDTO {
+public class QuejaYReclamoDTO implements Serializable{
     
     private Long id;
     private String especificacion;

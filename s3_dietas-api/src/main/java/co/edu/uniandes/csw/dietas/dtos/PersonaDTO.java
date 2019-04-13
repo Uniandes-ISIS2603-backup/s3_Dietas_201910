@@ -6,13 +6,14 @@
 package co.edu.uniandes.csw.dietas.dtos;
 
 import co.edu.uniandes.csw.dietas.entities.PersonaEntity;
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  *
  * @author estudiante
  */
-public class PersonaDTO {
+public class PersonaDTO implements Serializable{
     
     private Long id;
     private String tipo;

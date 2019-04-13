@@ -31,6 +31,7 @@ public class PersonaDetailDTO extends PersonaDTO implements Serializable{
     public PersonaDetailDTO(){
         super();
     }
+    
     public PersonaDetailDTO(PersonaEntity personaEntity)
     {        
         super(personaEntity);
