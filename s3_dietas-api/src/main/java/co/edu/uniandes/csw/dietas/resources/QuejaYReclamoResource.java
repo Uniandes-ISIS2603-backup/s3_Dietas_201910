@@ -48,6 +48,11 @@ public class QuejaYReclamoResource {
         quejaEntity = logica.createQuejaYReclamo(quejaEntity);
        return new QuejaYReclamoDTO(quejaEntity); 
     }
+      @GET
+    public List<QuejaYReclamoDTO> getQuejasYReclamos(){
+        List<QuejaYReclamoDTO> listaQuejas = listEntity2DetailDTO(logica.getQuejasYReclamos());
+        return listaQuejas;
+    }
     
     @GET
     @Path("{quejasId: \\d+}")
@@ -59,11 +64,7 @@ public class QuejaYReclamoResource {
         return new QuejaYReclamoDTO(queja);
     }
     
-    @GET
-    public List<QuejaYReclamoDTO> getQuejasYReclamos(){
-        List<QuejaYReclamoDTO> listaQuejas = listEntity2DetailDTO(logica.getQuejasYReclamos());
-        return listaQuejas;
-    }
+ 
     
     @PUT
     @Path("{quejasId: \\d+}")

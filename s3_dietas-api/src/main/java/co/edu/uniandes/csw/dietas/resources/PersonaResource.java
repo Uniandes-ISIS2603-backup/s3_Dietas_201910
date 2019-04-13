@@ -6,9 +6,11 @@
 package co.edu.uniandes.csw.dietas.resources;
 
 import co.edu.uniandes.csw.dietas.dtos.PersonaDTO;
-import co.edu.uniandes.csw.dietas.dtos.PersonaDetailDTO;
+import co.edu.uniandes.csw.dietas.dtos.QuejaYReclamoDTO;
 import co.edu.uniandes.csw.dietas.ejb.PersonaLogic;
+import co.edu.uniandes.csw.dietas.ejb.QuejaYReclamoLogic;
 import co.edu.uniandes.csw.dietas.entities.PersonaEntity;
+import co.edu.uniandes.csw.dietas.entities.QuejaYReclamoEntity;
 import co.edu.uniandes.csw.dietas.exceptions.BusinessLogicException;
 import java.util.ArrayList;
 import java.util.List;
@@ -24,11 +26,11 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.WebApplicationException;
+
 /**
  *
  * @author Daniel Espitia
  */
-
 @Path("personas")
 @Produces("application/json")
 @Consumes("application/json")
@@ -36,60 +38,60 @@ import javax.ws.rs.WebApplicationException;
 public class PersonaResource {
     private static final Logger LOGGER = Logger.getLogger(PersonaResource.class.getName());
     
-    @Inject    
-    private PersonaLogic personaLogica;
-   
+      @Inject
+    
+    private PersonaLogic logica;
+    
+    //hola mundo
     
     @POST
     public PersonaDTO createPersona(PersonaDTO persona)throws BusinessLogicException{
         PersonaEntity personaEntity = persona.toEntity();
-        personaEntity = personaLogica.createPersona(personaEntity);
-       return new PersonaDTO(personaEntity);
+        personaEntity = logica.createPersona(personaEntity);
+       return new PersonaDTO(personaEntity); 
+    }
+      @GET
+    public List<PersonaDTO> getPersonas(){
+        List<PersonaDTO> listaPersonas = listEntity2DetailDTO(logica.getPersonas());
+        return listaPersonas;
     }
     
     @GET
-    public List<PersonaDetailDTO> getPersonas(){
-        //List<PersonaDetailDTO> listaDietas = listEntity2DTO(personaLogica.getPersonas());
-        //return listaDietas;
-        return null;
-    }
-    
-    @GET
-    
-    @Path("{dietasId: \\d+}")
-   
-    public PersonaDetailDTO getPersona( @PathParam("PersonasId")Long personaId){
-        PersonaEntity entidad = personaLogica.getPersona(personaId);
-        if(entidad == null){
-            throw new WebApplicationException("El recurso /personas/"+personaId+" no existe.", 404);
+    @Path("{personasId: \\d+}")
+    public PersonaDTO getPersona(@PathParam("personasId") Long personasId){
+        PersonaEntity queja = logica.getPersona(personasId);
+        if(queja == null){
+            throw new WebApplicationException("El recurso /personas/"+personasId+" no existe.", 404);
         }
-        return new PersonaDetailDTO(entidad);    
+        return new PersonaDTO(queja);
     }
+    
+ 
     
     @PUT
-    @Path("{dietasId: \\d+}")
-    public PersonaDetailDTO updatePersona(@PathParam("dietasId") Long personaId, PersonaDetailDTO persona) throws BusinessLogicException{
-        persona.setId(personaId);
-        if (personaLogica.getPersona(personaId) == null) {
-            throw new WebApplicationException("El recurso /personas/" + personaId + " no existe.", 404);
+    @Path("{personasId: \\d+}")
+    public PersonaDTO updatePersona(@PathParam("personasId") Long personasId, PersonaDTO queja){
+        queja.setId(personasId);
+        if (logica.getPersona(personasId) == null) {
+            throw new WebApplicationException("El recurso /personas/" + personasId + " no existe.", 404);
         }
-        PersonaDetailDTO detailDTO = new PersonaDetailDTO(personaLogica.updatePersona(personaId, persona.toEntity()));
-        return detailDTO;
+        PersonaDTO quejaDTO = new PersonaDTO(logica.updatePersona(personasId, queja.toEntity()));
+        return quejaDTO;
     }
     
     @DELETE
-    @Path("{dietasId: \\d+}")
-    public void deletePersona(@PathParam("dietasId") Long dietasId) throws BusinessLogicException{
-        if (personaLogica.getPersona(dietasId) == null) {
-            throw new WebApplicationException("El recurso /dietas/" + dietasId + " no existe.", 404);
+    @Path("{personasId: \\d+}")
+    public void deletePersona(@PathParam("personasId") Long personasId)throws BusinessLogicException{
+        if (logica.getPersona(personasId) == null) {
+            throw new WebApplicationException("El recurso /personas/" + personasId + " no existe.", 404);
         }
-        personaLogica.deletePersona(dietasId);
+        logica.deletePersona(personasId);
     }
     
-    private List<PersonaDetailDTO> listEntity2DTO(List<PersonaEntity> entityList) {
-        List<PersonaDetailDTO> list = new ArrayList<>();
+    private List<PersonaDTO> listEntity2DetailDTO(List<PersonaEntity> entityList) {
+        List<PersonaDTO> list = new ArrayList<>();
         for (PersonaEntity entity : entityList) {
-            list.add(new PersonaDetailDTO(entity));
+            list.add(new PersonaDTO(entity));
         }
         return list;
     }

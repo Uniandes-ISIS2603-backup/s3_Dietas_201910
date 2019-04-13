@@ -39,7 +39,7 @@ public class PagosDePersonaLogic {
      */
     public PagoEntity addPago(Long personaId, Long pagoid) {
         PagoEntity pagoEntity = pagoPersistence.findById(pagoid);
-        PersonaEntity personaEntity = personaPersistence.find(personaId);
+        PersonaEntity personaEntity = personaPersistence.findById(personaId);
         
         personaEntity.addPago(pagoEntity);     
         
@@ -56,6 +56,6 @@ public class PagosDePersonaLogic {
      * de Hall
      */
     public List<PagoEntity> getPagos(Long personaId) {
-        return personaPersistence.find(personaId).getPagos();
+        return personaPersistence.findById(personaId).getPagos();
     }
 }

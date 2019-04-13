@@ -37,7 +37,7 @@ public class DietaDePersonaLogic {
      */
     public DietaEntity addDietas(Long personaId, Long dietaId) {
         DietaEntity fotoEntity = dietaPersistence.findByID(dietaId);
-        PersonaEntity personaEntity = personaPersistence.find(personaId);        
+        PersonaEntity personaEntity = personaPersistence.findById(personaId);        
         personaEntity.addDieta(fotoEntity);        
         return dietaPersistence.findByID(dietaId);
     }
@@ -51,6 +51,6 @@ public class DietaDePersonaLogic {
      * de Hall
      */
     public List<DietaEntity> getDietas(Long personaId) {
-        return personaPersistence.find(personaId).getDietas();
+        return personaPersistence.findById(personaId).getDietas();
     }
 }

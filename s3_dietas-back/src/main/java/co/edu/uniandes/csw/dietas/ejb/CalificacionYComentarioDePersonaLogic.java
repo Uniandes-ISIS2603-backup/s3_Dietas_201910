@@ -38,7 +38,7 @@ public class CalificacionYComentarioDePersonaLogic {
      */
     public CalificacionYComentarioEntity addCalificacionYComentario(Long personaId, Long cycId) {
         CalificacionYComentarioEntity calificacionYcomentarioEntity = calificacionycomentarioPersistence.findById(cycId);
-        PersonaEntity personaEntity = personaPersistence.find(personaId);
+        PersonaEntity personaEntity = personaPersistence.findById(personaId);
         
         personaEntity.addCalificacionYComentario(calificacionYcomentarioEntity);     
         
@@ -55,7 +55,7 @@ public class CalificacionYComentarioDePersonaLogic {
      * de CalificacionYComentario
      */
     public List<CalificacionYComentarioEntity> getCalificacionesYComentarios(Long calificacionycomentarioId) {
-        return personaPersistence.find(calificacionycomentarioId).getCalificacionesYComentarios();
+        return personaPersistence.findById(calificacionycomentarioId).getCalificacionesYComentarios();
     }
     
     

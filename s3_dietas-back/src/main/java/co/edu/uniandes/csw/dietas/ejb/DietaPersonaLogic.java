@@ -36,10 +36,10 @@ public class DietaPersonaLogic {
      * @return Instancia de AuthorEntity que fue asociada a Book
      */
     public PersonaEntity addPersona(Long dietasId, Long personasId) {
-        PersonaEntity personaEntity = personaPersistence.find(personasId);
+        PersonaEntity personaEntity = personaPersistence.findById(personasId);
         DietaEntity dietaEntity = dietaPersistence.findByID(dietasId);
         dietaEntity.setPersonaDieta(personaEntity);
-        return personaPersistence.find(personasId);
+        return personaPersistence.findById(personasId);
     }
 
     /**

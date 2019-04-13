@@ -28,14 +28,14 @@ public class PersonaDTO {
     }
 
     public PersonaDTO(PersonaEntity entity){
-        setId(entity.getId());
-        setTipo(entity.getTipo());
-        setNombre(entity.getNombre());
-        setFechaIngreso(entity.getFechaIngreso());
-        setObjetivos(entity.getObjetivos());
-        setTiempoEsperadoMejora(entity.getTiempoEsperadoMejora());
-        setSolicitudEspecial(entity.isSolicitudEspecial());
-        setTarjetaFidelidad(entity.isTarjetaFidelidad());
+        this.setId(entity.getId());
+        this.setTipo(entity.getTipo());
+        this.setNombre(entity.getNombre());
+        this.setFechaIngreso(entity.getFechaIngreso());
+        this.setObjetivos(entity.getObjetivos());
+        this.setTiempoEsperadoMejora(entity.getTiempoEsperadoMejora());
+        this.setSolicitudEspecial(entity.isSolicitudEspecial());
+        this.setTarjetaFidelidad(entity.isTarjetaFidelidad());
     }
     /**
      * @return the id

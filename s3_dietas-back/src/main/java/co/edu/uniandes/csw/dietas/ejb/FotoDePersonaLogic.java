@@ -38,7 +38,7 @@ public class FotoDePersonaLogic {
      */
     public FotoEntity addFoto(Long personaId, Long fotoId) {
         FotoEntity fotoEntity = fotoPersistence.findById(fotoId);
-        PersonaEntity personaEntity = personaPersistence.find(personaId);
+        PersonaEntity personaEntity = personaPersistence.findById(personaId);
         
         personaEntity.addFoto(fotoEntity);     
         
@@ -55,6 +55,6 @@ public class FotoDePersonaLogic {
      * de Hall
      */
     public List<FotoEntity> getFotos(Long hallsId) {
-        return personaPersistence.find(hallsId).getFotos();
+        return personaPersistence.findById(hallsId).getFotos();
     }
 }

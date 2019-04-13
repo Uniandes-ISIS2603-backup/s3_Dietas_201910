@@ -37,7 +37,7 @@ public class QuejaYReclamoDePersonaLogic {
      */
     public QuejaYReclamoEntity addQueja(Long personaId, Long quejaId) {
         QuejaYReclamoEntity quejaEntity = quejaPersistence.findById(quejaId);
-        PersonaEntity personaEntity = personaPersistence.find(personaId);
+        PersonaEntity personaEntity = personaPersistence.findById(personaId);
         
         personaEntity.addQuejaYReclamo(quejaEntity);
         
@@ -54,6 +54,6 @@ public class QuejaYReclamoDePersonaLogic {
      * de Hall
      */
     public List<QuejaYReclamoEntity> getQuejas(Long personaId) {
-        return personaPersistence.find(personaId).getQuejas();
+        return personaPersistence.findById(personaId).getQuejas();
     }
 }

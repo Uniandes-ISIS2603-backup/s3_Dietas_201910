@@ -99,6 +99,66 @@ public class PersonaLogicTest {
          newEntity.setId(data.get(0).getId());
          personaLogic.createPersona(newEntity);
      }
+      /**
+     * Prueba para consultar la lista de personas.
+     */
+    @Test
+    public void getPersonasTest() {
+        List<PersonaEntity> list = personaLogic.getPersonas();
+        Assert.assertEquals(data.size(), list.size());
+        for (PersonaEntity entity : list) {
+            boolean found = false;
+            for (PersonaEntity storedEntity : data) {
+                if (entity.getId().equals(storedEntity.getId())) {
+                    found = true;
+                }
+            }
+            Assert.assertTrue(found);
+        }
+    }
+
+    /**
+     * Prueba para consultar un Pago.
+     */
+    @Test
+    public void getPersonaTest() {
+        PersonaEntity entity = data.get(0);
+        PersonaEntity resultEntity = personaLogic.getPersona(entity.getId());
+        Assert.assertNotNull(resultEntity);
+        Assert.assertEquals(entity.getId(), resultEntity.getId());
+ 
+    }
+     
+     /**
+     * Prueba para actualizar un Pago.
+     */
+    @Test
+    public void updatePersonaTest() {
+        PersonaEntity entity = data.get(0);
+        PersonaEntity pojoEntity = factory.manufacturePojo(PersonaEntity.class);
+
+        pojoEntity.setId(entity.getId());
+
+        personaLogic.updatePersona(pojoEntity.getId(), pojoEntity);
+
+        PersonaEntity resp = em.find(PersonaEntity.class, entity.getId());
+
+        Assert.assertEquals(pojoEntity.getId(), resp.getId());
+    }
+
+    /**
+     * Prueba para eliminar un Pago
+     *
+     * @throws co.edu.uniandes.csw.bookstore.exceptions.BusinessLogicException
+     */
+    @Test
+    public void deletePersonaTest() throws BusinessLogicException {
+        PersonaEntity entity = data.get(0);
+        personaLogic.deletePersona(entity.getId());
+        PersonaEntity deleted = em.find(PersonaEntity.class, entity.getId());
+        Assert.assertNull(deleted);
+    }
+
    }
 
 
