@@ -36,7 +36,7 @@ public class DietaSuspensionesLogic {
      * @param suspensionesId Identificador de la instancia de Suspension
      * @return Instancia de SuspensionEntity que fue asociada a Dieta
      */
-    public SuspensionEntity addAuthor(Long dietasId, Long suspensionesId) {
+    public SuspensionEntity addSuspension(Long dietasId, Long suspensionesId) {
         SuspensionEntity suspensionEntity = suspensionPersistence.findById(suspensionesId);
         DietaEntity dietaEntity = dietaPersistence.findByID(dietasId);
         dietaEntity.getSuspension().add(suspensionEntity);

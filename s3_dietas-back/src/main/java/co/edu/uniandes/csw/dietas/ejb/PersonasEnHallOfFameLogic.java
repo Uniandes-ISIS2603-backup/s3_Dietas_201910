@@ -42,7 +42,7 @@ public class PersonasEnHallOfFameLogic {
         HallOfFameEntity hallEntity = hallOfFamePersistence.find(hallId);
         
         
-        hallEntity.getPersonas().add(personaEntity);
+        hallEntity.addPersona(personaEntity);
         
         
         return personaPersistence.findById(personasId);

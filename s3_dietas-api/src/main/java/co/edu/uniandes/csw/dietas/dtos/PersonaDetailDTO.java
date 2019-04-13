@@ -40,8 +40,7 @@ public class PersonaDetailDTO extends PersonaDTO implements Serializable{
             {
                 calificacionesYComentarios=new ArrayList<CalificacionYComentarioDTO>();
                 for(CalificacionYComentarioEntity calificacionYComentarioEntity: personaEntity.getCalificacionesYComentarios())
-                {
-                    //calificacionesYComentarios.add(new CalificacionYComentarioDTO(calificacionYComentarioEntity));
+                {  calificacionesYComentarios.add(new CalificacionYComentarioDTO(calificacionYComentarioEntity));
                 }
             }
             if(personaEntity.getFotos()!=null)

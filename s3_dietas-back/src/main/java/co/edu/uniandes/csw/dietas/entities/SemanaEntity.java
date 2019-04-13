@@ -90,7 +90,7 @@ public class SemanaEntity extends BaseEntity implements Serializable
      * Devuelve la dieta que tiene la semana
      * @return la dieta a la cual pertenece la semana
      */
-    private DietaEntity getDieta(){
+    public DietaEntity getDieta(){
         return dieta;
     }
     /**

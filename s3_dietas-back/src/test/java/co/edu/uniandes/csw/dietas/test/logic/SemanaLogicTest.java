@@ -82,7 +82,7 @@ public class SemanaLogicTest {
      }
      
      @Test
-     public void createDietaTest() throws BusinessLogicException{
+     public void createSemanaTest() throws BusinessLogicException{
          SemanaEntity newEntity = factory.manufacturePojo(SemanaEntity.class);
          SemanaEntity result = semanaLogic.createSemana(newEntity);
          Assert.assertNotNull(result);

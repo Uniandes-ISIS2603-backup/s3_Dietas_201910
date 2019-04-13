@@ -57,7 +57,7 @@ public class DietaSuspensionesResource {
         if (suspensionLogic.getSuspension(suspensionesId) == null) {
             throw new WebApplicationException("El recurso /suspensiones/" + suspensionesId + " no existe.", 404);
         }
-        SuspensionDTO dto = new SuspensionDTO(dietaSuspensionLogic.addAuthor(dietasId, suspensionesId));
+        SuspensionDTO dto = new SuspensionDTO(dietaSuspensionLogic.addSuspension(dietasId, suspensionesId));
         return dto;
     }
 
@@ -69,7 +69,7 @@ public class DietaSuspensionesResource {
      * dieta. Si no hay ninguna retorna una lista vacía.
      */
     @GET
-    public List<SuspensionDTO> getAuthors(@PathParam("dietasId") Long dietasId) {
+    public List<SuspensionDTO> getSuspensiones(@PathParam("dietasId") Long dietasId) {
         List<SuspensionDTO> lista = suspensionListEntity2DTO(dietaSuspensionLogic.getSuspensiones(dietasId));
         return lista;
     }
@@ -85,7 +85,7 @@ public class DietaSuspensionesResource {
      */
     @GET
     @Path("{suspensionesId: \\d+}")
-    public SuspensionDTO getAuthor(@PathParam("dietasId") Long dietasId, @PathParam("suspensionesId") Long suspensionesId) {
+    public SuspensionDTO getSuspension(@PathParam("dietasId") Long dietasId, @PathParam("suspensionesId") Long suspensionesId) {
         if (suspensionLogic.getSuspension(suspensionesId) == null) {
             throw new WebApplicationException("El recurso /suspensiones/" + suspensionesId + " no existe.", 404);
         }
@@ -162,4 +162,6 @@ public class DietaSuspensionesResource {
         }
         return list;
     }
+    
+    
 }

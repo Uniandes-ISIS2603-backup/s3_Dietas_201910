@@ -90,4 +90,20 @@ public class DietaResource {
         }
         return list;
     }
+    
+    @Path("{dietasId: \\d+}/suspensiones")
+    public Class<DietaSuspensionesResource> getDietaSuspensionesResource(@PathParam("dietasId") Long dietasId) {
+        if (logica.getDieta(dietasId) == null) {
+            throw new WebApplicationException("El recurso /dietas/" + dietasId + " no existe.", 404);
+        }
+        return DietaSuspensionesResource.class;
+    }
+    
+    @Path("{dietasId: \\d+}/semanas")
+    public Class<DietaSemanasResource> getDietaSemanasResource(@PathParam("dietasId") Long dietasId) {
+        if (logica.getDieta(dietasId) == null) {
+            throw new WebApplicationException("El recurso /dietas/" + dietasId + " no existe.", 404);
+        }
+        return DietaSemanasResource.class;
+    }
 }

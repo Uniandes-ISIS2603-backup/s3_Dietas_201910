@@ -65,7 +65,7 @@ public class DiaPersistence {
     
     public DiaEntity update(DiaEntity diaEntity)
     {
-        LOGGER.log(Level.INFO, "Actualizando el libro con id={0}", diaEntity.getId());
+        LOGGER.log(Level.INFO, "Actualizando el dia con id={0}", diaEntity.getId());
         return em.merge(diaEntity);
     }
     public void delete(Long diaId)

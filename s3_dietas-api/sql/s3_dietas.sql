@@ -3,6 +3,7 @@ delete from CocinaEntity;
 delete from TipoDietaEntity;
 delete from HallOfFameEntity;
 delete from PersonaEntity;
+
 delete from QuejaYReclamoEntity;
 delete from CalificacionYComentarioEntity;
 delete from FotoEntity;
@@ -11,6 +12,7 @@ delete from SuspensionEntity;
 delete from SemanaEntity;
 delete from DiaEntity;
 delete from ComidaEntity;
+
 
 insert into CocinaEntity (id, direccion) values (1, '021 Magdeline Way');
 insert into CocinaEntity (id, direccion) values (2, '8 Susan Terrace');
@@ -95,3 +97,4 @@ insert into TipoDietaEntity_DietaEntity (tDietas_id, dietas_id) values (2, 2);
 insert into TipoDietaEntity_DietaEntity (tDietas_id, dietas_id) values (3, 3);
 insert into TipoDietaEntity_DietaEntity (tDietas_id, dietas_id) values (4, 4);
 insert into TipoDietaEntity_DietaEntity (tDietas_id, dietas_id) values (5, 5);
+

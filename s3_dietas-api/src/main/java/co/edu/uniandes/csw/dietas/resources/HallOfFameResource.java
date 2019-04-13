@@ -67,15 +67,16 @@ public class HallOfFameResource {
         
     }
     
-//    @GET
-//    public List<PersonaDTO> getPersonas(@PathParam("hallsId") Long hallsId){
-//        HallOfFameEntity entity = hallLogic.getHall(hallsId);
-//        if(entity == null){
-//            throw new WebApplicationException("El recurso /halls/"+hallsId+" no existe.",404);
-//        }
-//         HallOfFameDetailDTO halldto= new HallOfFameDetailDTO(entity);
-//         return halldto.getPersonas();
-//    }
+    @GET
+    @Path("{hallsId: \\d+}/personas")
+    public List<PersonaDTO> getPersonas(@PathParam("hallsId") Long hallsId){
+        HallOfFameEntity entity = hallLogic.getHall(hallsId);
+        if(entity == null){
+            throw new WebApplicationException("El recurso /halls/"+hallsId+" no existe.",404);
+        }
+         HallOfFameDetailDTO halldto= new HallOfFameDetailDTO(entity);
+         return halldto.getPersonas();
+    }
     
     
     @PUT
