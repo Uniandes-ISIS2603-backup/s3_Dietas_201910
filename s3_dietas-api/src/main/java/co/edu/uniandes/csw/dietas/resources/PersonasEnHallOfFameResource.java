@@ -32,7 +32,6 @@ import javax.ws.rs.core.MediaType;
  */
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
-
 public class PersonasEnHallOfFameResource {
     
     private static final Logger LOGGER = Logger.getLogger(PersonasEnHallOfFameResource.class.getName());
@@ -69,7 +68,7 @@ public class PersonasEnHallOfFameResource {
      /**
      * Busca y devuelve todas las personas que existen en una hall.
      *
-     * @param dietasId El ID de la dieta del cual se buscan las suspensiones
+     * @param hallsId El ID de la dieta del cual se buscan las suspensiones
      * @return JSONArray {@link SuspensionDTO} - Las suspensiones encontradas en la
      * dieta. Si no hay ninguna retorna una lista vacía.
      */
