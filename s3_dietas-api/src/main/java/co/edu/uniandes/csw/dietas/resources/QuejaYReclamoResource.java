@@ -40,20 +40,39 @@ public class QuejaYReclamoResource {
     
     private QuejaYReclamoLogic logica;
     
-    //hola mundo
     
+    /**
+     * Crea un nuevo Q&R con la informacion que se recibe en el cuerpo de la
+     * petición y se regresa un objeto identico con un id auto-generado por la
+     * base de datos.
+     *
+     * @param persona {@link Q&RDTO } - EL Q&R que se desea guardar.
+     * @return JSON {@link Q&RDTO} - El Q&R guardado con el atributo id
+     * autogenerado.
+     */
     @POST
     public QuejaYReclamoDTO createQuejaYReclamo(QuejaYReclamoDTO queja)throws BusinessLogicException{
         QuejaYReclamoEntity quejaEntity = queja.toEntity();
         quejaEntity = logica.createQuejaYReclamo(quejaEntity);
        return new QuejaYReclamoDTO(quejaEntity); 
     }
+    /**
+     * Busca y devuelve todos los Q&R que existen en la aplicacion.
+     *
+     * @return JSONArray {@link Q&RDTO} - Los Q&R encontrados en la
+     * aplicación. Si no hay ninguno retorna una lista vacía.
+     */
       @GET
     public List<QuejaYReclamoDTO> getQuejasYReclamos(){
         List<QuejaYReclamoDTO> listaQuejas = listEntity2DetailDTO(logica.getQuejasYReclamos());
         return listaQuejas;
     }
-    
+      /**
+     * Busca y devuelve LA Q&R que existen en la aplicacion.
+     *
+     * @return JSON {@link Q&RDTO} - LA Q&R ENCONTRADA en la
+     * aplicación. Si no hay ninguno retorna una  vacía.
+     */
     @GET
     @Path("{quejasId: \\d+}")
     public QuejaYReclamoDTO getQuejaYReclamo(@PathParam("quejasId") Long quejasId){
@@ -64,7 +83,18 @@ public class QuejaYReclamoResource {
         return new QuejaYReclamoDTO(queja);
     }
     
- 
+         /**
+     * Actualiza el PERSONA con el id recibido en la URL con la información que se
+     * recibe en el cuerpo de la petición.
+     *
+     * @param QYRID Identificador del autor que se desea actualizar. Este
+     * debe ser una cadena de dígitos.
+     * @param QUEJA {@link Q&RDTO} El Q&R que se desea guardar.
+     * @return JSON {@link Q&RDTO} - El Q&R guardado.
+     * @throws WebApplicationException {@link WebApplicationExceptionMapper} -
+     * Error de lógica que se genera cuando no se encuentra el autor a
+     * actualizar.
+     */
     
     @PUT
     @Path("{quejasId: \\d+}")
@@ -77,6 +107,16 @@ public class QuejaYReclamoResource {
         return quejaDTO;
     }
     
+           /**
+     * Borra el Q&R con el id asociado recibido en la URL.
+     *
+     * @param Q&RID Identificador del Q&R que se desea borrar. Este debe
+     * ser una cadena de dígitos.
+     * @throws co.edu.uniandes.csw.bookstore.exceptions.BusinessLogicException
+     * si el autor tiene libros asociados
+     * @throws WebApplicationException {@link WebApplicationExceptionMapper}
+     * Error de lógica que se genera cuando no se encuentra el PERSONA a borrar.
+     */
     @DELETE
     @Path("{pagosId: \\d+}")
     public void deleteQuejaYReclamo(@PathParam("quejasId") Long quejasId)throws BusinessLogicException{

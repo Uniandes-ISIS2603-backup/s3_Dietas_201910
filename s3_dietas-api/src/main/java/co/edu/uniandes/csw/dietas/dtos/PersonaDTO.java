@@ -28,8 +28,8 @@ public class PersonaDTO {
     }
 
     public PersonaDTO(PersonaEntity entity){
-        this.setId(entity.getId());
-        this.setTipo(entity.getTipo());
+        setId(entity.getId());
+        setTipo(entity.getTipo());
         this.setNombre(entity.getNombre());
         this.setFechaIngreso(entity.getFechaIngreso());
         this.setObjetivos(entity.getObjetivos());

@@ -1,0 +1,210 @@
+{
+	"info": {
+		"_postman_id": "e49c03cb-0220-415a-8172-98eb5ccb1585",
+		"name": "QuejasYReclamos",
+		"description": "Smiles in Pastor Lopez",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Post Q&R",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "8baec897-cd6a-46cd-97af-277ed5c8eee6",
+						"exec": [
+							"var data = JSON.parse(responseBody);",
+							"postman.setGlobalVariable(\"new_id_e\",data.id);",
+							"tests[\"no genera error en el Post\"] = responseCode.code === 200;",
+							"pm.globals.get(\"variable_key\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"especificacion\":\"prueba\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/s3_dietas-api/api/quejasYReclamos",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"s3_dietas-api",
+						"api",
+						"quejasYReclamos"
+					]
+				},
+				"description": "crea una queja y reclamo"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Q&R",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"disabled": false
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/s3_dietas-api/api/quejasYReclamos",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"s3_dietas-api",
+						"api",
+						"quejasYReclamos"
+					]
+				},
+				"description": "Obtiene todas las quejas y reclamos"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Q&R(una)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "60121fc2-361f-4170-92c7-cbe6a9504a3d",
+						"exec": [
+							"tests[\"No genera error en el Get\"] = responseCode.code === 200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"disabled": false
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/s3_dietas-api/api/quejasYReclamos/{{new_id_e}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"s3_dietas-api",
+						"api",
+						"quejasYReclamos",
+						"{{new_id_e}}"
+					]
+				},
+				"description": "obtiene una queja y reclamo por una id"
+			},
+			"response": []
+		},
+		{
+			"name": "Put Q&R",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "53c58680-fe4c-418d-a6d4-1452cba63d69",
+						"exec": [
+							"tests[\"No genera error en el Get \"] = responseCode.code === 200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "    {\n        \"especificacion\": \"prueba1\"\n        \n    }"
+				},
+				"url": {
+					"raw": "http://localhost:8080/s3_dietas-api/api/quejasYReclamos/{{new_id_e}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"s3_dietas-api",
+						"api",
+						"quejasYReclamos",
+						"{{new_id_e}}"
+					]
+				},
+				"description": "Actualiza la especificación de una Q&R"
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "60fac713-a9a0-4571-8244-442e0b504725",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "6abf585e-20e8-43f3-83e3-a3641ab6da34",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

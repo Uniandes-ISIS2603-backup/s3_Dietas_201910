@@ -38,24 +38,44 @@ import javax.ws.rs.WebApplicationException;
 public class PersonaResource {
     private static final Logger LOGGER = Logger.getLogger(PersonaResource.class.getName());
     
-      @Inject
-    
+      @Inject    
     private PersonaLogic logica;
     
-    //hola mundo
-    
+    /**
+     * Crea un nuevo persona con la informacion que se recibe en el cuerpo de la
+     * petición y se regresa un objeto identico con un id auto-generado por la
+     * base de datos.
+     *
+     * @param persona {@link PersonaDTO} - EL PERSONA que se desea guardar.
+     * @return JSON {@link PersonaDTO} - El PERSONA guardado con el atributo id
+     * autogenerado.
+     */
     @POST
     public PersonaDTO createPersona(PersonaDTO persona)throws BusinessLogicException{
         PersonaEntity personaEntity = persona.toEntity();
         personaEntity = logica.createPersona(personaEntity);
        return new PersonaDTO(personaEntity); 
     }
+    
+    /**
+     * Busca y devuelve todos los PERSONAS que existen en la aplicacion.
+     *
+     * @return JSONArray {@link PersonaDTO} - Los PERSONAS encontrados en la
+     * aplicación. Si no hay ninguno retorna una lista vacía.
+     */
       @GET
     public List<PersonaDTO> getPersonas(){
         List<PersonaDTO> listaPersonas = listEntity2DetailDTO(logica.getPersonas());
         return listaPersonas;
     }
     
+     
+    /**
+     * Busca y devuelve LA PERSONA que existen en la aplicacion.
+     *
+     * @return JSON {@link PersonaDTO} - LA PERSONA ENCONTRADA en la
+     * aplicación. Si no hay ninguno retorna una  vacía.
+     */
     @GET
     @Path("{personasId: \\d+}")
     public PersonaDTO getPersona(@PathParam("personasId") Long personasId){
@@ -67,7 +87,18 @@ public class PersonaResource {
     }
     
  
-    
+        /**
+     * Actualiza el PERSONA con el id recibido en la URL con la información que se
+     * recibe en el cuerpo de la petición.
+     *
+     * @param PERSONAID Identificador del autor que se desea actualizar. Este
+     * debe ser una cadena de dígitos.
+     * @param QUEJA {@link PERSONADTO} El PERSONA que se desea guardar.
+     * @return JSON {@link PERSONADTO} - El PERSONA guardado.
+     * @throws WebApplicationException {@link WebApplicationExceptionMapper} -
+     * Error de lógica que se genera cuando no se encuentra el autor a
+     * actualizar.
+     */
     @PUT
     @Path("{personasId: \\d+}")
     public PersonaDTO updatePersona(@PathParam("personasId") Long personasId, PersonaDTO queja){
@@ -79,6 +110,16 @@ public class PersonaResource {
         return quejaDTO;
     }
     
+       /**
+     * Borra el PERSONA con el id asociado recibido en la URL.
+     *
+     * @param PERSONAID Identificador del PERSONA que se desea borrar. Este debe
+     * ser una cadena de dígitos.
+     * @throws co.edu.uniandes.csw.bookstore.exceptions.BusinessLogicException
+     * si el autor tiene libros asociados
+     * @throws WebApplicationException {@link WebApplicationExceptionMapper}
+     * Error de lógica que se genera cuando no se encuentra el PERSONA a borrar.
+     */
     @DELETE
     @Path("{personasId: \\d+}")
     public void deletePersona(@PathParam("personasId") Long personasId)throws BusinessLogicException{
