@@ -3,7 +3,6 @@ delete from CocinaEntity;
 delete from TipoDietaEntity;
 delete from HallOfFameEntity;
 delete from PersonaEntity;
-
 delete from QuejaYReclamoEntity;
 delete from CalificacionYComentarioEntity;
 delete from FotoEntity;

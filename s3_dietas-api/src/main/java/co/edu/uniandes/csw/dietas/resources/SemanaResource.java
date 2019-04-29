@@ -56,7 +56,7 @@ public class SemanaResource {
     }
     @GET
     @Path("{semanasId:\\d+}")
-    public SemanaDetailDTO getSemana(@PathParam("semanaId") Long semanaId){
+    public SemanaDetailDTO getSemana(@PathParam("semanasId") Long semanaId){
         SemanaEntity buscado = semanaLogic.getSemana(semanaId);
         if(buscado == null)
         {
