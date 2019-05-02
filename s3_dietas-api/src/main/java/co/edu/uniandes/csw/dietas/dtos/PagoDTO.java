@@ -22,8 +22,11 @@ public class PagoDTO implements Serializable{
     }
     
     public PagoDTO(PagoEntity entity){
-        setId(entity.getId());
-        setModoPago(entity.getModoPago());
+        if(entity != null) {
+            this.id = entity.getId();
+            this.modoPago = entity.getModoPago();
+            this.persona = new PersonaDTO(entity.getPersona());
+        }
     }
     
     public PagoEntity toEntity(){

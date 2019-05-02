@@ -47,20 +47,48 @@ public class DietaDetailDTO extends DietaDTO implements Serializable{
     
     public DietaEntity toEntity(){
         DietaEntity entity = super.toEntity();
-        if(semanas != null){
+        if(getSemanas() != null){
             List<SemanaEntity> semanaEntity = new ArrayList<>();
-            for (SemanaDTO semana : semanas) {
+            for (SemanaDTO semana : getSemanas()) {
                 semanaEntity.add(semana.toEntity());
             }
             entity.setSemanas(semanaEntity);
         }
-        if(suspensiones != null){
+        if(getSuspensiones() != null){
             List<SuspensionEntity> suspensionEntity = new ArrayList<>();
-            for (SuspensionDTO suspension : suspensiones) {
+            for (SuspensionDTO suspension : getSuspensiones()) {
                 suspensionEntity.add(suspension.toEntity());
             }
             entity.setSuspension(suspensionEntity);
         }
         return entity;
+    }
+
+    /**
+     * @return the semanas
+     */
+    public List<SemanaDTO> getSemanas() {
+        return semanas;
+    }
+
+    /**
+     * @param semanas the semanas to set
+     */
+    public void setSemanas(List<SemanaDTO> semanas) {
+        this.semanas = semanas;
+    }
+
+    /**
+     * @return the suspensiones
+     */
+    public List<SuspensionDTO> getSuspensiones() {
+        return suspensiones;
+    }
+
+    /**
+     * @param suspensiones the suspensiones to set
+     */
+    public void setSuspensiones(List<SuspensionDTO> suspensiones) {
+        this.suspensiones = suspensiones;
     }
 }
