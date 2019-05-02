@@ -13,16 +13,21 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 import javax.inject.Inject;
+import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
 import javax.ws.rs.WebApplicationException;
+import javax.ws.rs.core.MediaType;
 
 /**
  *
  * @author Daniel Espitia
  */
+@Consumes(MediaType.APPLICATION_JSON)
+@Produces(MediaType.APPLICATION_JSON)
 public class FotoDePersonaResource {
      private static final Logger LOGGER = Logger.getLogger(FotoDePersonaResource.class.getName());
 
@@ -63,6 +68,25 @@ public class FotoDePersonaResource {
     public List<FotoDTO> getFotos(@PathParam("personasId") Long personasId) {
         List<FotoDTO> lista = personaListEntity2DTO(fotoDePersonaLogic.getFotos(personasId));
         return lista;
+    }
+    
+    /**
+     * Busca y devuelve la suspension con el ID recibido en la URL, relativo a una persona.
+     *
+     * @param fotosId El ID de la suspension que se busca
+     * @param personasId El ID de la persona del cual se busca la suspension
+     * @return {@link FotoDTO} - La foto encontrada en la persona.
+     * @throws WebApplicationException {@link WebApplicationExceptionMapper}
+     * Error de lógica que se genera cuando no se encuentra la suspension.
+     */
+    @GET
+    @Path("{fotosId: \\d+}")
+    public FotoDTO getFoto(@PathParam("personasId") Long personasId, @PathParam("fotosId") Long fotosId) {
+        if (fotoLogic.getFoto(fotosId) == null) {
+            throw new WebApplicationException("El recurso /fotos/" + fotosId + " no existe.", 404);
+        }
+        FotoDTO detailDTO = new FotoDTO(fotoDePersonaLogic.getFoto(personasId, fotosId));
+        return detailDTO;
     }
     
     /**

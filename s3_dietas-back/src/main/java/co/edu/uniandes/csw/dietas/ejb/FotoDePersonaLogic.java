@@ -57,4 +57,21 @@ public class FotoDePersonaLogic {
     public List<FotoEntity> getFotos(Long hallsId) {
         return personaPersistence.findById(hallsId).getFotos();
     }
+    
+    /**
+     * Obtiene una instancia de FotoEntity asociada a una instancia de Dieta
+     *
+     * @param personasId Identificador de la instancia de Dieta
+     * @param fotosId Identificador de la instancia de Foto
+     * @return La entidad de la Foto asociada a la persona
+     */
+    public FotoEntity getFoto(Long personasId, Long fotosId) {
+        List<FotoEntity> fotos = personaPersistence.findById(personasId).getFotos();
+        FotoEntity fotoEntity = fotoPersistence.findById(fotosId);
+        int index = fotos.indexOf(fotoEntity);
+        if (index >= 0) {
+            return fotos.get(index);
+        }
+        return null;
+    }
 }

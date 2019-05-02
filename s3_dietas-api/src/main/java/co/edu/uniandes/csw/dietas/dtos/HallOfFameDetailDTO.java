@@ -17,7 +17,7 @@ import java.util.ArrayList;
  */
 public class HallOfFameDetailDTO extends HallOfFameDTO implements Serializable {
     
-    private List <PersonaDTO> personas;
+    private List <PersonaDetailDTO> personas;
  
     
     public HallOfFameDetailDTO (){
@@ -30,7 +30,7 @@ public class HallOfFameDetailDTO extends HallOfFameDTO implements Serializable {
             if(entity.getPersonas() !=null){
                 personas= new ArrayList<>();
                 for(PersonaEntity persona: entity.getPersonas()){
-                    personas.add(new PersonaDTO(persona));
+                    personas.add(new PersonaDetailDTO(persona));
                 }
             }
           }
@@ -51,7 +51,7 @@ public class HallOfFameDetailDTO extends HallOfFameDTO implements Serializable {
     /**
      * @return the personas
      */
-    public List <PersonaDTO> getPersonas() {
+    public List <PersonaDetailDTO> getPersonas() {
         return personas;
     }
 
@@ -61,7 +61,7 @@ public class HallOfFameDetailDTO extends HallOfFameDTO implements Serializable {
     public void agregarPersonas(List <PersonaDTO> personas) {
         for (int i = 0; i < 10; i++) {
             if(!this.personas.contains(personas.get(i))){
-                this.getPersonas().add(personas.get(i));
+                personas.add(personas.get(i));
             }else{
                 System.out.print("la persona ya existe");
             }
@@ -84,7 +84,7 @@ public class HallOfFameDetailDTO extends HallOfFameDTO implements Serializable {
     /**
      * @param personas the personas to set
      */
-    public void setPersonas(List <PersonaDTO> personas) {
+    public void setPersonas(List <PersonaDetailDTO> personas) {
         this.personas = personas;
     }
     

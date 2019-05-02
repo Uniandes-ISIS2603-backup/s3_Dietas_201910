@@ -6,6 +6,7 @@
 package co.edu.uniandes.csw.dietas.resources;
 
 import co.edu.uniandes.csw.dietas.dtos.PersonaDTO;
+import co.edu.uniandes.csw.dietas.dtos.PersonaDetailDTO;
 import co.edu.uniandes.csw.dietas.ejb.PersonaLogic;
 import co.edu.uniandes.csw.dietas.ejb.PersonasEnHallOfFameLogic;
 import co.edu.uniandes.csw.dietas.entities.PersonaEntity;
@@ -73,8 +74,8 @@ public class PersonasEnHallOfFameResource {
      * dieta. Si no hay ninguna retorna una lista vacía.
      */
     @GET
-    public List<PersonaDTO> getPersonas(@PathParam("hallsId") Long hallsId) {
-        List<PersonaDTO> lista = personaListEntity2DTO(personasEnHallOfFameLogic.getPersonas(hallsId));
+    public List<PersonaDetailDTO> getPersonas(@PathParam("hallsId") Long hallsId) {
+        List<PersonaDetailDTO> lista = personaListEntity2DTO(personasEnHallOfFameLogic.getPersonas(hallsId));
         return lista;
     }
     
@@ -84,10 +85,10 @@ public class PersonasEnHallOfFameResource {
      * @param entityList Lista de PersonaEntity a convertir.
      * @return Lista de PersonaDTO convertida.
      */
-    private List<PersonaDTO> personaListEntity2DTO(List<PersonaEntity> entityList) {
-        List<PersonaDTO> list = new ArrayList<>();
+    private List<PersonaDetailDTO> personaListEntity2DTO(List<PersonaEntity> entityList) {
+        List<PersonaDetailDTO> list = new ArrayList<>();
         for (PersonaEntity entity : entityList) {
-            list.add(new PersonaDTO(entity));
+            list.add(new PersonaDetailDTO(entity));
         }
         return list;
     }

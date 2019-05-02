@@ -10,6 +10,7 @@ import co.edu.uniandes.csw.dietas.ejb.HallOfFameLogic;
 import co.edu.uniandes.csw.dietas.entities.HallOfFameEntity;
 import co.edu.uniandes.csw.dietas.dtos.HallOfFameDetailDTO;
 import co.edu.uniandes.csw.dietas.dtos.PersonaDTO;
+import co.edu.uniandes.csw.dietas.dtos.PersonaDetailDTO;
 import javax.ws.rs.PathParam;
 import co.edu.uniandes.csw.dietas.exceptions.BusinessLogicException;
 import java.util.ArrayList;
@@ -69,7 +70,7 @@ public class HallOfFameResource {
     
     @GET
     @Path("{hallsId: \\d+}/personas")
-    public List<PersonaDTO> getPersonas(@PathParam("hallsId") Long hallsId){
+    public List<PersonaDetailDTO> getPersonas(@PathParam("hallsId") Long hallsId){
         HallOfFameEntity entity = hallLogic.getHall(hallsId);
         if(entity == null){
             throw new WebApplicationException("El recurso /halls/"+hallsId+" no existe.",404);
