@@ -49,8 +49,8 @@ public class SemanaResource {
     }
     
      @GET
-    public List<SemanaDTO> getSemanas(){
-        List<SemanaDTO> darSemanas = listaEntity2DTO(semanaLogic.getSemanas());
+    public List<SemanaDetailDTO> getSemanas(){
+        List<SemanaDetailDTO> darSemanas = listaEntity2DTO(semanaLogic.getSemanas());
         return darSemanas;
    
     }
@@ -91,8 +91,8 @@ public class SemanaResource {
      * @param entityList lista de las entidades que se desean cambiar.
      * @return  lista de ahora los DTOs en vez de las entidades.
      */
-    private List<SemanaDTO> listaEntity2DTO(List<SemanaEntity> entityList){
-        List<SemanaDTO> lista = new ArrayList<>();
+    private List<SemanaDetailDTO> listaEntity2DTO(List<SemanaEntity> entityList){
+        List<SemanaDetailDTO> lista = new ArrayList<>();
         for(SemanaEntity entidad : entityList){
             lista.add(new SemanaDetailDTO(entidad));
         }

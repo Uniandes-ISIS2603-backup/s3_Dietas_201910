@@ -37,7 +37,7 @@ public class DiaDTO implements Serializable
     /**
      * @param diaEspecial the diaEspecial to set
      */
-    public void setDiaEspecial(boolean diaEspecial) {
+    public void setDiaEspecial(Boolean diaEspecial) {
         this.diaEspecial = diaEspecial;
     }
     
