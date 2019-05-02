@@ -6,15 +6,12 @@
 package co.edu.uniandes.csw.dietas.resources;
 
 import co.edu.uniandes.csw.dietas.dtos.PagoDTO;
-import co.edu.uniandes.csw.dietas.dtos.SuspensionDTO;
 import co.edu.uniandes.csw.dietas.ejb.PagoLogic;
 import co.edu.uniandes.csw.dietas.ejb.PagosDePersonaLogic;
 import co.edu.uniandes.csw.dietas.entities.PagoEntity;
-import co.edu.uniandes.csw.dietas.mappers.WebApplicationExceptionMapper;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
-import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
@@ -29,8 +26,8 @@ import javax.ws.rs.core.MediaType;
  *
  * @author estudiante
  */
-
-
+@Consumes(MediaType.APPLICATION_JSON)
+@Produces(MediaType.APPLICATION_JSON)
 public class PagoDePersonaResource {
     private static final Logger LOGGER = Logger.getLogger(PagoDePersonaResource.class.getName());
 
@@ -69,7 +66,7 @@ public class PagoDePersonaResource {
      */
     @GET
     public List<PagoDTO> getPagos(@PathParam("personasId") Long personasId) {
-        List<PagoDTO> lista = pagoListEntity2DTO(pagoDePersonaLogic.getPagos(personasId));
+        List<PagoDTO> lista = personaListEntity2DTO(pagoDePersonaLogic.getPagos(personasId));
         return lista;
     }
     
@@ -79,7 +76,7 @@ public class PagoDePersonaResource {
      * @param entityList Lista de PersonaEntity a convertir.
      * @return Lista de PersonaDTO convertida.
      */
-    private List<PagoDTO> pagoListEntity2DTO(List<PagoEntity> entityList) {
+    private List<PagoDTO> personaListEntity2DTO(List<PagoEntity> entityList) {
         List<PagoDTO> list = new ArrayList<>();
         for (PagoEntity entity : entityList) {
             list.add(new PagoDTO(entity));
@@ -88,3 +85,4 @@ public class PagoDePersonaResource {
     }
 
 }
+
