@@ -6,6 +6,7 @@
 package co.edu.uniandes.csw.dietas.resources;
 
 import co.edu.uniandes.csw.dietas.dtos.PersonaDTO;
+import co.edu.uniandes.csw.dietas.dtos.PersonaDetailDTO;
 import co.edu.uniandes.csw.dietas.dtos.QuejaYReclamoDTO;
 import co.edu.uniandes.csw.dietas.ejb.PersonaLogic;
 import co.edu.uniandes.csw.dietas.ejb.QuejaYReclamoLogic;
@@ -64,8 +65,8 @@ public class PersonaResource {
      * aplicación. Si no hay ninguno retorna una lista vacía.
      */
       @GET
-    public List<PersonaDTO> getPersonas(){
-        List<PersonaDTO> listaPersonas = listEntity2DetailDTO(logica.getPersonas());
+    public List<PersonaDetailDTO> getPersonas(){
+        List<PersonaDetailDTO> listaPersonas = listEntity2DetailDTO(logica.getPersonas());
         return listaPersonas;
     }
     
@@ -78,12 +79,12 @@ public class PersonaResource {
      */
     @GET
     @Path("{personasId: \\d+}")
-    public PersonaDTO getPersona(@PathParam("personasId") Long personasId){
+    public PersonaDetailDTO getPersona(@PathParam("personasId") Long personasId){
         PersonaEntity queja = logica.getPersona(personasId);
         if(queja == null){
             throw new WebApplicationException("El recurso /personas/"+personasId+" no existe.", 404);
         }
-        return new PersonaDTO(queja);
+        return new PersonaDetailDTO(queja);
     }
     
  
@@ -129,10 +130,10 @@ public class PersonaResource {
         logica.deletePersona(personasId);
     }
     
-    private List<PersonaDTO> listEntity2DetailDTO(List<PersonaEntity> entityList) {
-        List<PersonaDTO> list = new ArrayList<>();
+    private List<PersonaDetailDTO> listEntity2DetailDTO(List<PersonaEntity> entityList) {
+        List<PersonaDetailDTO> list = new ArrayList<>();
         for (PersonaEntity entity : entityList) {
-            list.add(new PersonaDTO(entity));
+            list.add(new PersonaDetailDTO(entity));
         }
         return list;
     }

@@ -26,6 +26,7 @@ import javax.ws.rs.core.MediaType;
  *
  * @author Alejandra Bravoa
  */
+
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 public class DietaPersonaResource {

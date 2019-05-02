@@ -24,16 +24,17 @@ public class QuejaYReclamoDTO implements Serializable{
     }
     
     public QuejaYReclamoDTO(QuejaYReclamoEntity entity){
+       if(entity!=null){
         setId(entity.getId());
         setEspecificacion(entity.getEspecificacion());
+       }
        
     }
     
     public QuejaYReclamoEntity toEntity(){
         QuejaYReclamoEntity entity = new QuejaYReclamoEntity();
         entity.setId(this.getId());
-        entity.setEspecificacion(this.getEspecificacion());
-       
+        entity.setEspecificacion(this.getEspecificacion());       
         return entity;
     }
         /**

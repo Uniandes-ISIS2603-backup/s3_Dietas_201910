@@ -83,48 +83,118 @@ public class PersonaDetailDTO extends PersonaDTO implements Serializable{
         
     public PersonaEntity toEntity(){
         PersonaEntity entity = super.toEntity();
-            if(calificacionesYComentarios!=null)
+            if(getCalificacionesYComentarios()!=null)
             {
                 List<CalificacionYComentarioEntity> calificaciones=new ArrayList<>();
-                for(CalificacionYComentarioDTO calificacionYComentarioDTO:calificacionesYComentarios )
+                for(CalificacionYComentarioDTO calificacionYComentarioDTO:getCalificacionesYComentarios() )
                 { calificaciones.add(calificacionYComentarioDTO.toEntity());
                 
                 }
                  entity.setCalificacionesYComentarios(calificaciones);
             }
-            if(fotos!=null)
+            if(getFotos()!=null)
             {
                 List<FotoEntity> fotosEntitys=new ArrayList<>();
-                for(FotoDTO foto: fotos)
+                for(FotoDTO foto: getFotos())
                 {
                     fotosEntitys.add(foto.toEntity());
                 }               
             }
-            if(quejasYReclamos!=null)
+            if(getQuejasYReclamos()!=null)
             {
                 List<QuejaYReclamoEntity> quejas=new ArrayList<>();
-                for(QuejaYReclamoDTO queja:quejasYReclamos)
+                for(QuejaYReclamoDTO queja:getQuejasYReclamos())
                 {
                     quejas.add(queja.toEntity());
                 }
             }
-            if(dietas!=null)
+            if(getDietas()!=null)
             {
                 List<DietaEntity> dietasss=new ArrayList<>();
-                for(DietaDTO diet: dietas)
+                for(DietaDTO diet: getDietas())
                 {
                     dietasss.add(diet.toEntity());
                 }
             }
 
-            if(pagos!=null)
+            if(getPagos()!=null)
             {
                 List<PagoEntity> pagoss=new ArrayList<>();
-                for(PagoDTO pagoD: pagos)
+                for(PagoDTO pagoD: getPagos())
                 {
                     pagoss.add(pagoD.toEntity());
                 }
             }
         return entity;
+    }
+
+    /**
+     * @return the dietas
+     */
+    public List<DietaDTO> getDietas() {
+        return dietas;
+    }
+
+    /**
+     * @param dietas the dietas to set
+     */
+    public void setDietas(List<DietaDTO> dietas) {
+        this.dietas = dietas;
+    }
+
+    /**
+     * @return the fotos
+     */
+    public List<FotoDTO> getFotos() {
+        return fotos;
+    }
+
+    /**
+     * @param fotos the fotos to set
+     */
+    public void setFotos(List<FotoDTO> fotos) {
+        this.fotos = fotos;
+    }
+
+    /**
+     * @return the calificacionesYComentarios
+     */
+    public List<CalificacionYComentarioDTO> getCalificacionesYComentarios() {
+        return calificacionesYComentarios;
+    }
+
+    /**
+     * @param calificacionesYComentarios the calificacionesYComentarios to set
+     */
+    public void setCalificacionesYComentarios(List<CalificacionYComentarioDTO> calificacionesYComentarios) {
+        this.calificacionesYComentarios = calificacionesYComentarios;
+    }
+
+    /**
+     * @return the quejasYReclamos
+     */
+    public List<QuejaYReclamoDTO> getQuejasYReclamos() {
+        return quejasYReclamos;
+    }
+
+    /**
+     * @param quejasYReclamos the quejasYReclamos to set
+     */
+    public void setQuejasYReclamos(List<QuejaYReclamoDTO> quejasYReclamos) {
+        this.quejasYReclamos = quejasYReclamos;
+    }
+
+    /**
+     * @return the pagos
+     */
+    public List<PagoDTO> getPagos() {
+        return pagos;
+    }
+
+    /**
+     * @param pagos the pagos to set
+     */
+    public void setPagos(List<PagoDTO> pagos) {
+        this.pagos = pagos;
     }
 }

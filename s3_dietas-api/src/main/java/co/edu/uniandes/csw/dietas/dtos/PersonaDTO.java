@@ -29,6 +29,7 @@ public class PersonaDTO implements Serializable{
     }
 
     public PersonaDTO(PersonaEntity entity){
+        if(entity!=null){
         setId(entity.getId());
         setTipo(entity.getTipo());
         this.setNombre(entity.getNombre());
@@ -36,7 +37,7 @@ public class PersonaDTO implements Serializable{
         this.setObjetivos(entity.getObjetivos());
         this.setTiempoEsperadoMejora(entity.getTiempoEsperadoMejora());
         this.setSolicitudEspecial(entity.isSolicitudEspecial());
-        this.setTarjetaFidelidad(entity.isTarjetaFidelidad());
+        this.setTarjetaFidelidad(entity.isTarjetaFidelidad());}
     }
     /**
      * @return the id
