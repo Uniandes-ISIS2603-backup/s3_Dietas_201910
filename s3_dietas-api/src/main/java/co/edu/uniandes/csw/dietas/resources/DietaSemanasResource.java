@@ -5,7 +5,7 @@
  */
 package co.edu.uniandes.csw.dietas.resources;
 
-import co.edu.uniandes.csw.dietas.dtos.SemanaDTO;
+import co.edu.uniandes.csw.dietas.dtos.SemanaDetailDTO;
 import co.edu.uniandes.csw.dietas.ejb.DietaSemanasLogic;
 import co.edu.uniandes.csw.dietas.ejb.SemanaLogic;
 import co.edu.uniandes.csw.dietas.entities.SemanaEntity;
@@ -52,11 +52,11 @@ public class DietaSemanasResource {
      */
     @POST
     @Path("{semanasId: \\d+}")
-    public SemanaDTO addSuspension(@PathParam("dietasId") Long dietasId, @PathParam("semanasId") Long semanasId) {
+    public SemanaDetailDTO addSuspension(@PathParam("dietasId") Long dietasId, @PathParam("semanasId") Long semanasId) {
         if (semanaLogic.getSemana(semanasId) == null) {
             throw new WebApplicationException("El recurso /semanas/" + semanasId + " no existe.", 404);
         }
-        SemanaDTO dto = new SemanaDTO(dietaSemanaLogic.addSemana(dietasId, semanasId));
+        SemanaDetailDTO dto = new SemanaDetailDTO(dietaSemanaLogic.addSemana(dietasId, semanasId));
         return dto;
     }
 
@@ -68,8 +68,8 @@ public class DietaSemanasResource {
      * dieta. Si no hay ninguna retorna una lista vacía.
      */
     @GET
-    public List<SemanaDTO> getSemanas(@PathParam("dietasId") Long dietasId) {
-        List<SemanaDTO> lista = semanaListEntity2DTO(dietaSemanaLogic.getSemanas(dietasId));
+    public List<SemanaDetailDTO> getSemanas(@PathParam("dietasId") Long dietasId) {
+        List<SemanaDetailDTO> lista = semanaListEntity2DTO(dietaSemanaLogic.getSemanas(dietasId));
         return lista;
     }
 
@@ -84,11 +84,11 @@ public class DietaSemanasResource {
      */
     @GET
     @Path("{semanasId: \\d+}")
-    public SemanaDTO getSemanas(@PathParam("dietasId") Long dietasId, @PathParam("semanasId") Long semanasId) {
+    public SemanaDetailDTO getSemanas(@PathParam("dietasId") Long dietasId, @PathParam("semanasId") Long semanasId) {
         if (semanaLogic.getSemana(semanasId) == null) {
             throw new WebApplicationException("El recurso /semanas/" + semanasId + " no existe.", 404);
         }
-        SemanaDTO detailDTO = new SemanaDTO(dietaSemanaLogic.getSemana(dietasId, semanasId));
+        SemanaDetailDTO detailDTO = new SemanaDetailDTO(dietaSemanaLogic.getSemana(dietasId, semanasId));
         return detailDTO;
     }
 
@@ -105,13 +105,13 @@ public class DietaSemanasResource {
      * Error de lógica que se genera cuando no se encuentra la suspension.
      */
     @PUT
-    public List<SemanaDTO> replaceSemanas(@PathParam("dietasId") Long dietasId, List<SemanaDTO> semanas) {
-        for (SemanaDTO semana : semanas) {
+    public List<SemanaDetailDTO> replaceSemanas(@PathParam("dietasId") Long dietasId, List<SemanaDetailDTO> semanas) {
+        for (SemanaDetailDTO semana : semanas) {
             if (semanaLogic.getSemana(semana.getId()) == null) {
                 throw new WebApplicationException("El recurso /semanas/" + semana.getId() + " no existe.", 404);
             }
         }
-        List<SemanaDTO> lista = semanaListEntity2DTO(dietaSemanaLogic.replaceSemanas(dietasId, semanaListDTO2Entity(semanas)));
+        List<SemanaDetailDTO> lista = semanaListEntity2DTO(dietaSemanaLogic.replaceSemanas(dietasId, semanaListDTO2Entity(semanas)));
         return lista;
     }
 
@@ -119,7 +119,7 @@ public class DietaSemanasResource {
      * Elimina la conexión entre la suspension y la dieta recibidos en la URL.
      *
      * @param dietasId El ID de la dieta al cual se le va a desasociar la suspension
-     * @param susemanasId El ID de la suspension que se desasocia
+     * @param semanasId El ID de la suspension que se desasocia
      * @throws co.edu.uniandes.csw.dietas.exceptions.BusinessLogicException
      * @throws WebApplicationException {@link WebApplicationExceptionMapper}
      * Error de lógica que se genera cuando no se encuentra la suspension.
@@ -141,10 +141,10 @@ public class DietaSemanasResource {
      * @param entityList Lista de SuspensionEntity a convertir.
      * @return Lista de SuspensionDTO convertida.
      */
-    private List<SemanaDTO> semanaListEntity2DTO(List<SemanaEntity> entityList) {
-        List<SemanaDTO> list = new ArrayList<>();
+    private List<SemanaDetailDTO> semanaListEntity2DTO(List<SemanaEntity> entityList) {
+        List<SemanaDetailDTO> list = new ArrayList<>();
         for (SemanaEntity entity : entityList) {
-            list.add(new SemanaDTO(entity));
+            list.add(new SemanaDetailDTO(entity));
         }
         return list;
     }
@@ -154,9 +154,9 @@ public class DietaSemanasResource {
      * @param dtos Lista de SuspensionDTO a convertir.
      * @return Lista de SuspensionEntity convertida.
      */
-    private List<SemanaEntity> semanaListDTO2Entity(List<SemanaDTO> dtos) {
+    private List<SemanaEntity> semanaListDTO2Entity(List<SemanaDetailDTO> dtos) {
         List<SemanaEntity> list = new ArrayList<>();
-        for (SemanaDTO dto : dtos) {
+        for (SemanaDetailDTO dto : dtos) {
             list.add(dto.toEntity());
         }
         return list;
