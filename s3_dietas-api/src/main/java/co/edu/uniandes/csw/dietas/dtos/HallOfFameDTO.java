@@ -21,8 +21,10 @@ public class HallOfFameDTO implements Serializable {
     }
     
      public HallOfFameDTO (HallOfFameEntity entity){
+         if(entity!=null){
         this.id=entity.getId();
         this.mensaje=entity.getMensaje();
+         }
     }
     
     public HallOfFameEntity toEntity(){
