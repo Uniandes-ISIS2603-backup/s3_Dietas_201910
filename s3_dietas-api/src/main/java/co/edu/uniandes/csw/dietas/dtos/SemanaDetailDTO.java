@@ -19,10 +19,6 @@ import java.util.List;
 public class SemanaDetailDTO extends SemanaDTO implements Serializable
 {
     
-    private Date horaEntrega;
-    private Long id;
-    private String lugarEntrega;
-    private Integer costo;
     
     private List<DiaDTO> dias;
     

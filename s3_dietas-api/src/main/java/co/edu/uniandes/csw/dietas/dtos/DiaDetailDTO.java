@@ -30,11 +30,21 @@ public class DiaDetailDTO extends DiaDTO implements Serializable
         if(entity!=null){
             if(entity.getComidas() !=null){
                 comidas= new ArrayList<>();
-                for(ComidaEntity comidas: entity. getComidas()){
-                    //comidas.add(new ComidaDTO(comida));
+                for(ComidaEntity comida: entity. getComidas()){
+                    comidas.add(new ComidaDTO(comida));
                 }
             }
           }
+    }
+    
+    public List<ComidaDTO> getComidas(){
+        return comidas;
+    }
+    
+    
+    public void setComidas(List<ComidaDTO> comidass)
+    {
+        this.comidas= comidass;
     }
     public DiaEntity toEntity(){
         DiaEntity entity=super.toEntity();
@@ -48,5 +58,6 @@ public class DiaDetailDTO extends DiaDTO implements Serializable
         }
         return entity;
     }
+    
     
 }

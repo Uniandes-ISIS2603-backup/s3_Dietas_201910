@@ -49,8 +49,8 @@ public class DiaResource {
     
     
     @GET
-    public List<DiaDTO> getDias(){
-        List<DiaDTO> darDias = listaEntity2DTO(diaLogic.getDias());
+    public List<DiaDetailDTO> getDias(){
+        List<DiaDetailDTO> darDias = listaEntity2DTO(diaLogic.getDias());
         return darDias;
    
     }
@@ -91,8 +91,8 @@ public class DiaResource {
      * @param entityList lista de las entidades que se desean cambiar.
      * @return  lista de ahora los DTOs en vez de las entidades.
      */
-    private List<DiaDTO> listaEntity2DTO(List<DiaEntity> entityList){
-        List<DiaDTO> lista = new ArrayList<>();
+    private List<DiaDetailDTO> listaEntity2DTO(List<DiaEntity> entityList){
+        List<DiaDetailDTO> lista = new ArrayList<>();
         for(DiaEntity entidad : entityList){
             lista.add(new DiaDetailDTO(entidad));
         }

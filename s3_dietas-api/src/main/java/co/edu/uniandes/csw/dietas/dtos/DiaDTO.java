@@ -30,7 +30,7 @@ public class DiaDTO implements Serializable
     /**
      * @return the diaEspecial
      */
-    public boolean isDiaEspecial() {
+    public Boolean isDiaEspecial() {
         return diaEspecial;
     }
 
