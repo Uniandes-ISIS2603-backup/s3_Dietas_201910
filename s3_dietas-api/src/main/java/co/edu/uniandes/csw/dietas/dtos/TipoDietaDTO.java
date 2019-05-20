@@ -29,10 +29,13 @@ public class TipoDietaDTO {
      * @param tipo tipo de entidad que se va a crear
      */
     public TipoDietaDTO(TipoDietaEntity tipo){
+        if(tipo!=null)
+        {
         this.id = tipo.getId();
         this.nombre = tipo.getNombre();
         this.tipo = tipo.getTipo();
         this.descripcion = tipo.getDescripcion();
+        }
     }
 
     /**

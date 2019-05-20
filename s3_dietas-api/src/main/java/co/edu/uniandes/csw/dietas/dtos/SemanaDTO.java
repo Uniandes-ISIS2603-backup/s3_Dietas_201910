@@ -28,10 +28,13 @@ public class SemanaDTO implements Serializable{
     }
     public SemanaDTO (SemanaEntity semanaEntity)
      {
+         if(semanaEntity!= null)
+         {
          this.id = semanaEntity.getId();
          this.costo = semanaEntity.getCosto();
          this.horaEntrega= semanaEntity.getHoraEntrega();
          this.lugarEntrega = semanaEntity.getLugarEntrega();
+         }
      }
 
     /**

@@ -23,8 +23,11 @@ public class DiaDTO implements Serializable
     }
     public DiaDTO(DiaEntity diaEntity)
     {
+        if(diaEntity!=null)
+        {
         this.id = diaEntity.getId();
         this.diaEspecial = diaEntity.isEspecial();
+        }
     }
 
     /**
