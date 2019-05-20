@@ -6,12 +6,13 @@
 package co.edu.uniandes.csw.dietas.dtos;
 
 import co.edu.uniandes.csw.dietas.entities.TipoDietaEntity;
+import java.io.Serializable;
 
 /**
  *
  * @author Juan Antonio Restrepo
  */
-public class TipoDietaDTO {
+public class TipoDietaDTO implements Serializable{
     
     private Long id;
     private String nombre;

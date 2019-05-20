@@ -22,14 +22,28 @@ public class SemanaDetailDTO extends SemanaDTO implements Serializable
     
     private List<DiaDTO> dias;
     
+    public List<DiaDTO> darDias()
+    {
+            return dias;    
+    }
+    public void setDias(List<DiaDTO> pDias)
+    {
+        this.dias=pDias;
+    }
+    
+    public SemanaDetailDTO()
+    {
+        super();
+    }
+    
     public SemanaDetailDTO (SemanaEntity entity)
     {
          super(entity);
         if(entity!=null){
             if(entity.getDias() !=null){
                 dias= new ArrayList<>();
-                for(DiaEntity dias: entity. getDias()){
-//                    dias.add(new ComidaDTO(dia));
+                for(DiaEntity dia: entity. getDias()){
+                   dias.add(new DiaDTO(dia));
                 }
             }
           }
