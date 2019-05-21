@@ -28,11 +28,13 @@ public class SuspensionDTO implements Serializable
     
     
     public SuspensionDTO(SuspensionEntity entity){
+       if(entity !=null){
+          this.id = entity.getId();
+          this.comentarios = entity.getComentarios();
+          this.vigente = entity.isVigente();
+          this.numDias = entity.getNumDias();
+      }
         
-        this.id = entity.getId();
-        this.comentarios = entity.getComentarios();
-        this.vigente = entity.isVigente();
-        this.numDias = entity.getNumDias();
         
     }
     
@@ -72,7 +74,7 @@ public class SuspensionDTO implements Serializable
     /**
      * @param vigente the vigente to set
      */
-    public void setVigente(boolean vigente) {
+    public void setVigente(Boolean vigente) {
         this.vigente = vigente;
     }
 
@@ -100,7 +102,7 @@ public class SuspensionDTO implements Serializable
     /**
      * @param numDias the numDias to set
      */
-    public void setNumDias(int numDias) {
+    public void setNumDias(Integer numDias) {
         this.numDias = numDias;
     }
    

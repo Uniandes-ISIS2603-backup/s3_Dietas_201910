@@ -56,7 +56,7 @@ public class SuspensionResource
      
     
       
-      @GET
+     @GET
     @Path("{suspensionesId: \\d+}")
     public SuspensionDTO getSuspension(@PathParam("suspensionesId") Long suspensionesId){
         SuspensionEntity suspension = suspensionLogic.getSuspension(suspensionesId);
@@ -65,6 +65,7 @@ public class SuspensionResource
         }
         return new SuspensionDTO(suspension);
     }
+  
     
     
     
@@ -74,6 +75,8 @@ public class SuspensionResource
         List<SuspensionDTO> list = listEntity2DetailDTO(suspensionLogic.getSuspensiones());
         return list;
     }
+    
+    
     
     
       @PUT
@@ -104,5 +107,6 @@ public class SuspensionResource
         }
         return list;
     }
+  
     
 }
