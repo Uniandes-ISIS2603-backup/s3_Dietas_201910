@@ -18,6 +18,7 @@ import javax.inject.Inject;
  *
  * @author Daniel Espitia
  */
+
 @Stateless
 public class FotoDePersonaLogic {
     

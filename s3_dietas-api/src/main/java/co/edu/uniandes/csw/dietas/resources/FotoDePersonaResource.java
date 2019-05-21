@@ -26,7 +26,8 @@ import javax.ws.rs.core.MediaType;
  *
  * @author Daniel Espitia
  */
-
+@Consumes(MediaType.APPLICATION_JSON)
+@Produces(MediaType.APPLICATION_JSON)
 public class FotoDePersonaResource {
      private static final Logger LOGGER = Logger.getLogger(FotoDePersonaResource.class.getName());
 

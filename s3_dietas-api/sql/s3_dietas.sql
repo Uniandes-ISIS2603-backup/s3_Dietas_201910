@@ -1,8 +1,11 @@
 delete from PagoEntity;
+delete from ComidaEntity;
 delete from CocinaEntity;
+delete from TipoDietaEntity_DietaEntity;
 delete from TipoDietaEntity;
-delete from HallOfFameEntity;
+delete from DietaEntity;
 delete from PersonaEntity;
+delete from HallOfFameEntity;
 delete from QuejaYReclamoEntity;
 delete from CalificacionYComentarioEntity;
 delete from FotoEntity;
@@ -10,7 +13,7 @@ delete from DietaEntity;
 delete from SuspensionEntity;
 delete from SemanaEntity;
 delete from DiaEntity;
-delete from ComidaEntity;
+
 
 
 insert into CocinaEntity (id, direccion) values (1, '021 Magdeline Way');
