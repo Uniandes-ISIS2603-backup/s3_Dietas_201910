@@ -25,8 +25,10 @@ public class CocinaDTO implements Serializable{
     
     public CocinaDTO(CocinaEntity entity){
         
-        this.id = entity.getId();
-        this.direccion = entity.getDireccion();
+        if(entity != null){
+           this.id = entity.getId();
+           this.direccion = entity.getDireccion();
+      }
         
     }
     

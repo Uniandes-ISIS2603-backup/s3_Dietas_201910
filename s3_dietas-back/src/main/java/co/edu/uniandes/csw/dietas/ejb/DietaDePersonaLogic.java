@@ -36,9 +36,12 @@ public class DietaDePersonaLogic {
      * @return Instancia de PersonaEntity que fue asociada a hall
      */
     public DietaEntity addDietas(Long personaId, Long dietaId) {
-        DietaEntity fotoEntity = dietaPersistence.findByID(dietaId);
+        DietaEntity dietaEntity = dietaPersistence.findByID(dietaId);
         PersonaEntity personaEntity = personaPersistence.findById(personaId);        
-        personaEntity.addDieta(fotoEntity);        
+        personaEntity.addDieta(dietaEntity);
+        dietaEntity.setPersonaDieta(personaEntity);
+        dietaPersistence.create(dietaEntity);
+        personaPersistence.update(personaEntity);
         return dietaPersistence.findByID(dietaId);
     }
     
@@ -50,7 +53,7 @@ public class DietaDePersonaLogic {
      * @return Colección de instancias de PersonaEntity asociadas a la instancia
      * de Hall
      */
-    public List<DietaEntity> getDietas(Long personaId) {
-        return personaPersistence.findById(personaId).getDietas();
+    public List<DietaEntity> getDietas(Long dietaId) {
+        return personaPersistence.findById(dietaId).getDietas();
     }
 }

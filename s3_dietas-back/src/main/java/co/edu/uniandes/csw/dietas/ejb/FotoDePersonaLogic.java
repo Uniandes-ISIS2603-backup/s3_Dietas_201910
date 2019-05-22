@@ -18,6 +18,7 @@ import javax.inject.Inject;
  *
  * @author Daniel Espitia
  */
+
 @Stateless
 public class FotoDePersonaLogic {
     
@@ -54,8 +55,8 @@ public class FotoDePersonaLogic {
      * @return Colección de instancias de PersonaEntity asociadas a la instancia
      * de Hall
      */
-    public List<FotoEntity> getFotos(Long hallsId) {
-        return personaPersistence.findById(hallsId).getFotos();
+    public List<FotoEntity> getFotos(Long fotoId) {
+        return personaPersistence.findById(fotoId).getFotos();
     }
     
     /**

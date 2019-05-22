@@ -79,15 +79,15 @@ public class FotoDePersonaResource {
      * @throws WebApplicationException {@link WebApplicationExceptionMapper}
      * Error de lógica que se genera cuando no se encuentra la suspension.
      */
-    @GET
-    @Path("{fotosId: \\d+}")
-    public FotoDTO getFoto(@PathParam("personasId") Long personasId, @PathParam("fotosId") Long fotosId) {
-        if (fotoLogic.getFoto(fotosId) == null) {
-            throw new WebApplicationException("El recurso /fotos/" + fotosId + " no existe.", 404);
-        }
-        FotoDTO detailDTO = new FotoDTO(fotoDePersonaLogic.getFoto(personasId, fotosId));
-        return detailDTO;
-    }
+//    @GET
+//    @Path("{fotosId: \\d+}")
+//    public FotoDTO getFoto(@PathParam("personasId") Long personasId, @PathParam("fotosId") Long fotosId) {
+//        if (fotoLogic.getFoto(fotosId) == null) {
+//            throw new WebApplicationException("El recurso /fotos/" + fotosId + " no existe.", 404);
+//        }
+//        FotoDTO detailDTO = new FotoDTO(fotoDePersonaLogic.getFoto(personasId, fotosId));
+//        return detailDTO;
+//    }
     
     /**
      * Convierte una lista de PersonaEntity a una lista de PersonaDTO.
