@@ -5,6 +5,10 @@
  */
 package co.edu.uniandes.csw.dietas.resources;
 
+import co.edu.uniandes.csw.dietas.dtos.CalificacionYComentarioDTO;
+import co.edu.uniandes.csw.dietas.dtos.DietaDTO;
+import co.edu.uniandes.csw.dietas.dtos.FotoDTO;
+import co.edu.uniandes.csw.dietas.dtos.PagoDTO;
 import co.edu.uniandes.csw.dietas.dtos.PersonaDTO;
 import co.edu.uniandes.csw.dietas.dtos.PersonaDetailDTO;
 import co.edu.uniandes.csw.dietas.dtos.QuejaYReclamoDTO;
@@ -130,6 +134,56 @@ public class PersonaResource {
         logica.deletePersona(personasId);
     }
     
+    @GET
+    @Path("{personasId: \\d+}/calificacionesYComentarios")
+    public List<CalificacionYComentarioDTO> getCalificacionYComentario(@PathParam("personasId") Long personasId){
+        PersonaEntity entity = logica.getPersona(personasId);
+        if(entity == null){
+            throw new WebApplicationException("El recurso /personas/"+personasId+" no existe.",404);
+        }
+         PersonaDetailDTO personaDTO= new PersonaDetailDTO(entity);
+         return personaDTO.getCalificacionesYComentarios();
+    }
+    @GET
+    @Path("{personasId: \\d+}/fotos")
+    public List<FotoDTO> getFotos(@PathParam("personasId") Long personasId){
+        PersonaEntity entity = logica.getPersona(personasId);
+        if(entity == null){
+            throw new WebApplicationException("El recurso /personas/"+personasId+" no existe.",404);
+        }
+         PersonaDetailDTO personaDTO= new PersonaDetailDTO(entity);
+         return personaDTO.getFotos();
+    }
+    @GET
+    @Path("{personasId: \\d+}/quejasYReclamos")
+    public List<QuejaYReclamoDTO> getQuejasYReclamos(@PathParam("personasId") Long personasId){
+        PersonaEntity entity = logica.getPersona(personasId);
+        if(entity == null){
+            throw new WebApplicationException("El recurso /personas/"+personasId+" no existe.",404);
+        }
+         PersonaDetailDTO personaDTO= new PersonaDetailDTO(entity);
+         return personaDTO.getQuejasYReclamos();
+    }
+    @GET
+    @Path("{personasId: \\d+}/pagos")
+    public List<PagoDTO> getPagos(@PathParam("personasId") Long personasId){
+        PersonaEntity entity = logica.getPersona(personasId);
+        if(entity == null){
+            throw new WebApplicationException("El recurso /personas/"+personasId+" no existe.",404);
+        }
+         PersonaDetailDTO personaDTO= new PersonaDetailDTO(entity);
+         return personaDTO.getPagos();
+    }
+    @GET
+    @Path("{personasId: \\d+}/dietas")
+    public List<DietaDTO> getDietas(@PathParam("personasId") Long personasId){
+        PersonaEntity entity = logica.getPersona(personasId);
+        if(entity == null){
+            throw new WebApplicationException("El recurso /personas/"+personasId+" no existe.",404);
+        }
+         PersonaDetailDTO personaDTO= new PersonaDetailDTO(entity);
+         return personaDTO.getDietas();
+    }
     private List<PersonaDetailDTO> listEntity2DetailDTO(List<PersonaEntity> entityList) {
         List<PersonaDetailDTO> list = new ArrayList<>();
         for (PersonaEntity entity : entityList) {
