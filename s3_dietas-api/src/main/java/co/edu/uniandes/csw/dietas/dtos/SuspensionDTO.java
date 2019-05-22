@@ -1,4 +1,4 @@
- /*
+/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -28,13 +28,11 @@ public class SuspensionDTO implements Serializable
     
     
     public SuspensionDTO(SuspensionEntity entity){
-       if(entity !=null){
-          this.id = entity.getId();
-          this.comentarios = entity.getComentarios();
-          this.vigente = entity.isVigente();
-          this.numDias = entity.getNumDias();
-      }
         
+        this.id = entity.getId();
+        this.comentarios = entity.getComentarios();
+        this.vigente = entity.isVigente();
+        this.numDias = entity.getNumDias();
         
     }
     
@@ -74,7 +72,7 @@ public class SuspensionDTO implements Serializable
     /**
      * @param vigente the vigente to set
      */
-    public void setVigente(Boolean vigente) {
+    public void setVigente(boolean vigente) {
         this.vigente = vigente;
     }
 
@@ -102,7 +100,7 @@ public class SuspensionDTO implements Serializable
     /**
      * @param numDias the numDias to set
      */
-    public void setNumDias(Integer numDias) {
+    public void setNumDias(int numDias) {
         this.numDias = numDias;
     }
    

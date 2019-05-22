@@ -27,11 +27,11 @@ public class CalificacionYComentarioDTO implements Serializable
     
     
     public CalificacionYComentarioDTO(CalificacionYComentarioEntity entity){
-         if(entity!=null){
-             this.id = entity.getId();
-             this.comentario = entity.getComentario();
-             this.calificacion = entity.getCalificacion();
-         } 
+        
+        this.id = entity.getId();
+        this.comentario = entity.getComentario();
+        this.calificacion = entity.getCalificacion();
+        
     }
     
     
@@ -68,7 +68,7 @@ public class CalificacionYComentarioDTO implements Serializable
     /**
      * @param calificacion the calificacion to set
      */
-    public void setCalificacion(Integer calificacion) {
+    public void setCalificacion(int calificacion) {
         this.calificacion = calificacion;
     }
 
