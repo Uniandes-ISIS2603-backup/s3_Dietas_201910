@@ -19,11 +19,11 @@ insert into CocinaEntity (id, direccion) values (3, '470 Texas Road');
 insert into CocinaEntity (id, direccion) values (4, '168 Chinook Center');
 insert into CocinaEntity (id, direccion) values (5, '847 Cardinal Road');
 
-insert into HallOfFameEntity (id, mensaje) values (1, 'sollicitudin vitae');
-insert into HallOfFameEntity (id, mensaje) values (2, 'Duis aliquam convallis nunc.');
-insert into HallOfFameEntity (id, mensaje) values (3, 'sit amet lobortis sapien sapien non mi.');
-insert into HallOfFameEntity (id, mensaje) values (4, 'Curabitur gravida nisi at nibh.');
-insert into HallOfFameEntity (id, mensaje) values (5, 'Ffelis. Fusce posuere felis sed lacus.');
+insert into HallOfFameEntity (id, mensaje) values (1, 'Las piernas locas');
+insert into HallOfFameEntity (id, mensaje) values (2, 'Los grandes perdedores');
+insert into HallOfFameEntity (id, mensaje) values (3, 'Los dioses griegos');
+insert into HallOfFameEntity (id, mensaje) values (4, 'Los voladores del congreso');
+insert into HallOfFameEntity (id, mensaje) values (5, 'Feos pero Divertidos');
 
 insert into PersonaEntity (id, fechaIngreso, nombre, objetivos, solicitudEspecial, TarjetaFidelidad, tiempoEsperadoMejora,tipo,hall_id) values (1, '2018-12-24 06:58:48', 'Perritoa', 'Praesent lectus. Vestibulum quam sapien, varius uta',0, 1,14, 'Doctor', 1);
 insert into PersonaEntity (id, fechaIngreso, nombre, objetivos, solicitudEspecial, TarjetaFidelidad, tiempoEsperadoMejora,tipo,hall_id) values (2, '2018-11-24 06:58:48', 'Perritob', 'Praesent lectus. Vestibulum quam sapien, varius utb', 1,0,21, 'Doctor',2);
@@ -37,17 +37,17 @@ insert into PagoEntity (id, modoPago,persona_id) values (3, 'Efectivo',3);
 insert into PagoEntity (id, modoPago,persona_id) values (4, 'Electrónico',4);
 insert into PagoEntity (id, modoPago,persona_id) values (5, 'Efectivo',5);
 
-insert into QuejaYReclamoEntity (id, especificacion, persona_id) values (1, 'Posuere cubilia Curae; Mauris viverra diam vitae quam.', 1);
-insert into QuejaYReclamoEntity (id, especificacion, persona_id) values (2, 'Laoreet ut, rhoncus aliquet, pulvinar sed, nisl.', 2);
-insert into QuejaYReclamoEntity (id, especificacion, persona_id) values (3, 'Nullam sit amet turpis elementum ligula vehicula consequat.', 3);
-insert into QuejaYReclamoEntity (id, especificacion, persona_id) values (4, 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.', 4);
-insert into QuejaYReclamoEntity (id, especificacion, persona_id) values (5, 'Quisque arcu libero, rutrum ac, lobortis vel, dapibus at, diam.', 5);
+insert into QuejaYReclamoEntity (id, especificacion, persona_id) values (1, 'No me llegó la comida en todo el día', 1);
+insert into QuejaYReclamoEntity (id, especificacion, persona_id) values (2, 'La comida que llegó sabe feo', 2);
+insert into QuejaYReclamoEntity (id, especificacion, persona_id) values (3, 'El repartidor ofrece un muy mal servicio', 3);
+insert into QuejaYReclamoEntity (id, especificacion, persona_id) values (4, 'Me llegaron dos comidas en menos de una hora', 4);
+insert into QuejaYReclamoEntity (id, especificacion, persona_id) values (5, 'La persona que habló al telefono me dijo una grosería', 5);
 
-insert into CalificacionYComentarioEntity (id, calificacion, comentario, persona_id) values (1, 3, 'Morbi vel lectus in quam fringilla rhoncus. Mauris enim leo', 1);
-insert into CalificacionYComentarioEntity (id, calificacion, comentario, persona_id) values (2, 2, 'Praesent id massa id nisl venenatis laciniao.', 2);
-insert into CalificacionYComentarioEntity (id, calificacion, comentario, persona_id) values (3, 1, 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit', 3);
-insert into CalificacionYComentarioEntity (id, calificacion, comentario, persona_id) values (4,5, 'Proin eu mi.', 4);
-insert into CalificacionYComentarioEntity (id, calificacion, comentario, persona_id) values (5, 5, 'Donec quis orci eget orci vehicula condimentum.', 5);
+insert into CalificacionYComentarioEntity (id, calificacion, comentario, persona_id) values (1, 5, 'La comida estaba deliciosa', 1);
+insert into CalificacionYComentarioEntity (id, calificacion, comentario, persona_id) values (2, 5, 'Excelente servicio', 2);
+insert into CalificacionYComentarioEntity (id, calificacion, comentario, persona_id) values (3, 4, 'Me encantó como me trataron todos sus empleados', 3);
+insert into CalificacionYComentarioEntity (id, calificacion, comentario, persona_id) values (4,5, 'Entrega eficiente', 4);
+insert into CalificacionYComentarioEntity (id, calificacion, comentario, persona_id) values (5, 5, 'Sazón espectacular', 5);
 
 insert into FotoEntity (id, nombre, url, persona_id) values (1, '645', 'http://dummyimage.com/165x240.jpg/ff4444/ffffff', 1);
 insert into FotoEntity (id, nombre, url, persona_id) values (2, '80309', 'http://dummyimage.com/137x202.jpg/5fa2dd/ffffff', 2);
@@ -55,8 +55,8 @@ insert into FotoEntity (id, nombre, url, persona_id) values (3, '01609', 'http:/
 insert into FotoEntity (id, nombre, url, persona_id) values (4, '140', 'http://dummyimage.com/226x131.jpg/ff4444/ffffff', 4);
 insert into FotoEntity (id, nombre, url, persona_id) values (5, '4791', 'http://dummyimage.com/172x230.jpg/dddddd/000000', 5);
 
-insert into DietaEntity (id, diasSuspendida, nombre, objetivo,tipo, personaDieta_id) values (1, 14, 'Dieta1', 'bajar','celiaca' , 1);
-insert into DietaEntity (id, diasSuspendida, nombre, objetivo,tipo, personaDieta_id) values (2, 21, 'Dieta2', 'subir','celiaca' , 2);
+insert into DietaEntity (id, diasSuspendida, nombre, objetivo,tipo, personaDieta_id) values (1, 14, 'Diabetes', 'bajar','celiaca' , 1);
+insert into DietaEntity (id, diasSuspendida, nombre, objetivo,tipo, personaDieta_id) values (2, 21, 'Acido úrico', 'subir','celiaca' , 2);
 insert into DietaEntity (id, diasSuspendida, nombre, objetivo,tipo, personaDieta_id) values (3, 32, 'Dieta3', 'comer','celiaca' , 3);
 insert into DietaEntity (id, diasSuspendida, nombre, objetivo,tipo, personaDieta_id) values (4, 19, 'Dieta4', 'masa muscular', 'celiaca' , 4);
 insert into DietaEntity (id, diasSuspendida, nombre, objetivo,tipo, personaDieta_id) values (5, 24, 'Dieta5', 'brazos','celiaca' , 5);

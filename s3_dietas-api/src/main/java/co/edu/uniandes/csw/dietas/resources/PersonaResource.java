@@ -130,6 +130,8 @@ public class PersonaResource {
         logica.deletePersona(personasId);
     }
     
+    
+    
     private List<PersonaDetailDTO> listEntity2DetailDTO(List<PersonaEntity> entityList) {
         List<PersonaDetailDTO> list = new ArrayList<>();
         for (PersonaEntity entity : entityList) {
