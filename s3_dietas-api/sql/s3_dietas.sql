@@ -3,6 +3,7 @@ delete from ComidaEntity;
 delete from CocinaEntity;
 delete from TipoDietaEntity_DietaEntity;
 delete from TipoDietaEntity;
+delete from DiaEntity;
 delete from SemanaEntity;
 delete from DietaEntity;
 delete from PersonaEntity;
@@ -12,7 +13,7 @@ delete from CalificacionYComentarioEntity;
 delete from FotoEntity;
 delete from DietaEntity;
 delete from SuspensionEntity;
-delete from DiaEntity;
+                                                                                                                                                                                                      
 
 
 
