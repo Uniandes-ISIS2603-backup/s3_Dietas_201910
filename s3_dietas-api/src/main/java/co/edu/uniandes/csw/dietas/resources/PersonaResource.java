@@ -134,6 +134,7 @@ public class PersonaResource {
         logica.deletePersona(personasId);
     }
     
+
     @GET
     @Path("{personasId: \\d+}/calificacionesYComentarios")
     public List<CalificacionYComentarioDTO> getCalificacionYComentario(@PathParam("personasId") Long personasId){
@@ -184,6 +185,7 @@ public class PersonaResource {
          PersonaDetailDTO personaDTO= new PersonaDetailDTO(entity);
          return personaDTO.getDietas();
     }
+
     private List<PersonaDetailDTO> listEntity2DetailDTO(List<PersonaEntity> entityList) {
         List<PersonaDetailDTO> list = new ArrayList<>();
         for (PersonaEntity entity : entityList) {
