@@ -88,11 +88,11 @@ insert into DiaEntity (id, especial, semana_id) values (300, 1, 300);
 insert into DiaEntity (id, especial, semana_id) values (400, 0, 400);
 insert into DiaEntity (id, especial, semana_id) values (500, 1, 500);
 
-insert into ComidaEntity (id, alimentosYCantidad, tipo, cocina_id, dia_id) values (100, 'Queso: 150g; Pollo: 350g; Arroz: 200g; Vegetales: 170g', 'Elementum pellentesque. Quisque porta volutpat erat.', 100, 100);
-insert into ComidaEntity (id, alimentosYCantidad, tipo, cocina_id, dia_id) values (200, 'Arroz: 200g; Res: 500g; Piña: 250g; Vegetales: 270g', 'Consectetuer adipiscing elit. Proin risus.', 200, 200);
-insert into ComidaEntity (id, alimentosYCantidad, tipo, cocina_id, dia_id) values (300, 'Tofu: 350g; Arroz: 200g; Vegetales: 170g; Lentejas: 200g', 'Quisque arcu libero, rutrum ac, lobortis vel, dapibus at, diam.', 300, 300);
-insert into ComidaEntity (id, alimentosYCantidad, tipo, cocina_id, dia_id) values (400, 'Arroz: 200g; Vegetales: 170g; Salmón: 270g; Papa: 150g', 'Donec posuere metus vitae ipsum.', 400, 400);
-insert into ComidaEntity (id, alimentosYCantidad, tipo, cocina_id, dia_id) values (500, 'Arroz: 200g; Vegetales: 170g; Platano: 50g; Cerdo: 320g', 'Donec vitae nisi.', 500, 500);
+insert into ComidaEntity (id, alimentosYCantidad, tipo, cocina_id, dia_id) values (100, 'Queso: 150g; Pollo: 350g; Arroz: 200g; Vegetales: 170g', 'Comida para personas que sean tolerantes a la lactosa.', 100, 100);
+insert into ComidaEntity (id, alimentosYCantidad, tipo, cocina_id, dia_id) values (200, 'Arroz: 200g; Res: 500g; Piña: 250g; Vegetales: 270g', 'Para aumento de masa muscular, junto con un buen funcionamiento digestivo.', 200, 200);
+insert into ComidaEntity (id, alimentosYCantidad, tipo, cocina_id, dia_id) values (300, 'Tofu: 350g; Arroz: 200g; Vegetales: 170g; Lentejas: 200g', 'Comida para personas vegetarianas y alta en proteina.', 300, 300);
+insert into ComidaEntity (id, alimentosYCantidad, tipo, cocina_id, dia_id) values (400, 'Arroz: 200g; Vegetales: 170g; Salmón: 270g; Papa: 150g', 'Comida alta en omega 3 y 6. Alta en fibra.', 400, 400);
+insert into ComidaEntity (id, alimentosYCantidad, tipo, cocina_id, dia_id) values (500, 'Arroz: 200g; Vegetales: 170g; Platano: 50g; Cerdo: 320g', 'Comida con excedente calórico.', 500, 500);500
 
 insert into TipoDietaEntity_DietaEntity (tDietas_id, dietas_id) values (100, 100);
 insert into TipoDietaEntity_DietaEntity (tDietas_id, dietas_id) values (200, 200);
