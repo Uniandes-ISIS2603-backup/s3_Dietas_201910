@@ -52,9 +52,9 @@ insert into CalificacionYComentarioEntity (id, calificacion, comentario, persona
 
 insert into FotoEntity (id, nombre, url, persona_id) values (100, '645', 'https://i.ibb.co/zHcQpBr/DEFPROB2.png', 100);
 insert into FotoEntity (id, nombre, url, persona_id) values (200, '80309', 'https://i.ibb.co/6D6b6wW/DEFPROB.png', 200);
-insert into FotoEntity (id, nombre, url, persona_id) values (300, '01609', 'http://dummyimage.com/166x198.jpg/dddddd/000000', 300);
-insert into FotoEntity (id, nombre, url, persona_id) values (400, '140', 'http://dummyimage.com/226x131.jpg/ff4444/ffffff', 400);
-insert into FotoEntity (id, nombre, url, persona_id) values (500, '4791', 'http://dummyimage.com/172x230.jpg/dddddd/000000', 500);
+insert into FotoEntity (id, nombre, url, persona_id) values (300, '01609', 'https://i.ibb.co/yq8BqdF/DEFPROB3.png', 300);
+insert into FotoEntity (id, nombre, url, persona_id) values (400, '140', 'https://i.ibb.co/G3PNXqq/deprob4.png', 400);
+insert into FotoEntity (id, nombre, url, persona_id) values (500, '4791', 'https://i.ibb.co/44yY0Qm/deprob5.png', 500);
 
 insert into DietaEntity (id, diasSuspendida, nombre, objetivo,tipo, personaDieta_id) values (100, 0, 'Abajo Diabetes', 'Controlar los cambios de insulina','Diabetes' , 100);
 insert into DietaEntity (id, diasSuspendida, nombre, objetivo,tipo, personaDieta_id) values (200, 21, 'Control de úrea', 'Controlar el ácido úrico en la sangre','celiaca' , 200);
