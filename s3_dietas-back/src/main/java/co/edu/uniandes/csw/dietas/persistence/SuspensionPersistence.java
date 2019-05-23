@@ -5,7 +5,6 @@
  */
 package co.edu.uniandes.csw.dietas.persistence;
 
-
 import co.edu.uniandes.csw.dietas.entities.SuspensionEntity;
 import java.util.List;
 import java.util.logging.Level;

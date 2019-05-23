@@ -14,6 +14,8 @@ delete from FotoEntity;
 delete from SuspensionEntity;
 
 
+
+
 insert into CocinaEntity (id, direccion) values (100, '5912 Thackeray Court');
 insert into CocinaEntity (id, direccion) values (200, '078 Sutteridge Crossing');
 insert into CocinaEntity (id, direccion) values (300, '470 Texas Road');
@@ -97,5 +99,4 @@ insert into TipoDietaEntity_DietaEntity (tDietas_id, dietas_id) values (200, 200
 insert into TipoDietaEntity_DietaEntity (tDietas_id, dietas_id) values (300, 300);
 insert into TipoDietaEntity_DietaEntity (tDietas_id, dietas_id) values (400, 400);
 insert into TipoDietaEntity_DietaEntity (tDietas_id, dietas_id) values (500, 500);
-
 
