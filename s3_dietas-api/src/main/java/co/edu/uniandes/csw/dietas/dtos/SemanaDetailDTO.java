@@ -22,7 +22,7 @@ public class SemanaDetailDTO extends SemanaDTO implements Serializable
     
     private List<DiaDTO> dias;
     
-    public List<DiaDTO> darDias()
+    public List<DiaDTO> getDias()
     {
             return dias;    
     }
@@ -52,9 +52,9 @@ public class SemanaDetailDTO extends SemanaDTO implements Serializable
     
     public SemanaEntity toEntity(){
         SemanaEntity entity=super.toEntity();
-        if(dias!=null){
+        if(getDias()!=null){
             List<DiaEntity> diaEntity= new ArrayList<>();
-            for(DiaDTO dia: dias)
+            for(DiaDTO dia: getDias())
             {
                diaEntity.add(dia.toEntity()); 
             }
@@ -63,5 +63,29 @@ public class SemanaDetailDTO extends SemanaDTO implements Serializable
         return entity;
     }
     
+    public void agregarDias(List<DiaDTO> dias)
+    {
+        for (int i = 0; i < 10; i++) 
+        {
+            if(!this.dias.contains(dias.get(i)))
+            {
+                dias.add(dias.get(i));
+            }
+            else{
+                System.out.print("La persona ya existe");
+            }
+            
+        }
+    }
+    
+    public void eliminarDia(DiaDTO dia)
+    {
+        if(!this.dias.contains(dia)){
+            this.getDias().remove(dia);
+        }
+        else{
+            System.out.print("La persona no existe");
+        }
+    }
     
 }
